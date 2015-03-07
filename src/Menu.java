@@ -33,6 +33,7 @@ public class Menu extends Application {
 		playBtn.setOnAction(e -> {
 			Game_Selection gameSelection = new Game_Selection();
 			gameSelection.play();
+			stage.close();
 		});
 		quitBtn.setOnAction(e -> System.exit(0));
 

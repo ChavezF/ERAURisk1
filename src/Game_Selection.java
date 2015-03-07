@@ -15,7 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Game_Selection extends Menu {
+public class Game_Selection  extends Menu{
 
 	public void play() {
 		//create buttons needed
@@ -23,12 +23,7 @@ public class Game_Selection extends Menu {
 		final Button loadPrevBtn = new Button("Load Previous Game");
 		final Button mainMenuBtn = new Button("Main Menu");
 
-		//use lambda expressions to determine what the buttons do
-		//each button shall call its respective method
-		startNewBtn.setOnAction(e -> startNewGame());
-		loadPrevBtn.setOnAction(e -> loadPrevGame());
-		mainMenuBtn.setOnAction(e -> returnToMenu());
-
+		
 		//create vBox that contains buttons
 		VBox vBox = new VBox(4);
 		vBox.getChildren().addAll(startNewBtn, loadPrevBtn, mainMenuBtn);
@@ -49,6 +44,18 @@ public class Game_Selection extends Menu {
 		stage.setScene(scene);
 		stage.setTitle("Play");
 		stage.show();
+		
+		//use lambda expressions to determine what the buttons do
+				//each button shall call its respective method
+				startNewBtn.setOnAction(e -> {
+					Num_Of_Players numPlayers = new Num_Of_Players();
+					numPlayers.play();
+					stage.close();
+					
+				});
+				loadPrevBtn.setOnAction(e -> loadPrevGame());
+				mainMenuBtn.setOnAction(e -> returnToMenu());
+
 	
 	}
 	public void loadPrevGame(){
@@ -60,8 +67,7 @@ public class Game_Selection extends Menu {
 	}
 
 	public void startNewGame(){
-		Num_Of_Players numPlayers = new Num_Of_Players();
-		//numPlayers.className();
+		
 	}
 
 
