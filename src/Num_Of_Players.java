@@ -20,18 +20,6 @@ public class Num_Of_Players extends Game_Board {
 		final Button ThreePlayerBtn = new Button("3 Players");
 		final Button FourPlayerBtn = new Button("4 Players");
 
-		//use lambda expressions to determine what the buttons do
-		//each button shall call its respective method
-		TwoPlayerBtn.setOnAction(e -> {
-			
-		});
-		ThreePlayerBtn.setOnAction(e -> {
-			
-		});
-		FourPlayerBtn.setOnAction(e -> {
-			
-		});
-
 		//create vBox that contains buttons
 		VBox vBox = new VBox(4);
 		vBox.getChildren().addAll(TwoPlayerBtn, ThreePlayerBtn, FourPlayerBtn);
@@ -52,6 +40,20 @@ public class Num_Of_Players extends Game_Board {
 		stage.setScene(scene);
 		stage.setTitle("Play");
 		stage.show();
+		
+		//use lambda expressions to determine what the buttons do
+				//each button shall call its respective method
+				TwoPlayerBtn.setOnAction(e -> {
+					Game_Board gameboard = new Game_Board();
+					gameboard.twoPlayergame();
+					stage.close();
+				});
+				ThreePlayerBtn.setOnAction(e -> {
+					
+				});
+				FourPlayerBtn.setOnAction(e -> {
+					
+				});
 	
 	}
 	public Num_Of_Players(){

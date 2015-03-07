@@ -17,12 +17,13 @@ import javafx.scene.image.ImageView;
  * @version 1.0
  * @created 25-Feb-2015 1:03:58 PM
  */
-public class Dice_Roll_GUI extends Application {
+public class Dice_Roll_GUI {
 
 
-	@Override
-	public void start(Stage primaryStage) {
+	//@Override
+	//public void start(Stage primaryStage) {
 
+	public void roll(){
 		// Construct a border pane and four individual pane for scene
 		GridPane pane = new GridPane();
 		Pane paneforDefenderRB = new VBox();
@@ -324,13 +325,16 @@ public class Dice_Roll_GUI extends Application {
 				}
 			}
 		});
-		btLeave.setOnAction(e -> System.exit(0));
+		
 
 		// Set the stage to display the scene
 		Scene scene = new Scene(pane, 250, 325);
+		Stage primaryStage = new Stage();
 		primaryStage.setTitle("Roll Dice");
 		primaryStage.setScene(scene);
-		primaryStage.show();	
+		primaryStage.show();
+		
+		btLeave.setOnAction(e -> primaryStage.close());
 	}
 	// Launch GUI application
 	//public static void main(String[] args){
