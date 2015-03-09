@@ -18,10 +18,10 @@ import javafx.stage.Stage;
 public class Game_Selection extends Menu {
 
 	public void play() {
-		
+
 		//create stage 
 		Stage stage = new Stage();
-		
+
 		//create buttons needed
 		final Button startNewBtn = new Button("Start New Game");
 		final Button loadPrevBtn = new Button("Load Previous Game");
@@ -30,7 +30,8 @@ public class Game_Selection extends Menu {
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
 		startNewBtn.setOnAction(e -> {Num_Of_Players numPlayers = new Num_Of_Players();
-		numPlayers.players();});
+		//numPlayers.choosePlayers();
+		});
 		loadPrevBtn.setOnAction(e -> {});
 		mainMenuBtn.setOnAction(e -> stage.close());
 
@@ -53,7 +54,7 @@ public class Game_Selection extends Menu {
 		stage.setScene(scene);
 		stage.setTitle("Play");
 		stage.show();
-	
+
 	}
 	public void loadPrevGame(){
 

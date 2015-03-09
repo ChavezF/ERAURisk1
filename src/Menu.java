@@ -4,7 +4,6 @@
  * @created 25-Feb-2015 03:23:09 PM
  */
 
-import javax.swing.GroupLayout.Alignment;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -30,7 +29,7 @@ public class Menu extends Application {
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
 		howToBtn.setOnAction(e -> {Instructions instructions = new Instructions();
-		//instructions.somefunc();
+		instructions.playGame();
 		});
 
 		playBtn.setOnAction(e -> {Game_Selection gameSelection = new Game_Selection();
