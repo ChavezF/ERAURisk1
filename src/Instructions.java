@@ -6,7 +6,9 @@
  * @created 08-Mar-2015 010:10:09 PM
  * 
  * Displays the instruction window and hides the main menu
- * Has two buttons: Play and Quit 
+ * Has two buttons: Play and Quit
+ * 
+ * Testing
  */
 
 import javafx.application.*;
@@ -18,7 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
-public class Instructions extends Game_Selection {
+public class Instructions extends Menu {
 
 	public Instructions(){
 
