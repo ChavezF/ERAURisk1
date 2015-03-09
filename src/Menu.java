@@ -4,6 +4,8 @@
  * @created 25-Feb-2015 03:23:09 PM
  */
 
+import javax.swing.GroupLayout.Alignment;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -15,6 +17,8 @@ import javafx.stage.Stage;
 
 public class Menu extends Application {
 
+	//public void menu(){
+
 	//create buttons needed
 	final Button howToBtn = new Button("How to Play");
 	final Button playBtn = new Button("Play!");
@@ -23,18 +27,14 @@ public class Menu extends Application {
 	@Override
 	public void start(Stage stage) {
 
-		//create a stage
-		stage.setTitle("ERAU Risk");
-		Scene scene = new Scene(new Group(), 450, 250);
-
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
-		howToBtn.setOnAction(e -> showInstructions());
-		playBtn.setOnAction(e -> {
-			Game_Selection gameSelection = new Game_Selection();
-			gameSelection.play();
-			stage.close();
+		howToBtn.setOnAction(e -> {Instructions instructions = new Instructions();
+		//instructions.somefunc();
 		});
+
+		playBtn.setOnAction(e -> {Game_Selection gameSelection = new Game_Selection();
+		gameSelection.play();});
 		quitBtn.setOnAction(e -> System.exit(0));
 
 		//create vBox that contains buttons
@@ -45,16 +45,19 @@ public class Menu extends Application {
 		GridPane grid = new GridPane();
 
 		//add everything to the GridPane
-		grid.setVgap(4);
+		grid.setVgap(8);
 		grid.setHgap(4);
 		grid.setPadding(new Insets(5, 5, 5, 5));
-		grid.add(vBox, 0, 0);
+		grid.add(vBox, 10, 5);
 
-		//put it all together
-		Group root = (Group)scene.getRoot();
-		root.getChildren().addAll(grid);
-		stage.setScene(scene);
-		stage.show();
+		//create stage and scene
+		//put everything together
+		Scene scene = new Scene(grid, 200, 200);
+		Stage stages = new Stage();
+		stages.setTitle("ERAU Risk");
+		stages.setScene(scene);
+		stages.show();
+		stages.setScene(scene);
 	}//end start
 
 	//launch the program
