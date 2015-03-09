@@ -1,79 +1,58 @@
+/**
+ * Author Bruno Malo Torres Trueba
+ * Project: Risk
+ * Date: March 7, 2015
+ * Class: SE300
+  */
+ 
+
+//Helo world
+import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
 
-/**
- * @author Philip
- * @version 1.0
- * @created 25-Feb-2015 03:23:09 PM
- */
-public class Num_Of_Players extends Game_Board {
-	
-	public void play() {
-		//create buttons needed
-		final Button TwoPlayerBtn = new Button("2 Players");
-		final Button ThreePlayerBtn = new Button("3 Players");
-		final Button FourPlayerBtn = new Button("4 Players");
+public class Num_Of_Players extends Application {
 
-		//create vBox that contains buttons
-		VBox vBox = new VBox(4);
-		vBox.getChildren().addAll(TwoPlayerBtn, ThreePlayerBtn, FourPlayerBtn);
+	public void start(Stage primaryStage) {
 
-		//create a new GridPane that shall contain vBox
-		GridPane pane = new GridPane();
+		final int TWO_COLUMN_SPAN = 2;
 
-		//add everything to the GridPane
-		pane.setVgap(4);
-		pane.setHgap(4);
-		pane.setPadding(new Insets(5, 5, 5, 5));
-		pane.add(vBox, 0, 0);
-
-		//create stage
-
-		Stage stage = new Stage();
-		Scene scene = new Scene(pane, 450, 150);
-		stage.setScene(scene);
-		stage.setTitle("Play");
-		stage.show();
+		GridPane root = new GridPane();
+		root.setVgap(10);
+		root.setPadding(new Insets(10));
+		root.setAlignment(Pos.CENTER);
 		
-		//use lambda expressions to determine what the buttons do
-				//each button shall call its respective method
-				TwoPlayerBtn.setOnAction(e -> {
-					Game_Board gameboard = new Game_Board();
-					gameboard.twoPlayergame();
-					stage.close();
-				});
-				ThreePlayerBtn.setOnAction(e -> {
-					
-				});
-				FourPlayerBtn.setOnAction(e -> {
-					
-				});
-	
-	}
-	public Num_Of_Players(){
+		Label labelNumPlayers = new Label("Select Number of Players");	
+		Button twoPlayers = new Button ("2 Players");
+		Button threePlayers = new Button ("3 Players");
+		Button fourPlayers = new Button ("4 Players");
+		
+		// Allow the button to be wider overriding preferred width
+		
+		labelNumPlayers.setPrefWidth(Double.MAX_VALUE);
+		twoPlayers.setPrefWidth(Double.MAX_VALUE);
+		threePlayers.setPrefWidth(Double.MAX_VALUE);
+		fourPlayers.setPrefWidth(Double.MAX_VALUE);
 
-	}
+		// using instance method for directly adding the node
+		root.add(labelNumPlayers,0,1,TWO_COLUMN_SPAN,1);
+		root.add(twoPlayers,0,2,TWO_COLUMN_SPAN,1);
+		root.add(threePlayers,0,3,TWO_COLUMN_SPAN,1);
+		root.add(fourPlayers,0,4,TWO_COLUMN_SPAN,1);
 
-	public void finalize() throws Throwable {
-
-	}
-
-	public void TwoPlayerGame(){
-
+		Scene scene = new Scene(root,250,150);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
-	public void ThreePlayerGame(){
-
+	public static void main1(String[] args) {
+		launch(args);
 	}
-
-	public void FourPlayerGame(){
-
-	}
-
 }
