@@ -29,11 +29,14 @@ public class Game_Selection extends Menu {
 
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
-		startNewBtn.setOnAction(e -> {Num_Of_Players numPlayers = new Num_Of_Players();
-		//numPlayers.choosePlayers();
+		startNewBtn.setOnAction(e -> {
+			Num_Of_Players numPlayers = new Num_Of_Players();
+			numPlayers.choosePlayers();
+			stage.close();
+			
 		});
-		loadPrevBtn.setOnAction(e -> {});
-		mainMenuBtn.setOnAction(e -> stage.close());
+		loadPrevBtn.setOnAction(e -> loadPrevGame());
+		mainMenuBtn.setOnAction(e -> returnToMenu());
 
 		//create vBox that contains buttons
 		VBox vBox = new VBox(4);
