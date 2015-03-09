@@ -4,6 +4,9 @@
  * @author Andrew
  * @version 1.1
  * @created 08-Mar-2015 010:10:09 PM
+ * 
+ * Displays the instruction window and hides the main menu
+ * Has two buttons: Play and Quit 
  */
 
 import javafx.application.*;
