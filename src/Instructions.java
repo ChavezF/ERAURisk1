@@ -7,21 +7,31 @@
  * 
  * Displays the instruction window and hides the main menu
  * Has two buttons: Play and Quit
- * 
- * Testing
  */
 
 import javafx.application.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.Group;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.Node;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.util.Callback;
 
 public class Instructions extends Menu {
-
+	
+	private Pagination pagination;
+	
+	public int itemsPerPage() {
+        return 15;
+    }
+	
 	public Instructions(){
 
 	}
