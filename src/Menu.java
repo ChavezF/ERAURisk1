@@ -26,15 +26,7 @@ public class Menu extends Application {
 	@Override
 	public void start(Stage stage) {
 
-		//use lambda expressions to determine what the buttons do
-		//each button shall call its respective method
-		howToBtn.setOnAction(e -> {Instructions instructions = new Instructions();
-		instructions.playGame();
-		});
-
-		playBtn.setOnAction(e -> {Game_Selection gameSelection = new Game_Selection();
-		gameSelection.play();});
-		quitBtn.setOnAction(e -> System.exit(0));
+		
 
 		//create vBox that contains buttons
 		VBox vBox = new VBox(4);
@@ -57,6 +49,19 @@ public class Menu extends Application {
 		stages.setScene(scene);
 		stages.show();
 		stages.setScene(scene);
+		
+		//use lambda expressions to determine what the buttons do
+				//each button shall call its respective method
+				howToBtn.setOnAction(e -> {Instructions instructions = new Instructions();
+				instructions.playGame();
+				stages.close();
+				});
+
+				playBtn.setOnAction(e -> {Game_Selection gameSelection = new Game_Selection();
+				gameSelection.play();
+				stages.close();
+				});
+				quitBtn.setOnAction(e -> System.exit(0));
 	}//end start
 
 	//launch the program

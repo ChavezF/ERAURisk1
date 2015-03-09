@@ -18,9 +18,9 @@ import javafx.stage.Stage;
 
 
 
-public class Num_Of_Players extends Application {
+public class Num_Of_Players {
 
-	public void start(Stage primaryStage) {
+	public void play() {
 
 		final int TWO_COLUMN_SPAN = 2;
 
@@ -48,11 +48,23 @@ public class Num_Of_Players extends Application {
 		root.add(fourPlayers,0,4,TWO_COLUMN_SPAN,1);
 
 		Scene scene = new Scene(root,250,150);
+		Stage primaryStage = new Stage();
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		//use lambda expressions to determine what the buttons do
+		//each button shall call its respective method
+		twoPlayers.setOnAction(e -> {Game_Board board = new Game_Board();
+		board.twoPlayergame();
+		primaryStage.close();
+		});
+
+		threePlayers.setOnAction(e -> {
+			
+		});
+		fourPlayers.setOnAction(e -> {
+			
+		});
 	}
 
-	public static void main1(String[] args) {
-		launch(args);
-	}
 }

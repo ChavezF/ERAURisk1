@@ -222,8 +222,6 @@ public class Game_Board {
 				primaryStage.setScene(scene);
 				primaryStage.show();	
 			}
-				// Launch GUI application
-				//public static void main(String[] args){
-				//	Application.launch(args);
+				
 			}	
 			
