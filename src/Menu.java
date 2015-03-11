@@ -7,7 +7,6 @@
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -26,7 +25,7 @@ public class Menu extends Application {
 	@Override
 	public void start(Stage stage) {
 
-		
+
 
 		//create vBox that contains buttons
 		VBox vBox = new VBox(4);
@@ -49,19 +48,19 @@ public class Menu extends Application {
 		stages.setScene(scene);
 		stages.show();
 		stages.setScene(scene);
-		
-		//use lambda expressions to determine what the buttons do
-				//each button shall call its respective method
-				howToBtn.setOnAction(e -> {Instructions instructions = new Instructions();
-				instructions.playGame();
-				stages.close();
-				});
 
-				playBtn.setOnAction(e -> {Game_Selection gameSelection = new Game_Selection();
-				gameSelection.play();
-				stages.close();
-				});
-				quitBtn.setOnAction(e -> System.exit(0));
+		//use lambda expressions to determine what the buttons do
+		//each button shall call its respective method
+		howToBtn.setOnAction(e -> {Instructions instructions = new Instructions();
+		instructions.playGame();
+		stages.close();
+		});
+
+		playBtn.setOnAction(e -> {Game_Selection gameSelection = new Game_Selection();
+		gameSelection.play();
+		stages.close();
+		});
+		quitBtn.setOnAction(e -> System.exit(0));
 	}//end start
 
 	//launch the program
