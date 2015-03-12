@@ -5,8 +5,6 @@
  * Class: SE300
   */
  
-
-//Helo world
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,8 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-
 
 public class Num_Of_Players {
 
@@ -34,8 +30,7 @@ public class Num_Of_Players {
 		Button threePlayers = new Button ("3 Players");
 		Button fourPlayers = new Button ("4 Players");
 		
-		// Allow the button to be wider overriding preferred width
-		
+		// Allow the button to be wider overriding preferred width		
 		labelNumPlayers.setPrefWidth(Double.MAX_VALUE);
 		twoPlayers.setPrefWidth(Double.MAX_VALUE);
 		threePlayers.setPrefWidth(Double.MAX_VALUE);
@@ -66,5 +61,4 @@ public class Num_Of_Players {
 			
 		});
 	}
-
 }

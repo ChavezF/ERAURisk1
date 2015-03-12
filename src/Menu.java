@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 
 public class Menu extends Application {
 
-	//public void menu(){
-
 	//create buttons needed
 	final Button howToBtn = new Button("How to Play");
 	final Button playBtn = new Button("Play!");
@@ -24,8 +22,6 @@ public class Menu extends Application {
 
 	@Override
 	public void start(Stage stage) {
-
-
 
 		//create vBox that contains buttons
 		VBox vBox = new VBox(4);
@@ -60,6 +56,7 @@ public class Menu extends Application {
 		gameSelection.play();
 		stages.close();
 		});
+		
 		quitBtn.setOnAction(e -> System.exit(0));
 	}//end start
 
@@ -67,12 +64,4 @@ public class Menu extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}//end main
-
-	public void playGame(){
-
-	}
-
-	public void showInstructions(){
-
-	}
 }

@@ -37,6 +37,7 @@ public class Instructions extends Menu {
 	}
 	
 	public void playGame(){
+		
 		//Create the two necessary buttons: Play and Quit
 		final Button playBtn = new Button("Play");
 		final Button quitBtn = new Button("Quit");
@@ -70,13 +71,4 @@ public class Instructions extends Menu {
 		});
 		quitBtn.setOnAction(e -> System.exit(0));
 	}
-
-	public void quit(){
-
-	}
-
-	public void showInstructions(){
-
-	}
-
 }

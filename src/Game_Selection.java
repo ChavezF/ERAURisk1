@@ -38,6 +38,7 @@ public class Game_Selection {
 		//create scene
 		//put everything together
 		Scene scene = new Scene(pane, 200, 200);
+		
 		//create stage 
 		Stage stage = new Stage();
 		stage.setScene(scene);
@@ -50,26 +51,15 @@ public class Game_Selection {
 			Num_Of_Players numPlayers = new Num_Of_Players();
 			numPlayers.play();
 			stage.close();
-
 		});
 		loadPrevBtn.setOnAction(e -> loadPrevGame());
-		mainMenuBtn.setOnAction(e -> { Menu menu = new Menu();
-		menu.start(stage);
-		stage.close();
+		mainMenuBtn.setOnAction(e -> { 
+			Menu menu = new Menu();
+			menu.start(stage);
+			stage.close();
 		});
 	}
 	public void loadPrevGame(){
 
 	}
-
-	public void returnToMenu(){
-
-	}
-
-	public void startNewGame(){
-
-	}
-
-
 }
-

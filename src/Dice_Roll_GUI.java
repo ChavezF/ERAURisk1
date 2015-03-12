@@ -19,11 +19,8 @@ import javafx.scene.image.ImageView;
  */
 public class Dice_Roll_GUI {
 
-
-	//@Override
-	//public void start(Stage primaryStage) {
-
 	public void roll(){
+		
 		// Construct a border pane and four individual pane for scene
 		GridPane pane = new GridPane();
 		Pane paneforDefenderRB = new VBox();
@@ -31,7 +28,8 @@ public class Dice_Roll_GUI {
 		
 		Text text1 = new Text("Defender");
 		Text text2 = new Text("Attacker");
-
+		
+		//Gather dice images
 		Image D1 = new Image("Dice21.jpg");
 		Image D2 = new Image("Dice22.jpg");
 		Image D3 = new Image("Dice23.jpg");
@@ -46,14 +44,15 @@ public class Dice_Roll_GUI {
 		Image A5 = new Image("Dice15.jpg");
 		Image A6 = new Image("Dice16.jpg");
 
+		//Construct image views to display dice
 		ImageView View1 = new ImageView();
 		ImageView View2 = new ImageView();
 		ImageView View3 = new ImageView();
 		ImageView View4 = new ImageView();
 		ImageView View5 = new ImageView();
 		
-		Image Win1 = new Image("winmaker.jpg");
-		
+		//Input win markers 
+		Image Win1 = new Image("winmaker.jpg");	
 		ImageView W1 = new ImageView();
 		ImageView W2 = new ImageView();
 		ImageView W3 = new ImageView();
@@ -64,6 +63,7 @@ public class Dice_Roll_GUI {
 		W3.setImage(Win1);
 		W4.setImage(Win1);
 		
+		//Resize markers
 		W1.setFitHeight(25);
 		W1.setFitWidth(15);
 		W2.setFitHeight(25);
@@ -73,6 +73,7 @@ public class Dice_Roll_GUI {
 		W4.setFitHeight(25);
 		W4.setFitWidth(15);
 
+		//Resize dice images
 		View1.setFitHeight(45);
 		View1.setFitWidth(45);
 		View2.setFitHeight(45);
@@ -92,6 +93,8 @@ public class Dice_Roll_GUI {
 
 		pane.add(text1, 1, 0);
 		pane.add(text2, 2, 0);
+		
+		//Add nodes to scene and set alignment
 		GridPane.setHalignment(text2, HPos.RIGHT);
 		pane.add(W1, 0, 1);
 		GridPane.setValignment(W1, VPos.TOP);
@@ -108,9 +111,9 @@ public class Dice_Roll_GUI {
 		pane.add(View4, 2, 2);
 		GridPane.setHalignment(View4, HPos.RIGHT);
 		pane.add(View5, 2, 3);
-		GridPane.setHalignment(View5, HPos.RIGHT);
-		
+		GridPane.setHalignment(View5, HPos.RIGHT);	
 
+		//Construct buttons
 		Button btAttack = new Button("Attack");
 		Button btLeave = new Button("Leave");
 
@@ -118,6 +121,7 @@ public class Dice_Roll_GUI {
 		pane.add(btLeave, 2, 5);
 		GridPane.setHalignment(btLeave, HPos.RIGHT);
 
+		//Construct radio buttons, initialize, and add to scene 
 		RadioButton rbDef1 = new RadioButton("Roll 1");
 		RadioButton rbDef2 = new RadioButton("Roll 2");
 		RadioButton rbAtt1 = new RadioButton("Roll 1");
@@ -137,6 +141,7 @@ public class Dice_Roll_GUI {
 		pane.setHgap(25);
 		pane.setVgap(15);
 
+		//Have the radio buttons toggle between each other
 		rbDef1.setOnAction(e -> {
 			rbDef2.setSelected(false);	
 		});
@@ -155,6 +160,7 @@ public class Dice_Roll_GUI {
 			rbAtt1.setSelected(false);
 			rbAtt2.setSelected(false);
 		});
+		// Implement the attack button to initiate the dice roll 
 		btAttack.setOnAction(e ->  {
 			if (rbDef1.isSelected() == true){
 				View3.setVisible(false);
@@ -325,8 +331,6 @@ public class Dice_Roll_GUI {
 				}
 			}
 		});
-		
-
 		// Set the stage to display the scene
 		Scene scene = new Scene(pane, 250, 325);
 		Stage primaryStage = new Stage();
@@ -336,8 +340,4 @@ public class Dice_Roll_GUI {
 		
 		btLeave.setOnAction(e -> primaryStage.close());
 	}
-	// Launch GUI application
-	//public static void main(String[] args){
-		//Application.launch(args);
-	//}	
 }

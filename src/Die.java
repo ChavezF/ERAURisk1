@@ -1,16 +1,13 @@
 import java.util.*;
-//bruno joined team
 
 // class representing a 6 sided die
 // only has one method to roll the die and
 // report what face is up
-
 public class Die 
 {
-	static Random gen = new Random();   //
+	static Random gen = new Random();
 
-// no constructor needed - no initialization required
-
+	// no constructor needed - no initialization required
 	public int roll() 
 	{
 		int result = 0;

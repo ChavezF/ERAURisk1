@@ -27,9 +27,12 @@ import javafx.scene.input.KeyCode;
  * @created 25-Feb-2015 03:23:09 PM
  */
 public class Game_Board {
+	
 	public int i = 1;
+	
 	public void twoPlayergame(){
-		// Construct a border pane and four individual pane for scene
+		
+				// Construct a border pane and four individual pane for scene
 				BorderPane pane = new BorderPane();
 				Pane paneForBoard = new Pane();
 
@@ -176,12 +179,6 @@ public class Game_Board {
 					double ycoord = e.getSceneY();
 					text1.setText(String.format("%.2f, %.2f", xcoord, ycoord));
 				});
-				//text2.setOnMouseEntered(e->{
-				america.setOnKeyPressed(e -> {
-					if (e.getCode() == KeyCode.U)
-						america.setFill(Color.BLUE);
-				});
-			//});
 				america.setOnMouseClicked(e -> {
 					if (e.getButton() == MouseButton.PRIMARY ){
 						america.setFont(Font.font("Courier", FontWeight.BOLD, 35));
@@ -221,7 +218,5 @@ public class Game_Board {
 				primaryStage.setTitle("GUI_Widgets");
 				primaryStage.setScene(scene);
 				primaryStage.show();	
-			}
-				
-			}	
-			
+			}				
+}				
