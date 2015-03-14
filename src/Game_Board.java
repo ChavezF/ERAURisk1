@@ -55,7 +55,8 @@ public class Game_Board {
 		                Text safrica = new Text(470,420,"0");//safrica
 		                Text egypt = new Text(480,295,"0");//egypt
 		                Text eafrica = new Text(536,348,"0");//eafrica
-		                
+		                Text madag = new Text(545,445,"0");//madag
+                                
 		                Text eaustralia = new Text(903,558,"0");//eaustralia
 		                Text waustralia = new Text(800,470,"0");//waustralia
 		                Text nguninea = new Text(833,395,"0");//nguninea
@@ -106,7 +107,7 @@ public class Game_Board {
 				afghan.setFill(Color.WHITE);
 		                rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				rein.setFill(Color.WHITE);
-				america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+				america.setFont(Font.font("Courier", FontWeight.SEMI_BOLD, 25));
 				america.setFill(Color.WHITE);
 		                canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				canadia.setFill(Color.WHITE);
@@ -130,6 +131,8 @@ public class Game_Board {
 				eafrica.setFill(Color.WHITE);
 		                egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				egypt.setFill(Color.WHITE);
+                                madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+				madag.setFill(Color.THISTLE);
 		                eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				eaustralia.setFill(Color.WHITE);
 		                waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
@@ -168,7 +171,7 @@ public class Game_Board {
 				imageView1.setFitHeight(700);
 				imageView1.setFitWidth(1000);
 
-				paneForBoard.getChildren().addAll(imageView1,bGround, text1, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice);
+				paneForBoard.getChildren().addAll(imageView1,bGround, text1, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag);
 
 				// Place all the pane create and place them on the border pane 
 				pane.setCenter(paneForBoard);
@@ -185,14 +188,14 @@ public class Game_Board {
 						america.setFont(Font.font("Courier", FontWeight.BOLD, 35));
 					}
 					else if (e.getButton() == MouseButton.SECONDARY ){	
-						america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+						america.setFont(Font.font("Courier", FontWeight.SEMI_BOLD, 25));
 					}
 				});
 		                
 		                e1.setOnMouseClicked(e -> {
 		                        //blue=0033CC||green=339933||red=E62E00
-		                        String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;"};
-		                        String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red"};
+		                        String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #CC00FF;"};
+		                        String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Purple"};
 		                        bGround.setStyle(col[i]);
 		                        turn.setText(col2[i]);
 		                        i = i + 1;
