@@ -1,5 +1,6 @@
 import javafx.scene.text.Text;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.WindowEvent;
 /**
  * @author Fernando
  * @version 1.0
@@ -19,7 +21,7 @@ import javafx.scene.image.ImageView;
  */
 public class Dice_Roll_GUI {
 
-	public void roll(){
+	public double [] roll(double [] cor){
 		
 		// Construct a border pane and four individual pane for scene
 		GridPane pane = new GridPane();
@@ -336,8 +338,20 @@ public class Dice_Roll_GUI {
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("Roll Dice");
 		primaryStage.setScene(scene);
+		primaryStage.setX(cor[0]);  //line 350
+                primaryStage.setY(cor[1]);
+   
 		primaryStage.show();
+                
+                primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    public void handle(WindowEvent we) {
+                        cor[0] = primaryStage.getX();
+                        cor[1] = primaryStage.getY();
+                     }
+                });        
+                
 		
 		btLeave.setOnAction(e -> primaryStage.close());
+                return cor;
 	}
 }
