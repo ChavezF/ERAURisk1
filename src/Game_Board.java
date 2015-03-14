@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -30,7 +31,7 @@ public class Game_Board {
 	
 	public int i = 1;
 	public double [] cor = {0,0};
-	public void twoPlayergame(){
+	public void Playgame(int cap){
 		
 				// Construct a border pane and four individual pane for scene
 				BorderPane pane = new BorderPane();
@@ -195,7 +196,7 @@ public class Game_Board {
 		                        bGround.setStyle(col[i]);
 		                        turn.setText(col2[i]);
 		                        i = i + 1;
-		                        if (i == 3){
+		                        if (i == cap){
 		                            i = 0;
 		                        }//if
 		                });
@@ -218,5 +219,5 @@ public class Game_Board {
 				primaryStage.setTitle("GUI_Widgets");
 				primaryStage.setScene(scene);
 				primaryStage.show();	
-			}				
+			}
 }				
