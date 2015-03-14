@@ -49,16 +49,21 @@ public class Num_Of_Players {
 		
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
-		twoPlayers.setOnAction(e -> {Game_Board board = new Game_Board();
-		board.Playgame(2);
-		primaryStage.close();
+		twoPlayers.setOnAction(e -> {
+                    Game_Board board = new Game_Board();
+                    board.Playgame(2);
+                    primaryStage.close();
 		});
 
 		threePlayers.setOnAction(e -> {
-			
+                    Game_Board board = new Game_Board();
+                    board.Playgame(3);
+                    primaryStage.close();	
 		});
 		fourPlayers.setOnAction(e -> {
-			
+                    Game_Board board = new Game_Board();
+                    board.Playgame(4);
+                    primaryStage.close();	
 		});
 	}
 }
