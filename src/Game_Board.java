@@ -29,7 +29,7 @@ import javafx.scene.input.KeyCode;
 public class Game_Board {
 	
 	public int i = 1;
-	
+	public double [] cor = {0,0};
 	public void twoPlayergame(){
 		
 				// Construct a border pane and four individual pane for scene
@@ -205,7 +205,7 @@ public class Game_Board {
 				});
 		                dice.setOnMouseClicked(e -> {
 					Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
-					diceBox.roll();
+					cor = diceBox.roll(cor);
 				});
 		                
 		                s1.setOnMouseClicked(e -> {
