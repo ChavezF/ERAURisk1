@@ -14,7 +14,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Game_Selection {
-
+        //this is the board that you will use for the whole game
+        public double [][] game_Matrix = new double[4][8];
+        
 	public void play() {
 
 		//create buttons needed
@@ -49,7 +51,7 @@ public class Game_Selection {
 		//each button shall call its respective method
 		startNewBtn.setOnAction(e -> {
 			Num_Of_Players numPlayers = new Num_Of_Players();
-			numPlayers.play();
+			numPlayers.play(game_Matrix);
 			stage.close();
 		});
 		loadPrevBtn.setOnAction(e -> loadPrevGame());
