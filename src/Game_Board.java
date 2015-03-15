@@ -31,17 +31,16 @@ public class Game_Board {
 	
 	public int i = 1;
 	public double [] cor = {0,0};
-	public void Playgame(int cap){
+	public void Playgame(double[][]game_Matrix){
 		
 				// Construct a border pane and four individual pane for scene
 				BorderPane pane = new BorderPane();
 				Pane paneForBoard = new Pane();
 
-				Text text1 = new Text("JavaFX Logo");
 		                Text turn = new Text(10,39,"Turn: Blue");
 		                Text rein = new Text(200,39, "Reinforcements: ");
 		                
-				Text america = new Text(122,216,"0");//america
+				Text america = new Text(122,216,Double.toString(game_Matrix[0][0]));//america
 		                Text canadia = new Text(134,150,"0");//canadia
 		                Text alaska = new Text(60,120,"0");//alaska
 		                Text greenland = new Text(330,90,"0");//greenland
@@ -107,7 +106,7 @@ public class Game_Board {
 				afghan.setFill(Color.WHITE);
 		                rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				rein.setFill(Color.WHITE);
-				america.setFont(Font.font("Courier", FontWeight.SEMI_BOLD, 25));
+				america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				america.setFill(Color.WHITE);
 		                canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				canadia.setFill(Color.WHITE);
@@ -171,24 +170,17 @@ public class Game_Board {
 				imageView1.setFitHeight(700);
 				imageView1.setFitWidth(1000);
 
-				paneForBoard.getChildren().addAll(imageView1,bGround, text1, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag);
+				paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag);
 
 				// Place all the pane create and place them on the border pane 
 				pane.setCenter(paneForBoard);
 
-				text1.setOnMouseDragged(e -> {
-					text1.setX(e.getX());
-					text1.setY(e.getY());
-					double xcoord = e.getSceneX();
-					double ycoord = e.getSceneY();
-					text1.setText(String.format("%.2f, %.2f", xcoord, ycoord));
-				});
 				america.setOnMouseClicked(e -> {
 					if (e.getButton() == MouseButton.PRIMARY ){
-						america.setFont(Font.font("Courier", FontWeight.BOLD, 35));
+						america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
 					}
 					else if (e.getButton() == MouseButton.SECONDARY ){	
-						america.setFont(Font.font("Courier", FontWeight.SEMI_BOLD, 25));
+						america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 					}
 				});
 		                
@@ -199,7 +191,7 @@ public class Game_Board {
 		                        bGround.setStyle(col[i]);
 		                        turn.setText(col2[i]);
 		                        i = i + 1;
-		                        if (i == cap){
+		                        if (i == game_Matrix[3][5]){
 		                            i = 0;
 		                        }//if
 		                });
