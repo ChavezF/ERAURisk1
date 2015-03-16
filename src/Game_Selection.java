@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 public class Game_Selection {
         //this is the board that you will use for the whole game
-        public double [][] game_Matrix = new double[4][8];
+        public double [][] neo = new double[4][8];
         
 	public void play() {
 
@@ -51,7 +51,7 @@ public class Game_Selection {
 		//each button shall call its respective method
 		startNewBtn.setOnAction(e -> {
 			Num_Of_Players numPlayers = new Num_Of_Players();
-			numPlayers.play(game_Matrix);
+			numPlayers.play(neo);
 			stage.close();
 		});
 		loadPrevBtn.setOnAction(e -> loadPrevGame());
