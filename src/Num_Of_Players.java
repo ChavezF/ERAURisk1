@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 public class Num_Of_Players {
 
-	public void play(double [][]game_Matrix) {
+	public void play(double [][]neo) {
 
 		final int TWO_COLUMN_SPAN = 2;
 
@@ -51,21 +51,21 @@ public class Num_Of_Players {
 		//each button shall call its respective method
 		twoPlayers.setOnAction(e -> {
                     Game_Board board = new Game_Board();
-                    game_Matrix[3][5] = 2;
-                    board.Playgame(game_Matrix);
+                    neo[3][5] = 2;
+                    board.Playgame(neo);
                     primaryStage.close();
 		});
 
 		threePlayers.setOnAction(e -> {
                     Game_Board board = new Game_Board();
-                    game_Matrix[3][5] = 3;
-                    board.Playgame(game_Matrix);
+                    neo[3][5] = 3;
+                    board.Playgame(neo);
                     primaryStage.close();	
 		});
 		fourPlayers.setOnAction(e -> {
                     Game_Board board = new Game_Board();
-                    game_Matrix[3][5] = 4;
-                    board.Playgame(game_Matrix);
+                    neo[3][5] = 4;
+                    board.Playgame(neo);
                     primaryStage.close();	
 		});
 	}
