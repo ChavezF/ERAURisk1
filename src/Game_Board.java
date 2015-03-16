@@ -31,7 +31,7 @@ public class Game_Board {
 	
 	public int i = 1;
 	public double [] cor = {0,0};
-	public void Playgame(double[][]game_Matrix){
+	public void Playgame(double[][]neo){
 		
 				// Construct a border pane and four individual pane for scene
 				BorderPane pane = new BorderPane();
@@ -40,9 +40,9 @@ public class Game_Board {
 		                Text turn = new Text(10,39,"Turn: Blue");
 		                Text rein = new Text(200,39, "Reinforcements: ");
 		                
-				Text america = new Text(122,216,Double.toString(game_Matrix[0][0]));//america
-		                Text canadia = new Text(134,150,"0");//canadia
-		                Text alaska = new Text(60,120,"0");//alaska
+				Text america = new Text(122,216,Integer.toString(troop(neo[0][0])));//america
+		                Text canadia = new Text(134,150,Integer.toString(troop(neo[0][1])));//canadia
+		                Text alaska = new Text(60,120,Integer.toString(troop(neo[0][2])));//alaska
 		                Text greenland = new Text(330,90,"0");//greenland
 		                Text mexico = new Text(110,295,"0");//Mexico
 		                
@@ -191,7 +191,7 @@ public class Game_Board {
 		                        bGround.setStyle(col[i]);
 		                        turn.setText(col2[i]);
 		                        i = i + 1;
-		                        if (i == game_Matrix[3][5]){
+		                        if (i == neo[3][5]){
 		                            i = 0;
 		                        }//if
 		                });
@@ -215,4 +215,8 @@ public class Game_Board {
 				primaryStage.setScene(scene);
 				primaryStage.show();	
 			}
+        public int troop(double territory){
+                int trp = (int)territory;
+            return trp;
+        }//troop
 }				
