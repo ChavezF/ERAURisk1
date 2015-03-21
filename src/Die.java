@@ -12,7 +12,7 @@ public class Die
 	{
 		int result = 0;
 		double randNum = gen.nextDouble();
-		
+
 		// each face has probability of 1/6
 		// randNum >= 0.0 and < 1.0 
 		if (randNum >= 0.0 && randNum < (1.0/6.0) )
@@ -27,6 +27,6 @@ public class Die
 			result = 5;
 		if (randNum >= (5.0/6.0) && randNum < 1.0 )
 			result = 6;
-		return result;  // value representing face
+		return result;  // value representing face	
 	} // end method roll()
 }  // end class Die

@@ -74,6 +74,11 @@ public class Dice_Roll_GUI {
 		W3.setFitWidth(15);
 		W4.setFitHeight(25);
 		W4.setFitWidth(15);
+		
+		W1.setVisible(false);
+		W2.setVisible(false);
+		W3.setVisible(false);
+		W4.setVisible(false);
 
 		//Resize dice images
 		View1.setFitHeight(45);
@@ -167,8 +172,8 @@ public class Dice_Roll_GUI {
 			if (rbDef1.isSelected() == true){
 				View3.setVisible(false);
 				Die Die1 = new Die();
-				int num = Die1.roll();
-				switch (num){
+				int num1 = Die1.roll();
+				switch (num1){
 				case 1: View1.setImage(D1);
 				break;
 				case 2: View1.setImage(D2);
@@ -224,8 +229,8 @@ public class Dice_Roll_GUI {
 				View4.setVisible(false);
 				View5.setVisible(false);
 				Die Adie1 = new Die();
-				int num = Adie1.roll();
-				switch (num){
+				int num2 = Adie1.roll();
+				switch (num2){
 				case 1: View2.setImage(A1);
 				break;
 				case 2: View2.setImage(A2);
@@ -333,6 +338,7 @@ public class Dice_Roll_GUI {
 				}
 			}
 		});
+		
 		// Set the stage to display the scene
 		Scene scene = new Scene(pane, 250, 325);
 		Stage primaryStage = new Stage();
@@ -348,8 +354,7 @@ public class Dice_Roll_GUI {
                         cor[0] = primaryStage.getX();
                         cor[1] = primaryStage.getY();
                      }
-                });        
-                
+                });                       
 		
 		btLeave.setOnAction(e -> primaryStage.close());
                 return cor;
