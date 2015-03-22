@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class Game_Selection {
@@ -54,14 +55,14 @@ public class Game_Selection {
 			numPlayers.play(neo);
 			stage.close();
 		});
-		loadPrevBtn.setOnAction(e -> loadPrevGame());
+		//use FileChooser to select and open a previously saved game
+		loadPrevBtn.setOnAction(e -> {FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open Resource File");
+		fileChooser.showOpenDialog(stage);});
 		mainMenuBtn.setOnAction(e -> { 
 			Menu menu = new Menu();
 			menu.start(stage);
 			stage.close();
 		});
-	}
-	public void loadPrevGame(){
-
 	}
 }
