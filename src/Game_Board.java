@@ -186,9 +186,13 @@ public class Game_Board {
 				primaryStage.show();	
 			}
         public int troop(double territory){
-                int trp = (int)territory;
+            int trp = (int)territory;
             return trp;
         }//troop
+        
+        public int player(double territory){
+            return ((int)(10*territory))%10;
+        }//player
         
         public void update(double[][]neo){
             america.setText(Integer.toString(troop(neo[0][0])));//america
