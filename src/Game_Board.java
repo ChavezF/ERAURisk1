@@ -43,37 +43,37 @@ public class Game_Board {
 				Text america = new Text(122,216,Integer.toString(troop(neo[0][0])));//america
 		                Text canadia = new Text(134,150,Integer.toString(troop(neo[0][1])));//canadia
 		                Text alaska = new Text(60,120,Integer.toString(troop(neo[0][2])));//alaska
-		                Text greenland = new Text(330,90,"0");//greenland
-		                Text mexico = new Text(110,295,"0");//Mexico
+		                Text greenland = new Text(330,90,Integer.toString(troop(neo[0][3])));//greenland
+		                Text mexico = new Text(110,295,Integer.toString(troop(neo[0][4])));//Mexico
 		                
-		                Text venezuella = new Text(220,450,"0");//venezuella
-		                Text brazil = new Text(245,400,"0");//brazil
-		                Text argentina = new Text(185,375,"0");//argentina
+		                Text venezuella = new Text(220,450,Integer.toString(troop(neo[0][5])));//venezuella
+		                Text brazil = new Text(245,400,Integer.toString(troop(neo[0][6])));//brazil
+		                Text argentina = new Text(185,375,Integer.toString(troop(neo[0][7])));//argentina
 		                
-		                Text nafrica = new Text(400,295,"0");//nafrica
-		                Text safrica = new Text(470,420,"0");//safrica
-		                Text egypt = new Text(480,295,"0");//egypt
-		                Text eafrica = new Text(536,348,"0");//eafrica
-		                Text madag = new Text(545,445,"0");//madag
+		                Text nafrica = new Text(400,295,Integer.toString(troop(neo[1][0])));//nafrica
+		                Text safrica = new Text(470,420,Integer.toString(troop(neo[1][1])));//safrica
+		                Text egypt = new Text(480,295,Integer.toString(troop(neo[1][2])));//egypt
+		                Text eafrica = new Text(536,348,Integer.toString(troop(neo[1][3])));//eafrica
+		                Text madag = new Text(545,445,Integer.toString(troop(neo[1][4])));//madag
                                 
-		                Text eaustralia = new Text(903,558,"0");//eaustralia
-		                Text waustralia = new Text(800,470,"0");//waustralia
-		                Text nguninea = new Text(833,395,"0");//nguninea
+		                Text eaustralia = new Text(903,558,Integer.toString(troop(neo[1][5])));//eaustralia
+		                Text waustralia = new Text(800,470,Integer.toString(troop(neo[1][6])));//waustralia
+		                Text nguninea = new Text(833,395,Integer.toString(troop(neo[1][7])));//nguninea
 		                
-		                Text sasia = new Text(718,314,"0");//sasia
-		                Text indonesia = new Text(750,370,"0");//indonesia
-		                Text india = new Text(647,278,"0");//india
-		                Text china = new Text(700,220,"0");//china
-		                Text russia = new Text(640,128,"0");//russia
-		                Text japan = new Text(820,233,"0");//japan
-		                Text meast = new Text(538,250,"0");//meast
-		                Text afghan = new Text(595,200,"0");//afghan
+		                Text sasia = new Text(718,314,Integer.toString(troop(neo[2][0])));//sasia
+		                Text indonesia = new Text(750,370,Integer.toString(troop(neo[2][1])));//indonesia
+		                Text india = new Text(647,278,Integer.toString(troop(neo[2][2])));//india
+		                Text china = new Text(700,220,Integer.toString(troop(neo[2][3])));//china
+		                Text russia = new Text(640,128,Integer.toString(troop(neo[2][4])));//russia
+		                Text japan = new Text(820,233,Integer.toString(troop(neo[2][5])));//japan
+		                Text meast = new Text(538,250,Integer.toString(troop(neo[2][6])));//meast
+		                Text afghan = new Text(595,200,Integer.toString(troop(neo[2][7])));//afghan
 		                
-		                Text ireland = new Text(390,108,"0");//ireland
-		                Text scandanavia = new Text(447,127,"0");//scandanavia
-		                Text eeurope = new Text(480,180,"0");//eeurope
-		                Text weurope = new Text(423,180,"0");//weurope
-		                Text britain = new Text(370,169,"0");//britain
+		                Text ireland = new Text(390,108,Integer.toString(troop(neo[3][0])));//ireland
+		                Text scandanavia = new Text(447,127,Integer.toString(troop(neo[3][1])));//scandanavia
+		                Text eeurope = new Text(480,180,Integer.toString(troop(neo[3][2])));//eeurope
+		                Text weurope = new Text(423,180,Integer.toString(troop(neo[3][3])));//weurope
+		                Text britain = new Text(370,169,Integer.toString(troop(neo[3][4])));//britain
 		                
 		                //-------------------Properties----------------------------
 		                turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
@@ -131,7 +131,7 @@ public class Game_Board {
 		                egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				egypt.setFill(Color.WHITE);
                                 madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				madag.setFill(Color.THISTLE);
+				madag.setFill(Color.WHITE);
 		                eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				eaustralia.setFill(Color.WHITE);
 		                waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
@@ -205,38 +205,6 @@ public class Game_Board {
 				});
 		                
 		                s1.setOnMouseClicked(e -> {
-		                	String numPlayers = neo[3][5] + " ";
-		                	String stringi = i + " ";
-		                	String[][] array = {
-		                			{america.getText() + " ", canadia.getText() + " ", alaska.getText() + " ", greenland.getText() + " ",
-		                				mexico.getText() + " ", venezuella.getText() + " ", brazil.getText() + " ", argentina.getText() + " "},
-		                			{nafrica.getText() + " ", safrica.getText() + " ", egypt.getText() + " ", eafrica.getText() + " ",
-			                			madag.getText() + " ", eaustralia.getText() + " ", waustralia.getText() + " ", nguninea.getText() + " "},
-			                		{sasia.getText() + " ", indonesia.getText() + " ", india.getText() + " ", china.getText() + " ",
-			                			russia.getText() + " ", japan.getText() + " ", meast.getText() + " ", afghan.getText() + " "},
-			                		{ireland.getText() + " ", scandanavia.getText() + " ", eeurope.getText() + " ", weurope.getText() + " ",
-				                		britain.getText() + " ", numPlayers, stringi, "Turn phase "},
-		                	};
-		                	java.io.File Riskfile = new java.io.File("gamedata.txt");
-		                	try {
-								java.io.PrintWriter output = new java.io.PrintWriter(Riskfile);
-								for (int k = 0; k < 4; k++){
-									output.print(array[k][0]);
-									output.print(array[k][1]);
-									output.print(array[k][2]);
-									output.print(array[k][3]);
-									output.print(array[k][4]);
-									output.print(array[k][5]);
-									output.print(array[k][6]);
-									output.println(array[k][7]);
-								}
-								output.close();
-								System.exit(1);
-							} catch (Exception e2) {
-								// TODO Auto-generated catch block
-								e2.printStackTrace();
-							}
-		                	
 					//------------------yet to come--------------------------------
 				});
 		              
