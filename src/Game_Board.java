@@ -109,7 +109,7 @@ public class Game_Board {
             s1.setLayoutY(7);
             s1.setLayoutX(720);//840
 
-            Button e1 = new Button("End Turn");
+            Button e1 = new Button("Attack Phase");
             e1.setMinSize(120, 47);
             e1.setLayoutY(7);
             e1.setLayoutX(580);//700
@@ -137,8 +137,6 @@ public class Game_Board {
                 }
             });
 
-            
-
             b1.setOnMouseClicked(e -> {
                     System.exit(1);
             });
@@ -158,32 +156,28 @@ public class Game_Board {
             primaryStage.setScene(scene);
             primaryStage.show();
             
-            
-            //----------------------------need to find out how to loop this--------------
-            if ((int)neo[3][7] == 0){            //reinforcement phase
-                
-                //give user 3 troops to spend
-                e1.setText("Attack phase!");
-                e1.setOnMouseClicked(e -> {
+            e1.setOnMouseClicked(e -> {
+                //----------------------------need to find out how to loop this--------------
+                if ((int)neo[3][7] == 0){            //reinforcement phase
+
+                    //give user 3 troops to spend
+                    e1.setText("Fortify!");
                      updater(neo);
                      neo[3][7] ++;
-                     e1.setText(Double.toString(neo[3][7]));
-                });
 
-            }else if((int)neo[3][7] == 1.0){       //attack phase
+                }else if((int)neo[3][7] == 1.0){       //attack phase
 
-                //let user attack
-                e1.setText("Fortify!");
-                e1.setOnMouseClicked(e -> {
-                     updater(neo);
-                     neo[3][7] ++;
-                });
-                
-            }else if((int)neo[3][7] == 2){       //fortification phase
-                
-                //let user move troops between own territories
-                e1.setText("End Turn");
-                e1.setOnMouseClicked(e -> {
+                    //let user attack
+                    e1.setText("End Turn");
+                    updater(neo);
+                    neo[3][7] ++;
+
+                }else if((int)neo[3][7] == 2){       //fortification phase
+
+                    //let user move troops between own territories
+                    updater(neo);
+                    e1.setText("Attack phase!");
+
                     //blue=0033CC||green=339933||red=E62E00
                     String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #CC00FF;"};
                     String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Purple"};
@@ -193,14 +187,10 @@ public class Game_Board {
                     if (i == neo[3][5]){
                         i = 0;
                     }//if
-                    neo[3][7] ++;
-                });
-            }
-            else if(neo[3][7] == 3){       //reset to reinforcement phase
+                    neo[3][7] = 0;              //reset to reinforcement phase
             
-                neo[3][7] = 0;
-            
-            }//if    
+                }//if    
+            });
             //-----------------------------------------------------------------
         }
         public int troop(double territory){
