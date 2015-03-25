@@ -157,24 +157,24 @@ public class Game_Board {
             primaryStage.show();
             
             e1.setOnMouseClicked(e -> {
-                //----------------------------need to find out how to loop this--------------
+                
                 if ((int)neo[3][7] == 0){            //reinforcement phase
 
-                    //give user 3 troops to spend
+                    //************************give user 3 troops to spend
                     e1.setText("Fortify!");
                      updater(neo);
                      neo[3][7] ++;
 
                 }else if((int)neo[3][7] == 1.0){       //attack phase
 
-                    //let user attack
+                    //*****************************************let user attack
                     e1.setText("End Turn");
                     updater(neo);
                     neo[3][7] ++;
 
                 }else if((int)neo[3][7] == 2){       //fortification phase
 
-                    //let user move troops between own territories
+                    //***********************************let user move troops between own territories
                     updater(neo);
                     e1.setText("Attack phase!");
 
