@@ -31,7 +31,12 @@ public class Game_Board {
 	
 	public int i = 1;
 	public double [] cor = {0,0};
-	public void Playgame(double[][]neo){
+        Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
+        Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
+        Text sasia, indonesia, india, china, russia, japan, meast,afghan;
+        Text ireland, scandanavia, eeurope, weurope, britain;
+        
+        public void Playgame(double[][]neo){
 		
 				// Construct a border pane and four individual pane for scene
 				BorderPane pane = new BorderPane();
@@ -40,40 +45,40 @@ public class Game_Board {
 		                Text turn = new Text(10,39,"Turn: Blue");
 		                Text rein = new Text(200,39, "Reinforcements: ");
 		                
-				Text america = new Text(122,216,Integer.toString(troop(neo[0][0])));//america
-		                Text canadia = new Text(134,150,Integer.toString(troop(neo[0][1])));//canadia
-		                Text alaska = new Text(60,120,Integer.toString(troop(neo[0][2])));//alaska
-		                Text greenland = new Text(330,90,Integer.toString(troop(neo[0][3])));//greenland
-		                Text mexico = new Text(110,295,Integer.toString(troop(neo[0][4])));//Mexico
+				america = new Text(122,216,Integer.toString(troop(neo[0][0])));//america
+		                canadia = new Text(134,150,Integer.toString(troop(neo[0][1])));//canadia
+		                alaska = new Text(60,120,Integer.toString(troop(neo[0][2])));//alaska
+		                greenland = new Text(330,90,Integer.toString(troop(neo[0][3])));//greenland
+		                mexico = new Text(110,295,Integer.toString(troop(neo[0][4])));//Mexico
 		                
-		                Text venezuella = new Text(220,450,Integer.toString(troop(neo[0][5])));//venezuella
-		                Text brazil = new Text(245,400,Integer.toString(troop(neo[0][6])));//brazil
-		                Text argentina = new Text(185,375,Integer.toString(troop(neo[0][7])));//argentina
+		                venezuella = new Text(220,450,Integer.toString(troop(neo[0][5])));//venezuella
+		                brazil = new Text(245,400,Integer.toString(troop(neo[0][6])));//brazil
+		                argentina = new Text(185,375,Integer.toString(troop(neo[0][7])));//argentina
 		                
-		                Text nafrica = new Text(400,295,Integer.toString(troop(neo[1][0])));//nafrica
-		                Text safrica = new Text(470,420,Integer.toString(troop(neo[1][1])));//safrica
-		                Text egypt = new Text(480,295,Integer.toString(troop(neo[1][2])));//egypt
-		                Text eafrica = new Text(536,348,Integer.toString(troop(neo[1][3])));//eafrica
-		                Text madag = new Text(545,445,Integer.toString(troop(neo[1][4])));//madag
+		                nafrica = new Text(400,295,Integer.toString(troop(neo[1][0])));//nafrica
+		                safrica = new Text(470,420,Integer.toString(troop(neo[1][1])));//safrica
+		                egypt = new Text(480,295,Integer.toString(troop(neo[1][2])));//egypt
+		                eafrica = new Text(536,348,Integer.toString(troop(neo[1][3])));//eafrica
+		                madag = new Text(545,445,Integer.toString(troop(neo[1][4])));//madag
                                 
-		                Text eaustralia = new Text(903,558,Integer.toString(troop(neo[1][5])));//eaustralia
-		                Text waustralia = new Text(800,470,Integer.toString(troop(neo[1][6])));//waustralia
-		                Text nguninea = new Text(833,395,Integer.toString(troop(neo[1][7])));//nguninea
+		                eaustralia = new Text(903,558,Integer.toString(troop(neo[1][5])));//eaustralia
+		                waustralia = new Text(800,470,Integer.toString(troop(neo[1][6])));//waustralia
+		                nguninea = new Text(833,395,Integer.toString(troop(neo[1][7])));//nguninea
 		                
-		                Text sasia = new Text(718,314,Integer.toString(troop(neo[2][0])));//sasia
-		                Text indonesia = new Text(750,370,Integer.toString(troop(neo[2][1])));//indonesia
-		                Text india = new Text(647,278,Integer.toString(troop(neo[2][2])));//india
-		                Text china = new Text(700,220,Integer.toString(troop(neo[2][3])));//china
-		                Text russia = new Text(640,128,Integer.toString(troop(neo[2][4])));//russia
-		                Text japan = new Text(820,233,Integer.toString(troop(neo[2][5])));//japan
-		                Text meast = new Text(538,250,Integer.toString(troop(neo[2][6])));//meast
-		                Text afghan = new Text(595,200,Integer.toString(troop(neo[2][7])));//afghan
-		                
-		                Text ireland = new Text(390,108,Integer.toString(troop(neo[3][0])));//ireland
-		                Text scandanavia = new Text(447,127,Integer.toString(troop(neo[3][1])));//scandanavia
-		                Text eeurope = new Text(480,180,Integer.toString(troop(neo[3][2])));//eeurope
-		                Text weurope = new Text(423,180,Integer.toString(troop(neo[3][3])));//weurope
-		                Text britain = new Text(370,169,Integer.toString(troop(neo[3][4])));//britain
+		                sasia = new Text(718,314,Integer.toString(troop(neo[2][0])));//sasia
+		                indonesia = new Text(750,370,Integer.toString(troop(neo[2][1])));//indonesia
+		                india = new Text(647,278,Integer.toString(troop(neo[2][2])));//india
+		                china = new Text(700,220,Integer.toString(troop(neo[2][3])));//china
+		                russia = new Text(640,128,Integer.toString(troop(neo[2][4])));//russia
+		                japan = new Text(820,233,Integer.toString(troop(neo[2][5])));//japan
+		                meast = new Text(538,250,Integer.toString(troop(neo[2][6])));//meast
+		                afghan = new Text(595,200,Integer.toString(troop(neo[2][7])));//afghan
+                                
+		                ireland = new Text(390,108,Integer.toString(troop(neo[3][0])));//ireland
+		                scandanavia = new Text(447,127,Integer.toString(troop(neo[3][1])));//scandanavia
+		                eeurope = new Text(480,180,Integer.toString(troop(neo[3][2])));//eeurope
+		                weurope = new Text(423,180,Integer.toString(troop(neo[3][3])));//weurope
+		                britain = new Text(370,169,Integer.toString(troop(neo[3][4])));//britain
 		                
 		                //-------------------Properties----------------------------
 		                turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
