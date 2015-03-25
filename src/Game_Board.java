@@ -38,134 +38,134 @@ public class Game_Board {
         
         public void Playgame(double[][]neo){
 		
-		// Construct a border pane and four individual pane for scene
-		BorderPane pane = new BorderPane();
-		Pane paneForBoard = new Pane();
+            // Construct a border pane and four individual pane for scene
+            BorderPane pane = new BorderPane();
+            Pane paneForBoard = new Pane();
 
-                Text turn = new Text(10,39,"Turn: Blue");
-		Text rein = new Text(200,39, "Reinforcements: ");
-		               
-                america = new Text(122,216,Integer.toString(troop(neo[0][0])));//america
-                canadia = new Text(134,150,Integer.toString(troop(neo[0][1])));//canadia
-		alaska = new Text(60,120,Integer.toString(troop(neo[0][2])));//alaska
-		greenland = new Text(330,90,"0");//greenland
-		mexico = new Text(110,295,"0");//Mexico
+            Text turn = new Text(10,39,"Turn: Blue");
+            Text rein = new Text(200,39, "Reinforcements: ");
 
-		venezuella = new Text(220,450,"0");//venezuella
-		brazil = new Text(245,400,"0");//brazil
-		argentina = new Text(185,375,"0");//argentina
+            america = new Text(122,216,Integer.toString(troop(neo[0][0])));//america
+            canadia = new Text(134,150,Integer.toString(troop(neo[0][1])));//canadia
+            alaska = new Text(60,120,Integer.toString(troop(neo[0][2])));//alaska
+            greenland = new Text(330,90,"0");//greenland
+            mexico = new Text(110,295,"0");//Mexico
 
-                nafrica = new Text(400,295,"0");//nafrica
-		safrica = new Text(470,420,"0");//safrica
-		egypt = new Text(480,295,"0");//egypt
-		eafrica = new Text(536,348,"0");//eafrica
-		madag = new Text(545,445,"0");//madag
+            venezuella = new Text(220,450,"0");//venezuella
+            brazil = new Text(245,400,"0");//brazil
+            argentina = new Text(185,375,"0");//argentina
 
-		eaustralia = new Text(903,558,"0");//eaustralia
-		waustralia = new Text(800,470,"0");//waustralia
-		nguninea = new Text(833,395,"0");//nguninea
+            nafrica = new Text(400,295,"0");//nafrica
+            safrica = new Text(470,420,"0");//safrica
+            egypt = new Text(480,295,"0");//egypt
+            eafrica = new Text(536,348,"0");//eafrica
+            madag = new Text(545,445,"0");//madag
 
-		sasia = new Text(718,314,"0");//sasia
-		indonesia = new Text(750,370,"0");//indonesia
-		india = new Text(647,278,"0");//india
-		china = new Text(700,220,"0");//china
-		russia = new Text(640,128,"0");//russia
-		japan = new Text(820,233,"0");//japan
-		meast = new Text(538,250,"0");//meast
-		afghan = new Text(595,200,"0");//afghan
+            eaustralia = new Text(903,558,"0");//eaustralia
+            waustralia = new Text(800,470,"0");//waustralia
+            nguninea = new Text(833,395,"0");//nguninea
 
-		ireland = new Text(390,108,"0");//ireland
-		scandanavia = new Text(447,127,"0");//scandanavia
-		eeurope = new Text(480,180,"0");//eeurope
-		weurope = new Text(423,180,"0");//weurope
-		britain = new Text(370,169,"0");//britain
-                                
-		                //-------------------Properties----------------------------
-		                turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				turn.setFill(Color.WHITE);
-		                rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				rein.setFill(Color.WHITE);
-                                
-				//initialize the properties for the rest of the texts
-                                
-                                initializeProperties();
-                                
-				Image image = new Image("WorldMap.jpg");
-		                
-		                Button bGround = new Button();
-		                bGround.setMinSize(995, 47);
-		                bGround.setLayoutY(7);
-		                bGround.setStyle("-fx-background-color: #0033CC;");
-		               
-				Button b1 = new Button("Quit");
-		                b1.setMinSize(120, 47);
-		                b1.setLayoutY(7);
-		                b1.setLayoutX(860);
-		                
-		                Button s1 = new Button("Save");
-		                s1.setMinSize(120, 47);
-		                s1.setLayoutY(7);
-		                s1.setLayoutX(720);//840
-		                
-		                Button e1 = new Button("End Turn");
-		                e1.setMinSize(120, 47);
-		                e1.setLayoutY(7);
-		                e1.setLayoutX(580);//700
-		                //----------------------------------
-		                Button dice = new Button("Dice");
-		                dice.setMinSize(120, 47);
-		                dice.setLayoutY(635);
-		                dice.setLayoutX(812);//700
-		                //-----------------------------------
-				ImageView imageView1 = new ImageView(image);
-				imageView1.setFitHeight(700);
-				imageView1.setFitWidth(1000);
+            sasia = new Text(718,314,"0");//sasia
+            indonesia = new Text(750,370,"0");//indonesia
+            india = new Text(647,278,"0");//india
+            china = new Text(700,220,"0");//china
+            russia = new Text(640,128,"0");//russia
+            japan = new Text(820,233,"0");//japan
+            meast = new Text(538,250,"0");//meast
+            afghan = new Text(595,200,"0");//afghan
 
-				paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag);
+            ireland = new Text(390,108,"0");//ireland
+            scandanavia = new Text(447,127,"0");//scandanavia
+            eeurope = new Text(480,180,"0");//eeurope
+            weurope = new Text(423,180,"0");//weurope
+            britain = new Text(370,169,"0");//britain
 
-				// Place all the pane create and place them on the border pane 
-				pane.setCenter(paneForBoard);
+            //-------------------Properties----------------------------
+            turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            turn.setFill(Color.WHITE);
+            rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            rein.setFill(Color.WHITE);
 
-				america.setOnMouseClicked(e -> {
-					if (e.getButton() == MouseButton.PRIMARY ){
-						america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-					}
-					else if (e.getButton() == MouseButton.SECONDARY ){	
-						america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-					}
-				});
-		                
-		                e1.setOnMouseClicked(e -> {
-		                        //blue=0033CC||green=339933||red=E62E00
-		                        String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #CC00FF;"};
-		                        String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Purple"};
-		                        bGround.setStyle(col[i]);
-		                        turn.setText(col2[i]);
-		                        i = i + 1;
-		                        if (i == neo[3][5]){
-		                            i = 0;
-		                        }//if
-		                });
-		                
-		                b1.setOnMouseClicked(e -> {
-					System.exit(1);
-				});
-		                dice.setOnMouseClicked(e -> {
-					Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
-					cor = diceBox.roll(cor);
-				});
-		                
-		                s1.setOnMouseClicked(e -> {
-					//------------------yet to come--------------------------------
-				});
-		              
-				// Set the stage to display the scene
-				Scene scene = new Scene(pane);
-				Stage primaryStage = new Stage();
-				primaryStage.setTitle("GUI_Widgets");
-				primaryStage.setScene(scene);
-				primaryStage.show();	
-			}
+            //initialize the properties for the rest of the texts
+
+            initializeProperties();
+
+            Image image = new Image("WorldMap.jpg");
+
+            Button bGround = new Button();
+            bGround.setMinSize(995, 47);
+            bGround.setLayoutY(7);
+            bGround.setStyle("-fx-background-color: #0033CC;");
+
+            Button b1 = new Button("Quit");
+            b1.setMinSize(120, 47);
+            b1.setLayoutY(7);
+            b1.setLayoutX(860);
+
+            Button s1 = new Button("Save");
+            s1.setMinSize(120, 47);
+            s1.setLayoutY(7);
+            s1.setLayoutX(720);//840
+
+            Button e1 = new Button("End Turn");
+            e1.setMinSize(120, 47);
+            e1.setLayoutY(7);
+            e1.setLayoutX(580);//700
+            //----------------------------------
+            Button dice = new Button("Dice");
+            dice.setMinSize(120, 47);
+            dice.setLayoutY(635);
+            dice.setLayoutX(812);//700
+            //-----------------------------------
+            ImageView imageView1 = new ImageView(image);
+            imageView1.setFitHeight(700);
+            imageView1.setFitWidth(1000);
+
+            paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag);
+
+            // Place all the pane create and place them on the border pane 
+            pane.setCenter(paneForBoard);
+
+            america.setOnMouseClicked(e -> {
+                if (e.getButton() == MouseButton.PRIMARY ){
+                        america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                }
+                else if (e.getButton() == MouseButton.SECONDARY ){	
+                        america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                }
+            });
+
+            e1.setOnMouseClicked(e -> {
+                //blue=0033CC||green=339933||red=E62E00
+                String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #CC00FF;"};
+                String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Purple"};
+                bGround.setStyle(col[i]);
+                turn.setText(col2[i]);
+                i = i + 1;
+                if (i == neo[3][5]){
+                    i = 0;
+                }//if
+            });
+
+            b1.setOnMouseClicked(e -> {
+                    System.exit(1);
+            });
+            dice.setOnMouseClicked(e -> {
+                    Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
+                    cor = diceBox.roll(cor);
+            });
+
+            s1.setOnMouseClicked(e -> {
+                    //------------------yet to come--------------------------------
+            });
+
+            // Set the stage to display the scene
+            Scene scene = new Scene(pane);
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("GUI_Widgets");
+            primaryStage.setScene(scene);
+            primaryStage.show();	
+        }
         public int troop(double territory){
             int trp = (int)territory;
             return trp;
@@ -272,5 +272,6 @@ public class Game_Board {
 	    waustralia.setFill(Color.WHITE);
             nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 25));
             nguninea.setFill(Color.WHITE);
+            
         }//initializeProperties
 }				
