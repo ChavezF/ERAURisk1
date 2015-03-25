@@ -45,9 +45,10 @@ public class Game_Board {
             Text turn = new Text(10,39,"Turn: Blue");
             Text rein = new Text(200,39, "Reinforcements: ");
 
-            america = new Text(122,216,Integer.toString(troop(neo[0][0])));//america
-            canadia = new Text(134,150,Integer.toString(troop(neo[0][1])));//canadia
-            alaska = new Text(60,120,Integer.toString(troop(neo[0][2])));//alaska
+            //initialize countries
+            america = new Text(122,216,"0");//america
+            canadia = new Text(134,150,"0");//canadia
+            alaska = new Text(60,120,"0");//alaska
             greenland = new Text(330,90,"0");//greenland
             mexico = new Text(110,295,"0");//Mexico
 
@@ -87,9 +88,10 @@ public class Game_Board {
             rein.setFill(Color.WHITE);
 
             //initialize the properties for the rest of the texts
-
             initializeProperties();
-
+            //update the troops and numbers for rest of the world
+            updater(neo);
+            
             Image image = new Image("WorldMap.jpg");
 
             Button bGround = new Button();
@@ -135,17 +137,7 @@ public class Game_Board {
                 }
             });
 
-            e1.setOnMouseClicked(e -> {
-                //blue=0033CC||green=339933||red=E62E00
-                String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #CC00FF;"};
-                String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Purple"};
-                bGround.setStyle(col[i]);
-                turn.setText(col2[i]);
-                i = i + 1;
-                if (i == neo[3][5]){
-                    i = 0;
-                }//if
-            });
+            
 
             b1.setOnMouseClicked(e -> {
                     System.exit(1);
@@ -164,7 +156,52 @@ public class Game_Board {
             Stage primaryStage = new Stage();
             primaryStage.setTitle("GUI_Widgets");
             primaryStage.setScene(scene);
-            primaryStage.show();	
+            primaryStage.show();
+            
+            
+            //----------------------------need to find out how to loop this--------------
+            if ((int)neo[3][7] == 0){            //reinforcement phase
+                
+                //give user 3 troops to spend
+                e1.setText("Attack phase!");
+                e1.setOnMouseClicked(e -> {
+                     updater(neo);
+                     neo[3][7] ++;
+                     e1.setText(Double.toString(neo[3][7]));
+                });
+
+            }else if((int)neo[3][7] == 1.0){       //attack phase
+
+                //let user attack
+                e1.setText("Fortify!");
+                e1.setOnMouseClicked(e -> {
+                     updater(neo);
+                     neo[3][7] ++;
+                });
+                
+            }else if((int)neo[3][7] == 2){       //fortification phase
+                
+                //let user move troops between own territories
+                e1.setText("End Turn");
+                e1.setOnMouseClicked(e -> {
+                    //blue=0033CC||green=339933||red=E62E00
+                    String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #CC00FF;"};
+                    String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Purple"};
+                    bGround.setStyle(col[i]);
+                    turn.setText(col2[i]);
+                    i = i + 1;
+                    if (i == neo[3][5]){
+                        i = 0;
+                    }//if
+                    neo[3][7] ++;
+                });
+            }
+            else if(neo[3][7] == 3){       //reset to reinforcement phase
+            
+                neo[3][7] = 0;
+            
+            }//if    
+            //-----------------------------------------------------------------
         }
         public int troop(double territory){
             int trp = (int)territory;
