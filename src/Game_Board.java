@@ -45,41 +45,6 @@ public class Game_Board {
 		                Text turn = new Text(10,39,"Turn: Blue");
 		                Text rein = new Text(200,39, "Reinforcements: ");
 		                
-				america = new Text(122,216,Integer.toString(troop(neo[0][0])));//america
-		                canadia = new Text(134,150,Integer.toString(troop(neo[0][1])));//canadia
-		                alaska = new Text(60,120,Integer.toString(troop(neo[0][2])));//alaska
-		                greenland = new Text(330,90,Integer.toString(troop(neo[0][3])));//greenland
-		                mexico = new Text(110,295,Integer.toString(troop(neo[0][4])));//Mexico
-		                
-		                venezuella = new Text(220,450,Integer.toString(troop(neo[0][5])));//venezuella
-		                brazil = new Text(245,400,Integer.toString(troop(neo[0][6])));//brazil
-		                argentina = new Text(185,375,Integer.toString(troop(neo[0][7])));//argentina
-		                
-		                nafrica = new Text(400,295,Integer.toString(troop(neo[1][0])));//nafrica
-		                safrica = new Text(470,420,Integer.toString(troop(neo[1][1])));//safrica
-		                egypt = new Text(480,295,Integer.toString(troop(neo[1][2])));//egypt
-		                eafrica = new Text(536,348,Integer.toString(troop(neo[1][3])));//eafrica
-		                madag = new Text(545,445,Integer.toString(troop(neo[1][4])));//madag
-                                
-		                eaustralia = new Text(903,558,Integer.toString(troop(neo[1][5])));//eaustralia
-		                waustralia = new Text(800,470,Integer.toString(troop(neo[1][6])));//waustralia
-		                nguninea = new Text(833,395,Integer.toString(troop(neo[1][7])));//nguninea
-		                
-		                sasia = new Text(718,314,Integer.toString(troop(neo[2][0])));//sasia
-		                indonesia = new Text(750,370,Integer.toString(troop(neo[2][1])));//indonesia
-		                india = new Text(647,278,Integer.toString(troop(neo[2][2])));//india
-		                china = new Text(700,220,Integer.toString(troop(neo[2][3])));//china
-		                russia = new Text(640,128,Integer.toString(troop(neo[2][4])));//russia
-		                japan = new Text(820,233,Integer.toString(troop(neo[2][5])));//japan
-		                meast = new Text(538,250,Integer.toString(troop(neo[2][6])));//meast
-		                afghan = new Text(595,200,Integer.toString(troop(neo[2][7])));//afghan
-                                
-		                ireland = new Text(390,108,Integer.toString(troop(neo[3][0])));//ireland
-		                scandanavia = new Text(447,127,Integer.toString(troop(neo[3][1])));//scandanavia
-		                eeurope = new Text(480,180,Integer.toString(troop(neo[3][2])));//eeurope
-		                weurope = new Text(423,180,Integer.toString(troop(neo[3][3])));//weurope
-		                britain = new Text(370,169,Integer.toString(troop(neo[3][4])));//britain
-		                
 		                //-------------------Properties----------------------------
 		                turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 				turn.setFill(Color.WHITE);
@@ -224,4 +189,42 @@ public class Game_Board {
                 int trp = (int)territory;
             return trp;
         }//troop
+        
+        public void update(double[][]neo){
+            america.setText(Integer.toString(troop(neo[0][0])));//america
+	    canadia.setText(Integer.toString(troop(neo[0][1])));//canadia
+            alaska.setText(Integer.toString(troop(neo[0][2])));//alaska
+            greenland.setText(Integer.toString(troop(neo[0][3])));//greenland
+            mexico.setText(Integer.toString(troop(neo[0][4])));//Mexico
+               
+            venezuella.setText(Integer.toString(troop(neo[0][5])));//venezuella
+            brazil.setText(Integer.toString(troop(neo[0][6])));//brazil
+            argentina.setText(Integer.toString(troop(neo[0][7])));//argentina
+                 
+            nafrica.setText(Integer.toString(troop(neo[1][0])));//nafrica
+            safrica.setText(Integer.toString(troop(neo[1][1])));//safrica
+            egypt.setText(Integer.toString(troop(neo[1][2])));//egypt
+            eafrica.setText(Integer.toString(troop(neo[1][3])));//eafrica
+            madag.setText(Integer.toString(troop(neo[1][4])));//madag
+                                
+            eaustralia.setText(Integer.toString(troop(neo[1][5])));//eaustralia
+            waustralia.setText(Integer.toString(troop(neo[1][6])));//waustralia
+            nguninea.setText(Integer.toString(troop(neo[1][7])));//nguninea
+	                
+            sasia.setText(Integer.toString(troop(neo[2][0])));//sasia
+            indonesia.setText(Integer.toString(troop(neo[2][1])));//indonesia
+            india.setText(Integer.toString(troop(neo[2][2])));//india
+            china.setText(Integer.toString(troop(neo[2][3])));//china
+            russia.setText(Integer.toString(troop(neo[2][4])));//russia
+            japan.setText(Integer.toString(troop(neo[2][5])));//japan
+            meast.setText(Integer.toString(troop(neo[2][6])));//meast
+            afghan.setText(Integer.toString(troop(neo[2][7])));//afghan
+                                
+            ireland.setText(Integer.toString(troop(neo[3][0])));//ireland
+            scandanavia.setText(Integer.toString(troop(neo[3][1])));//scandanavia
+            eeurope.setText(Integer.toString(troop(neo[3][2])));//eeurope
+            weurope.setText(Integer.toString(troop(neo[3][3])));//weurope
+            britain.setText(Integer.toString(troop(neo[3][4])));//britain
+		                
+        }//update
 }				
