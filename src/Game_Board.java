@@ -146,7 +146,32 @@ public class Game_Board {
             });
 
             s1.setOnMouseClicked(e -> {
-                    //------------------yet to come--------------------------------
+                String numPlayers = neo[3][5] + " ";
+                String stringi = i + " ";
+                String [] [] array = {  
+                    {america.getText()+ " ", canadia.getText() + " ", alaska.getText() + " ", greenland.getText() + " ", mexico.getText() + " ", venezuella.getText() + " ", brazil.getText() + " ", argentina.getText() + " "},
+                    {nafrica.getText() + " ", safrica.getText() + " ", egypt.getText() + " ", eafrica.getText() + " ", madag.getText() + " ", eaustralia.getText() + " ", waustralia.getText() + " ", nguninea.getText() + " "},
+                    {sasia.getText() + " ", indonesia.getText() + " ", india.getText() + " ", china.getText() + " ",russia.getText() + " ", japan.getText() + " ", meast.getText() + " ", afghan.getText() + " "},
+                    {ireland.getText() + " ", scandanavia.getText() + " ", eeurope.getText() + " ", weurope.getText() + " ",britain.getText() + " ", numPlayers, stringi, Double.toString(neo[3][7])}};
+                java.io.File Riskfile = new java.io.File("gamedata.txt");
+                
+                try {
+                    java.io.PrintWriter output = new java.io.PrintWriter(Riskfile);
+                    for (int k = 0; k < 4; k++){
+                        output.print(array[k][0]);
+                        output.print(array[k][1]);
+                        output.print(array[k][2]);
+                        output.print(array[k][3]);
+                        output.print(array[k][4]);
+                        output.print(array[k][5]);
+                        output.print(array[k][6]);
+                        output.println(array[k][7]);
+                    }//for
+                    output.close();
+                    System.exit(1);
+                } catch (Exception e2){
+                    e2.printStackTrace();
+                }//catch    
             });
 
             // Set the stage to display the scene
