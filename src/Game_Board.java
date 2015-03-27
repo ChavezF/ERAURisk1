@@ -104,12 +104,14 @@ public class Game_Board {
                                                         //---->add 1 (to selected) when place is clicked
                                                         //---->increase font size of selected spot
                                                         //---->when 2 are selected check if they can attack each other
-                                                        //---->call dice program with both locations
+                                                        //---->call dice program with both troop amounts
+                                                        //---->set both location with new troop values
                                         //****************Fortification Phase
                                                         //---->add 1 (to selected) when place is clicked
                                                         //---->increase font size of selected spot
-                                                        //---->when 2 are selected bring up msgbox saying how many troops
-                                                        //---->subtract troops from first(if that many are  available
+                                                        //---->when 2 are selected check to see if they are same player 
+                                                        //---->bring up msgbox saying how many troops
+                                                        //---->subtract troops from first(if that many are available
                                                         //---->add troops to second selected
                 if (e.getButton() == MouseButton.PRIMARY ){
                         america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
