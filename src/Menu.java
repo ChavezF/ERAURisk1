@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 public class Menu extends Application {
 
+	//hello
 	//create buttons needed
 	final Button howToBtn = new Button("How to Play");
 	final Button playBtn = new Button("Play!");
