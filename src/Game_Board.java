@@ -45,42 +45,6 @@ public class Game_Board {
             Text turn = new Text(10,39,"Turn: Blue");
             Text rein = new Text(200,39, "Reinforcements: ");
 
-            //initialize countries
-            america = new Text(122,216,"0");//america
-            canadia = new Text(134,150,"0");//canadia
-            alaska = new Text(60,120,"0");//alaska
-            greenland = new Text(330,90,"0");//greenland
-            mexico = new Text(110,295,"0");//Mexico
-
-            venezuella = new Text(220,450,"0");//venezuella
-            brazil = new Text(245,400,"0");//brazil
-            argentina = new Text(185,375,"0");//argentina
-
-            nafrica = new Text(400,295,"0");//nafrica
-            safrica = new Text(470,420,"0");//safrica
-            egypt = new Text(480,295,"0");//egypt
-            eafrica = new Text(536,348,"0");//eafrica
-            madag = new Text(545,445,"0");//madag
-
-            eaustralia = new Text(903,558,"0");//eaustralia
-            waustralia = new Text(800,470,"0");//waustralia
-            nguninea = new Text(833,395,"0");//nguninea
-
-            sasia = new Text(718,314,"0");//sasia
-            indonesia = new Text(750,370,"0");//indonesia
-            india = new Text(647,278,"0");//india
-            china = new Text(700,220,"0");//china
-            russia = new Text(640,128,"0");//russia
-            japan = new Text(820,233,"0");//japan
-            meast = new Text(538,250,"0");//meast
-            afghan = new Text(595,200,"0");//afghan
-
-            ireland = new Text(390,108,"0");//ireland
-            scandanavia = new Text(447,127,"0");//scandanavia
-            eeurope = new Text(480,180,"0");//eeurope
-            weurope = new Text(423,180,"0");//weurope
-            britain = new Text(370,169,"0");//britain
-
             //-------------------Properties----------------------------
             turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
             turn.setFill(Color.WHITE);
@@ -129,6 +93,24 @@ public class Game_Board {
             pane.setCenter(paneForBoard);
 
             america.setOnMouseClicked(e -> {
+                //*************************add color 
+                //************************add all countries
+                //************************move to phase button so these can have different reactions depending on phase
+                                        //****************Reinforcement phase
+                                                        //----> call set troop(current + 1)
+                                                        //----> decrease troop count
+                                                        //---->when 0 move to attack phase
+                                        //****************Attack Phase
+                                                        //---->add 1 (to selected) when place is clicked
+                                                        //---->increase font size of selected spot
+                                                        //---->when 2 are selected check if they can attack each other
+                                                        //---->call dice program with both locations
+                                        //****************Fortification Phase
+                                                        //---->add 1 (to selected) when place is clicked
+                                                        //---->increase font size of selected spot
+                                                        //---->when 2 are selected bring up msgbox saying how many troops
+                                                        //---->subtract troops from first(if that many are  available
+                                                        //---->add troops to second selected
                 if (e.getButton() == MouseButton.PRIMARY ){
                         america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
                 }
@@ -182,7 +164,6 @@ public class Game_Board {
             primaryStage.show();
             
             e1.setOnMouseClicked(e -> {
-                
                 if ((int)neo[3][7] == 0){            //reinforcement phase
 
                     //************************give user 3 troops to spend
@@ -204,8 +185,8 @@ public class Game_Board {
                     e1.setText("Attack phase!");
 
                     //blue=0033CC||green=339933||red=E62E00
-                    String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #CC00FF;"};
-                    String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Purple"};
+                    String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF99;"};
+                    String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
                     bGround.setStyle(col[i]);
                     turn.setText(col2[i]);
                     i = i + 1;
@@ -266,6 +247,42 @@ public class Game_Board {
         }//update
         
         public void initializeProperties(){
+            //initialize countries
+            america = new Text(122,216,"0");//america
+            canadia = new Text(134,150,"0");//canadia
+            alaska = new Text(60,120,"0");//alaska
+            greenland = new Text(330,90,"0");//greenland
+            mexico = new Text(110,295,"0");//Mexico
+
+            venezuella = new Text(220,450,"0");//venezuella
+            brazil = new Text(245,400,"0");//brazil
+            argentina = new Text(185,375,"0");//argentina
+
+            nafrica = new Text(400,295,"0");//nafrica
+            safrica = new Text(470,420,"0");//safrica
+            egypt = new Text(480,295,"0");//egypt
+            eafrica = new Text(536,348,"0");//eafrica
+            madag = new Text(545,445,"0");//madag
+
+            eaustralia = new Text(903,558,"0");//eaustralia
+            waustralia = new Text(800,470,"0");//waustralia
+            nguninea = new Text(833,395,"0");//nguninea
+
+            sasia = new Text(718,314,"0");//sasia
+            indonesia = new Text(750,370,"0");//indonesia
+            india = new Text(647,278,"0");//india
+            china = new Text(700,220,"0");//china
+            russia = new Text(640,128,"0");//russia
+            japan = new Text(820,233,"0");//japan
+            meast = new Text(538,250,"0");//meast
+            afghan = new Text(595,200,"0");//afghan
+
+            ireland = new Text(390,108,"0");//ireland
+            scandanavia = new Text(447,127,"0");//scandanavia
+            eeurope = new Text(480,180,"0");//eeurope
+            weurope = new Text(423,180,"0");//weurope
+            britain = new Text(370,169,"0");//britain
+            
             ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
             ireland.setFill(Color.WHITE);
 	    scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
