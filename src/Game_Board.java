@@ -88,7 +88,7 @@ public class Game_Board {
             imageView1.setFitWidth(1000);
 
             paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag);
-//awesome
+
             // Place all the pane create and place them on the border pane 
             pane.setCenter(paneForBoard);
 
