@@ -187,8 +187,15 @@ public class Game_Board {
                     e1.setText("Attack phase!");
 
                     //blue=0033CC||green=339933||red=E62E00
-                    String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF99;"};
+                    String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
                     String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+                    if (i == 3){ //yellow
+                        rein.setFill(Color.BLACK);
+                        turn.setFill(Color.BLACK);
+                    }else{
+                        rein.setFill(Color.WHITE);
+                        turn.setFill(Color.WHITE);
+                    } 
                     bGround.setStyle(col[i]);
                     turn.setText(col2[i]);
                     i = i + 1;
