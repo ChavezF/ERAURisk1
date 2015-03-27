@@ -94,7 +94,7 @@ public class Game_Board {
 
             america.setOnMouseClicked(e -> {
                 //*************************add color 
-                //************************add all countries
+                //************************add all countriess
                 //************************move to phase button so these can have different reactions depending on phase
                                         //****************Reinforcement phase
                                                         //----> call set troop(current + 1)
