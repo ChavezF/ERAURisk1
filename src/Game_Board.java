@@ -29,7 +29,7 @@ import javafx.scene.input.KeyCode;
  */
 public class Game_Board {
 	
-	public int i = 1;
+	public int i = 1, reinforce = 3;
 	public double [] cor = {0,0};
         Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
         Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
@@ -137,19 +137,18 @@ public class Game_Board {
             primaryStage.show();
             
             america.setOnMouseClicked(e2 -> {
-                neo[0][0] = actions(0,0, (int)neo[3][7], e2.isPrimaryButtonDown());
+                neo[0][0] = actions(0,0, neo, e2.isPrimaryButtonDown());
                 updater(neo);
             });
             
             e1.setOnMouseClicked(e -> {
                 if ((int)neo[3][7] == 0){                   //initial add troops phase
-                    
+                    neo[3][7] ++;//delete this soon after////////////////////////////////////////////
                     //This button will do nothing during this phase
                 
                 }else if ((int)neo[3][7] == 1){            //reinforcement phase
                     
                     e1.setText("Fortify!");
-                     neo[3][7] ++;
 
                 }else if((int)neo[3][7] == 2){       //attack phase
                     
@@ -190,15 +189,17 @@ public class Game_Board {
             return trp;
         }//troop
         
-        public void setTroop(int row, int col, int number, double [][] neo){
-            
-        }//setTroop
+        public double setTroop(int row, int col, double [][] neo, int newNumber){
+            int player = player(neo[row][col]);
+            return newNumber + (double)player/10;
+       }//setTroop
         
-        public void setPlayer(int row, int column, int player, double [][] neo){
-            
+        public double setPlayer(int row, int col, double [][] neo, int newPlayer){
+            int troops = troop(neo[row][col]);
+            return (double)troops + (double)newPlayer/10;
         }//setPlayer
         
-        public double actions(int row, int column, int phase, Boolean button){
+        public double actions(int row, int column, double [][] neo, Boolean button){
             //****************Reinforcement phase
                 //----> call set troop(current + 1)
                 //----> decrease troop count
@@ -217,20 +218,26 @@ public class Game_Board {
                 //---->subtract troops from first(if that many are available
             //---->add troops to second selected
 
-            if (phase == 0){                   //initial add troops phase
+            if ((int)neo[3][7] == 0){                                                        //initial add troops phase
                         //-->Bruno add code here           
-            } else if(phase == 1){            //reinforcement phase
-                //************************give user 3 troops to spend    
-            } else if(phase == 2){            //attack phase
+            } else if((int)neo[3][7] == 1){                                                  //reinforcement phase
+                
+                neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
+                reinforce --;
+                if(reinforce == 0){
+                    neo[3][7] ++;
+                    reinforce = 3;
+                }
+            } else if((int)neo[3][7] == 2){                                                  //attack phase
                 if (button){
                     america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
                 }else if (button){	
                         america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
                 }        
-            } else if(phase == 3){            //fortification phase    
+            } else if((int)neo[3][7] == 3){                                                   //fortification phase    
                     
             }//if
-            return 1.0;
+            return neo[row][column];
         }//actions
         
         public int player(double territory){
