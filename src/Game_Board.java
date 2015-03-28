@@ -91,36 +91,7 @@ public class Game_Board {
 
             // Place all the pane create and place them on the border pane 
             pane.setCenter(paneForBoard);
-
-            america.setOnMouseClicked(e -> {
-                //*************************add color 
-                //************************add all countriess
-                //************************move to phase button so these can have different reactions depending on phase
-                                        //****************Reinforcement phase
-                                                        //----> call set troop(current + 1)
-                                                        //----> decrease troop count
-                                                        //---->when 0 move to attack phase
-                                        //****************Attack Phase
-                                                        //---->add 1 (to selected) when place is clicked
-                                                        //---->increase font size of selected spot
-                                                        //---->when 2 are selected check if they can attack each other
-                                                        //---->call dice program with both troop amounts
-                                                        //---->set both location with new troop values
-                                        //****************Fortification Phase
-                                                        //---->add 1 (to selected) when place is clicked
-                                                        //---->increase font size of selected spot
-                                                        //---->when 2 are selected check to see if they are same player 
-                                                        //---->bring up msgbox saying how many troops
-                                                        //---->subtract troops from first(if that many are available
-                                                        //---->add troops to second selected
-                if (e.getButton() == MouseButton.PRIMARY ){
-                        america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-                }
-                else if (e.getButton() == MouseButton.SECONDARY ){	
-                        america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-                }
-            });
-
+            
             b1.setOnMouseClicked(e -> {
                     System.exit(1);
             });
@@ -165,26 +136,29 @@ public class Game_Board {
             primaryStage.setScene(scene);
             primaryStage.show();
             
+            america.setOnMouseClicked(e2 -> {
+                neo[0][0] = actions(0,0, (int)neo[3][7], e2.isPrimaryButtonDown());
+                updater(neo);
+            });
+            
             e1.setOnMouseClicked(e -> {
                 if ((int)neo[3][7] == 0){                   //initial add troops phase
-                    //-->Bruno add code here
+                    
+                    //This button will do nothing during this phase
+                
                 }else if ((int)neo[3][7] == 1){            //reinforcement phase
-
-                    //************************give user 3 troops to spend
+                    
                     e1.setText("Fortify!");
-                     updater(neo);
                      neo[3][7] ++;
 
                 }else if((int)neo[3][7] == 2){       //attack phase
-
-                    //*****************************************let user attack
+                    
                     e1.setText("End Turn");
                     updater(neo);
                     neo[3][7] ++;
 
                 }else if((int)neo[3][7] == 3){       //fortification phase
-
-                    //***********************************let user move troops between own territories
+                    
                     updater(neo);
                     e1.setText("Attack phase!");
 
@@ -201,6 +175,7 @@ public class Game_Board {
                     bGround.setStyle(col[i]);
                     turn.setText(col2[i]);
                     i = i + 1;
+                    
                     if (i == neo[3][5]){
                         i = 0;
                     }//if
@@ -214,6 +189,49 @@ public class Game_Board {
             int trp = (int)territory;
             return trp;
         }//troop
+        
+        public void setTroop(int row, int col, int number, double [][] neo){
+            
+        }//setTroop
+        
+        public void setPlayer(int row, int column, int player, double [][] neo){
+            
+        }//setPlayer
+        
+        public double actions(int row, int column, int phase, Boolean button){
+            //****************Reinforcement phase
+                //----> call set troop(current + 1)
+                //----> decrease troop count
+                //---->when 0 move to attack phase
+            //****************Attack Phase
+                //---->add 1 (to selected) when place is clicked
+                //---->increase font size of selected spot
+                //---->when 2 are selected check if they can attack each other
+                //---->call dice program with both troop amounts
+                //---->set both location with new troop values
+            //****************Fortification Phase
+                //---->add 1 (to selected) when place is clicked
+                //---->increase font size of selected spot
+                //---->when 2 are selected check to see if they are same player 
+                //---->bring up msgbox saying how many troops
+                //---->subtract troops from first(if that many are available
+            //---->add troops to second selected
+
+            if (phase == 0){                   //initial add troops phase
+                        //-->Bruno add code here           
+            } else if(phase == 1){            //reinforcement phase
+                //************************give user 3 troops to spend    
+            } else if(phase == 2){            //attack phase
+                if (button){
+                    america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                }else if (button){	
+                        america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                }        
+            } else if(phase == 3){            //fortification phase    
+                    
+            }//if
+            return 1.0;
+        }//actions
         
         public int player(double territory){
             return ((int)(10*territory))%10;
