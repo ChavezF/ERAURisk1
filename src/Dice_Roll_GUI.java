@@ -173,6 +173,7 @@ public class Dice_Roll_GUI {
 				View3.setVisible(false);
 				Die Die1 = new Die();
 				int num1 = Die1.roll();
+				Die1.setValue(num1);
 				switch (num1){
 				case 1: View1.setImage(D1);
 				break;
@@ -187,6 +188,160 @@ public class Dice_Roll_GUI {
 				default: View1.setImage(D6);
 				break;
 				}
+				if (rbAtt1.isSelected() == true){
+					View4.setVisible(false);
+					View5.setVisible(false);
+					Die Adie1 = new Die();
+					int num2 = Adie1.roll();
+					Adie1.setValue(num2);
+					if (Die1.getValue() >= Adie1.getValue()){
+						W1.setVisible(true);
+						W2.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(false);
+					}
+					else {
+						W2.setVisible(true);
+						W1.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(false);
+					}
+					switch (num2){
+					case 1: View2.setImage(A1);
+					break;
+					case 2: View2.setImage(A2);
+					break;
+					case 3: View2.setImage(A3);
+					break;
+					case 4: View2.setImage(A4);
+					break;
+					case 5: View2.setImage(A5);
+					break;
+					default: View2.setImage(A6);
+					break;
+					}
+				}
+				else if (rbAtt2.isSelected() == true){
+					View4.setVisible(true);
+					View5.setVisible(false);
+					Die Adie1 = new Die();
+					Die Adie2 = new Die();
+					int[] results2 = new int[2];
+					results2[0] = Adie1.roll();
+					results2[1] = Adie2.roll();
+					java.util.Arrays.sort(results2);
+					Adie2.setValue(results2[0]);
+					Adie1.setValue(results2[1]);
+					if (Die1.getValue() >= Adie1.getValue()){
+						W1.setVisible(true);
+						W2.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(false);
+					}
+					else {
+						W2.setVisible(true);
+						W1.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(false);
+					}
+					switch (results2[1]){
+					case 1: View2.setImage(A1);
+					break;
+					case 2: View2.setImage(A2);
+					break;
+					case 3: View2.setImage(A3);
+					break;
+					case 4: View2.setImage(A4);
+					break;
+					case 5: View2.setImage(A5);
+					break;
+					default: View2.setImage(A6);
+					break;
+					}
+					switch (results2[0]){
+					case 1: View4.setImage(A1);
+					break;
+					case 2: View4.setImage(A2);
+					break;
+					case 3: View4.setImage(A3);
+					break;
+					case 4: View4.setImage(A4);
+					break;
+					case 5: View4.setImage(A5);
+					break;
+					default: View4.setImage(A6);
+					break;
+					}
+				}
+				else{
+					View4.setVisible(true);
+					View5.setVisible(true);
+					Die Adie1 = new Die();
+					Die Adie2 = new Die();
+					Die Adie3 = new Die();
+					int[] results3 = new int[3];
+					results3[0] = Adie1.roll();
+					results3[1] = Adie2.roll();
+					results3[2] = Adie3.roll();
+					java.util.Arrays.sort(results3);
+					Adie3.setValue(results3[0]);
+					Adie2.setValue(results3[1]);
+					Adie1.setValue(results3[2]);
+					if (Die1.getValue() >= Adie1.getValue()){
+						W1.setVisible(true);
+						W2.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(false);
+					}
+					else {
+						W2.setVisible(true);
+						W1.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(false);
+					}
+					switch (results3[2]){
+					case 1: View2.setImage(A1);
+					break;
+					case 2: View2.setImage(A2);
+					break;
+					case 3: View2.setImage(A3);
+					break;
+					case 4: View2.setImage(A4);
+					break;
+					case 5: View2.setImage(A5);
+					break;
+					default: View2.setImage(A6);
+					break;
+					}
+					switch (results3[1]){
+					case 1: View4.setImage(A1);
+					break;
+					case 2: View4.setImage(A2);
+					break;
+					case 3: View4.setImage(A3);
+					break;
+					case 4: View4.setImage(A4);
+					break;
+					case 5: View4.setImage(A5);
+					break;
+					default: View4.setImage(A6);
+					break;
+					}
+					switch (results3[0]){
+					case 1: View5.setImage(A1);
+					break;
+					case 2: View5.setImage(A2);
+					break;
+					case 3: View5.setImage(A3);
+					break;
+					case 4: View5.setImage(A4);
+					break;
+					case 5: View5.setImage(A5);
+					break;
+					default: View5.setImage(A6);
+					break;
+					}
+				}
 			}
 			else{
 				View3.setVisible(true);
@@ -194,8 +349,10 @@ public class Dice_Roll_GUI {
 				Die Die2 = new Die();
 				int[] results1 = new int[2];
 				results1[0] = Die1.roll();
-				results1[1] = Die2.roll();
+				results1[1] = Die2.roll();				
 				java.util.Arrays.sort(results1);
+				Die2.setValue(results1[0]);
+				Die1.setValue(results1[1]);
 				switch (results1[1]){
 				case 1: View1.setImage(D1);
 				break;
@@ -224,120 +381,187 @@ public class Dice_Roll_GUI {
 				default: View3.setImage(D6);
 				break;
 				}
-			}
-			if (rbAtt1.isSelected() == true){
-				View4.setVisible(false);
-				View5.setVisible(false);
-				Die Adie1 = new Die();
-				int num2 = Adie1.roll();
-				switch (num2){
-				case 1: View2.setImage(A1);
-				break;
-				case 2: View2.setImage(A2);
-				break;
-				case 3: View2.setImage(A3);
-				break;
-				case 4: View2.setImage(A4);
-				break;
-				case 5: View2.setImage(A5);
-				break;
-				default: View2.setImage(A6);
-				break;
+				if (rbAtt1.isSelected() == true){
+					View4.setVisible(false);
+					View5.setVisible(false);
+					Die Adie1 = new Die();
+					int num2 = Adie1.roll();
+					Adie1.setValue(num2);
+					if (Die1.getValue() >= Adie1.getValue()){
+						W1.setVisible(true);
+						W2.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(false);
+					}
+					else {
+						W2.setVisible(true);
+						W1.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(false);
+					}
+					switch (num2){
+					case 1: View2.setImage(A1);
+					break;
+					case 2: View2.setImage(A2);
+					break;
+					case 3: View2.setImage(A3);
+					break;
+					case 4: View2.setImage(A4);
+					break;
+					case 5: View2.setImage(A5);
+					break;
+					default: View2.setImage(A6);
+					break;
+					}
 				}
-			}
-			else if (rbAtt2.isSelected() == true){
-				View4.setVisible(true);
-				View5.setVisible(false);
-				Die Adie1 = new Die();
-				Die Adie2 = new Die();
-				int[] results2 = new int[2];
-				results2[0] = Adie1.roll();
-				results2[1] = Adie2.roll();
-				java.util.Arrays.sort(results2);
-				switch (results2[1]){
-				case 1: View2.setImage(A1);
-				break;
-				case 2: View2.setImage(A2);
-				break;
-				case 3: View2.setImage(A3);
-				break;
-				case 4: View2.setImage(A4);
-				break;
-				case 5: View2.setImage(A5);
-				break;
-				default: View2.setImage(A6);
-				break;
+				else if (rbAtt2.isSelected() == true){
+					View4.setVisible(true);
+					View5.setVisible(false);
+					Die Adie1 = new Die();
+					Die Adie2 = new Die();
+					int[] results2 = new int[2];
+					results2[0] = Adie1.roll();
+					results2[1] = Adie2.roll();
+					java.util.Arrays.sort(results2);
+					Adie2.setValue(results2[0]);
+					Adie1.setValue(results2[1]);
+					if (Die1.getValue() >= Adie1.getValue() && Die2.getValue() >= Adie2.getValue()){
+						W1.setVisible(true);
+						W2.setVisible(false);
+						W3.setVisible(true);
+						W4.setVisible(false);
+					}
+					else if (Die1.getValue() >= Adie1.getValue() && Die2.getValue() < Adie2.getValue()){
+						W1.setVisible(true);
+						W2.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(true);
+					}
+					else if (Die1.getValue() < Adie1.getValue() && Die2.getValue() >= Adie2.getValue()){
+						W1.setVisible(false);
+						W2.setVisible(true);
+						W3.setVisible(true);
+						W4.setVisible(false);
+					}
+					else {
+						W2.setVisible(true);
+						W1.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(true);
+					}
+					switch (results2[1]){
+					case 1: View2.setImage(A1);
+					break;
+					case 2: View2.setImage(A2);
+					break;
+					case 3: View2.setImage(A3);
+					break;
+					case 4: View2.setImage(A4);
+					break;
+					case 5: View2.setImage(A5);
+					break;
+					default: View2.setImage(A6);
+					break;
+					}
+					switch (results2[0]){
+					case 1: View4.setImage(A1);
+					break;
+					case 2: View4.setImage(A2);
+					break;
+					case 3: View4.setImage(A3);
+					break;
+					case 4: View4.setImage(A4);
+					break;
+					case 5: View4.setImage(A5);
+					break;
+					default: View4.setImage(A6);
+					break;
+					}
 				}
-				switch (results2[0]){
-				case 1: View4.setImage(A1);
-				break;
-				case 2: View4.setImage(A2);
-				break;
-				case 3: View4.setImage(A3);
-				break;
-				case 4: View4.setImage(A4);
-				break;
-				case 5: View4.setImage(A5);
-				break;
-				default: View4.setImage(A6);
-				break;
+				else{
+					View4.setVisible(true);
+					View5.setVisible(true);
+					Die Adie1 = new Die();
+					Die Adie2 = new Die();
+					Die Adie3 = new Die();
+					int[] results3 = new int[3];
+					results3[0] = Adie1.roll();
+					results3[1] = Adie2.roll();
+					results3[2] = Adie3.roll();
+					java.util.Arrays.sort(results3);
+					Adie3.setValue(results3[0]);
+					Adie2.setValue(results3[1]);
+					Adie1.setValue(results3[2]);
+					if (Die1.getValue() >= Adie1.getValue() && Die2.getValue() >= Adie2.getValue()){
+						W1.setVisible(true);
+						W2.setVisible(false);
+						W3.setVisible(true);
+						W4.setVisible(false);
+					}
+					else if (Die1.getValue() >= Adie1.getValue() && Die2.getValue() < Adie2.getValue()){
+						W1.setVisible(true);
+						W2.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(true);
+					}
+					else if (Die1.getValue() < Adie1.getValue() && Die2.getValue() >= Adie2.getValue()){
+						W1.setVisible(false);
+						W2.setVisible(true);
+						W3.setVisible(true);
+						W4.setVisible(false);
+					}
+					else {
+						W2.setVisible(true);
+						W1.setVisible(false);
+						W3.setVisible(false);
+						W4.setVisible(true);
+					}
+					switch (results3[2]){
+					case 1: View2.setImage(A1);
+					break;
+					case 2: View2.setImage(A2);
+					break;
+					case 3: View2.setImage(A3);
+					break;
+					case 4: View2.setImage(A4);
+					break;
+					case 5: View2.setImage(A5);
+					break;
+					default: View2.setImage(A6);
+					break;
+					}
+					switch (results3[1]){
+					case 1: View4.setImage(A1);
+					break;
+					case 2: View4.setImage(A2);
+					break;
+					case 3: View4.setImage(A3);
+					break;
+					case 4: View4.setImage(A4);
+					break;
+					case 5: View4.setImage(A5);
+					break;
+					default: View4.setImage(A6);
+					break;
+					}
+					switch (results3[0]){
+					case 1: View5.setImage(A1);
+					break;
+					case 2: View5.setImage(A2);
+					break;
+					case 3: View5.setImage(A3);
+					break;
+					case 4: View5.setImage(A4);
+					break;
+					case 5: View5.setImage(A5);
+					break;
+					default: View5.setImage(A6);
+					break;
+					}
 				}
-			}
-			else{
-				View4.setVisible(true);
-				View5.setVisible(true);
-				Die Adie1 = new Die();
-				Die Adie2 = new Die();
-				Die Adie3 = new Die();
-				int[] results3 = new int[3];
-				results3[0] = Adie1.roll();
-				results3[1] = Adie2.roll();
-				results3[2] = Adie3.roll();
-				java.util.Arrays.sort(results3);
-				switch (results3[2]){
-				case 1: View2.setImage(A1);
-				break;
-				case 2: View2.setImage(A2);
-				break;
-				case 3: View2.setImage(A3);
-				break;
-				case 4: View2.setImage(A4);
-				break;
-				case 5: View2.setImage(A5);
-				break;
-				default: View2.setImage(A6);
-				break;
-				}
-				switch (results3[1]){
-				case 1: View4.setImage(A1);
-				break;
-				case 2: View4.setImage(A2);
-				break;
-				case 3: View4.setImage(A3);
-				break;
-				case 4: View4.setImage(A4);
-				break;
-				case 5: View4.setImage(A5);
-				break;
-				default: View4.setImage(A6);
-				break;
-				}
-				switch (results3[0]){
-				case 1: View5.setImage(A1);
-				break;
-				case 2: View5.setImage(A2);
-				break;
-				case 3: View5.setImage(A3);
-				break;
-				case 4: View5.setImage(A4);
-				break;
-				case 5: View5.setImage(A5);
-				break;
-				default: View5.setImage(A6);
-				break;
-				}
-			}
+			}	
 		});
+		
 		
 		// Set the stage to display the scene
 		Scene scene = new Scene(pane, 250, 325);
@@ -358,5 +582,9 @@ public class Dice_Roll_GUI {
 		
 		btLeave.setOnAction(e -> primaryStage.close());
                 return cor;
+                
+        
 	}
+	
+	
 }

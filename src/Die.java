@@ -5,6 +5,7 @@ import java.util.*;
 // report what face is up
 public class Die 
 {
+	int value;
 	static Random gen = new Random();
 
 	// no constructor needed - no initialization required
@@ -29,4 +30,10 @@ public class Die
 			result = 6;
 		return result;  // value representing face	
 	} // end method roll()
+	 void setValue(int num){
+		value = num;
+	}
+	 int getValue(){
+		 return value;
+	 }
 }  // end class Die
