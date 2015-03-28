@@ -34,8 +34,9 @@ public class Game_Board {
         Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
         Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
         Text sasia, indonesia, india, china, russia, japan, meast,afghan;
-        Text ireland, scandanavia, eeurope, weurope, britain;
-        
+        Text ireland, scandanavia, eeurope, weurope, britain, rein;
+        Button e1;
+                
         public void Playgame(double[][]neo){
 		
             // Construct a border pane and four individual pane for scene
@@ -43,7 +44,7 @@ public class Game_Board {
             Pane paneForBoard = new Pane();
 
             Text turn = new Text(10,39,"Turn: Blue");
-            Text rein = new Text(200,39, "Reinforcements: ");
+            rein = new Text(200,39, "Reinforcements: "+ Integer.toString(reinforce));
 
             //-------------------Properties----------------------------
             turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
@@ -73,7 +74,7 @@ public class Game_Board {
             s1.setLayoutY(7);
             s1.setLayoutX(720);//840
 
-            Button e1 = new Button("Attack Phase");
+            e1 = new Button("Attack Phase");
             e1.setMinSize(120, 47);
             e1.setLayoutY(7);
             e1.setLayoutX(580);//700
@@ -148,8 +149,6 @@ public class Game_Board {
                 
                 }else if ((int)neo[3][7] == 1){            //reinforcement phase
                     
-                    e1.setText("Fortify!");
-
                 }else if((int)neo[3][7] == 2){       //attack phase
                     
                     e1.setText("End Turn");
@@ -224,9 +223,11 @@ public class Game_Board {
                 
                 neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
                 reinforce --;
+                rein.setText("Reinforcements: " + Integer.toString(reinforce));
                 if(reinforce == 0){
                     neo[3][7] ++;
                     reinforce = 3;
+                    e1.setText("Fortify!");
                 }
             } else if((int)neo[3][7] == 2){                                                  //attack phase
                 if (button){
