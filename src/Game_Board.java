@@ -166,21 +166,23 @@ public class Game_Board {
             primaryStage.show();
             
             e1.setOnMouseClicked(e -> {
-                if ((int)neo[3][7] == 0){            //reinforcement phase
+                if ((int)neo[3][7] == 0){                   //initial add troops phase
+                    //-->Bruno add code here
+                }else if ((int)neo[3][7] == 1){            //reinforcement phase
 
                     //************************give user 3 troops to spend
                     e1.setText("Fortify!");
                      updater(neo);
                      neo[3][7] ++;
 
-                }else if((int)neo[3][7] == 1.0){       //attack phase
+                }else if((int)neo[3][7] == 2){       //attack phase
 
                     //*****************************************let user attack
                     e1.setText("End Turn");
                     updater(neo);
                     neo[3][7] ++;
 
-                }else if((int)neo[3][7] == 2){       //fortification phase
+                }else if((int)neo[3][7] == 3){       //fortification phase
 
                     //***********************************let user move troops between own territories
                     updater(neo);
@@ -202,7 +204,7 @@ public class Game_Board {
                     if (i == neo[3][5]){
                         i = 0;
                     }//if
-                    neo[3][7] = 0;              //reset to reinforcement phase
+                    neo[3][7] = 1;              //reset to reinforcement phase
             
                 }//if    
             });
