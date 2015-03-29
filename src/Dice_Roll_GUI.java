@@ -1,3 +1,5 @@
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -30,6 +32,11 @@ public class Dice_Roll_GUI {
 		
 		Text text1 = new Text("Defender");
 		Text text2 = new Text("Attacker");
+		Text text3 = new Text("10");
+		Text text4 = new Text("10");
+		
+		int Dnum = Integer.parseInt(text3.getText());
+		int Anum = Integer.parseInt(text4.getText());
 		
 		//Gather dice images
 		Image D1 = new Image("Dice21.jpg");
@@ -100,32 +107,38 @@ public class Dice_Roll_GUI {
 
 		pane.add(text1, 1, 0);
 		pane.add(text2, 2, 0);
+		pane.add(text3, 1, 1);
+		pane.add(text4, 2, 1);
+		text3.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+		text4.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 		
 		//Add nodes to scene and set alignment
 		GridPane.setHalignment(text2, HPos.RIGHT);
-		pane.add(W1, 0, 1);
+		GridPane.setHalignment(text3, HPos.CENTER);
+		GridPane.setHalignment(text4, HPos.CENTER);
+		pane.add(W1, 0, 2);
 		GridPane.setValignment(W1, VPos.TOP);
-		pane.add(W2, 3, 1);
+		pane.add(W2, 3, 2);
 		GridPane.setValignment(W2, VPos.TOP);
-		pane.add(W3, 0, 2);
+		pane.add(W3, 0, 3);
 		GridPane.setValignment(W3, VPos.TOP);
-		pane.add(W4, 3, 2);
+		pane.add(W4, 3, 3);
 		GridPane.setValignment(W4, VPos.TOP);
-		pane.add(View1, 1, 1);
-		pane.add(View2, 2, 1);
+		pane.add(View1, 1, 2);
+		pane.add(View2, 2, 2);
 		GridPane.setHalignment(View2, HPos.RIGHT);
-		pane.add(View3, 1, 2);
-		pane.add(View4, 2, 2);
+		pane.add(View3, 1, 3);
+		pane.add(View4, 2, 3);
 		GridPane.setHalignment(View4, HPos.RIGHT);
-		pane.add(View5, 2, 3);
+		pane.add(View5, 2, 4);
 		GridPane.setHalignment(View5, HPos.RIGHT);	
 
 		//Construct buttons
 		Button btAttack = new Button("Attack");
 		Button btLeave = new Button("Leave");
 
-		pane.add(btAttack, 1, 5);
-		pane.add(btLeave, 2, 5);
+		pane.add(btAttack, 1, 6);
+		pane.add(btLeave, 2, 6);
 		GridPane.setHalignment(btLeave, HPos.RIGHT);
 
 		//Construct radio buttons, initialize, and add to scene 
@@ -141,12 +154,26 @@ public class Dice_Roll_GUI {
 		paneforDefenderRB.getChildren().addAll(rbDef1, rbDef2);
 		paneforAttackerRB.getChildren().addAll(rbAtt1, rbAtt2, rbAtt3);
 
-		pane.add(paneforDefenderRB, 1, 4);
-		pane.add(paneforAttackerRB, 2, 4);
+		pane.add(paneforDefenderRB, 1, 5);
+		pane.add(paneforAttackerRB, 2, 5);
 
 		pane.setAlignment(Pos.CENTER);
 		pane.setHgap(25);
 		pane.setVgap(15);
+		
+		if (Dnum < 2){
+			rbDef2.setVisible(false);
+			rbDef1.setSelected(true);
+		}
+		if (Anum < 2){
+			rbAtt2.setVisible(false);
+			rbAtt3.setVisible(false);
+			rbAtt1.setSelected(true);
+		}
+		if (Anum < 3){
+			rbAtt3.setVisible(false);
+			rbAtt1.setSelected(true);
+		}
 
 		//Have the radio buttons toggle between each other
 		rbDef1.setOnAction(e -> {
@@ -199,12 +226,31 @@ public class Dice_Roll_GUI {
 						W2.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-1 ;
+						text4.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else {
 						W2.setVisible(true);
 						W1.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text3.getText());
+						int sum = num-1 ;
+						text3.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
 					}
 					switch (num2){
 					case 1: View2.setImage(A1);
@@ -237,12 +283,31 @@ public class Dice_Roll_GUI {
 						W2.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-1 ;
+						text4.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else {
 						W2.setVisible(true);
 						W1.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text3.getText());
+						int sum = num-1 ;
+						text3.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
 					}
 					switch (results2[1]){
 					case 1: View2.setImage(A1);
@@ -292,12 +357,31 @@ public class Dice_Roll_GUI {
 						W2.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-1 ;
+						text4.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else {
 						W2.setVisible(true);
 						W1.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text3.getText());
+						int sum = num-1 ;
+						text3.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
 					}
 					switch (results3[2]){
 					case 1: View2.setImage(A1);
@@ -392,12 +476,31 @@ public class Dice_Roll_GUI {
 						W2.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-1 ;
+						text4.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else {
 						W2.setVisible(true);
 						W1.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text3.getText());
+						int sum = num-1 ;
+						text3.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
 					}
 					switch (num2){
 					case 1: View2.setImage(A1);
@@ -430,24 +533,81 @@ public class Dice_Roll_GUI {
 						W2.setVisible(false);
 						W3.setVisible(true);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-2 ;
+						text4.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else if (Die1.getValue() >= Adie1.getValue() && Die2.getValue() < Adie2.getValue()){
 						W1.setVisible(true);
 						W2.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(true);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-1 ;
+						text4.setText(String.format("%d", sum));
+						int num1 = Integer.parseInt(text3.getText());
+						int sum1 = num1-1 ;
+						text3.setText(String.format("%d", sum1));
+						if (sum1 < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else if (Die1.getValue() < Adie1.getValue() && Die2.getValue() >= Adie2.getValue()){
 						W1.setVisible(false);
 						W2.setVisible(true);
 						W3.setVisible(true);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-1 ;
+						text4.setText(String.format("%d", sum));
+						int num1 = Integer.parseInt(text3.getText());
+						int sum1 = num1-1 ;
+						text3.setText(String.format("%d", sum1));
+						if (sum1 < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else {
 						W2.setVisible(true);
 						W1.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(true);
+						int num = Integer.parseInt(text3.getText());
+						int sum = num-2 ;
+						text3.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
 					}
 					switch (results2[1]){
 					case 1: View2.setImage(A1);
@@ -497,24 +657,81 @@ public class Dice_Roll_GUI {
 						W2.setVisible(false);
 						W3.setVisible(true);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-2 ;
+						text4.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else if (Die1.getValue() >= Adie1.getValue() && Die2.getValue() < Adie2.getValue()){
 						W1.setVisible(true);
 						W2.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(true);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-1 ;
+						text4.setText(String.format("%d", sum));
+						int num1 = Integer.parseInt(text3.getText());
+						int sum1 = num1-1 ;
+						text3.setText(String.format("%d", sum1));
+						if (sum1 < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else if (Die1.getValue() < Adie1.getValue() && Die2.getValue() >= Adie2.getValue()){
 						W1.setVisible(false);
 						W2.setVisible(true);
 						W3.setVisible(true);
 						W4.setVisible(false);
+						int num = Integer.parseInt(text4.getText());
+						int sum = num-1 ;
+						text4.setText(String.format("%d", sum));
+						int num1 = Integer.parseInt(text3.getText());
+						int sum1 = num1-1 ;
+						text3.setText(String.format("%d", sum1));
+						if (sum1 < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
+						if (sum < 2){
+							rbAtt2.setVisible(false);
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
+						if (sum < 3){
+							rbAtt3.setVisible(false);
+							rbAtt1.setSelected(true);
+						}
 					}
 					else {
 						W2.setVisible(true);
 						W1.setVisible(false);
 						W3.setVisible(false);
 						W4.setVisible(true);
+						int num = Integer.parseInt(text3.getText());
+						int sum = num-2 ;
+						text3.setText(String.format("%d", sum));
+						if (sum < 2){
+							rbDef2.setVisible(false);
+							rbDef1.setSelected(true);
+						}
 					}
 					switch (results3[2]){
 					case 1: View2.setImage(A1);
@@ -564,7 +781,7 @@ public class Dice_Roll_GUI {
 		
 		
 		// Set the stage to display the scene
-		Scene scene = new Scene(pane, 250, 325);
+		Scene scene = new Scene(pane, 250, 375);
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("Roll Dice");
 		primaryStage.setScene(scene);
