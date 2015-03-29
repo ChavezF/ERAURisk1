@@ -9,6 +9,12 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -39,13 +45,22 @@ public class Menu extends Application {
 
 		//create stage and scene
 		//put everything together
-		Scene scene = new Scene(grid, 200, 200);
+		Scene scene = new Scene(grid, 400, 200);
 		Stage stages = new Stage();
 		stages.setTitle("ERAU Risk");
 		stages.setScene(scene);
 		stages.show();
 		stages.setScene(scene);
-
+		
+		//***
+		//I need to add RiskMenuImage.jpg to the background instead of WorldMap.jpg
+		BackgroundImage myBI= new BackgroundImage(new Image("WorldMap.jpg",400,200,false,true),
+		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+		          BackgroundSize.DEFAULT);
+		//then you set to your node
+		grid.setBackground(new Background(myBI));
+		//***
+		
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
 		howToBtn.setOnAction(e -> {Instructions instructions = new Instructions();
