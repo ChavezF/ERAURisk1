@@ -16,6 +16,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -31,7 +32,7 @@ public class Menu extends Application {
 	public void start(Stage stage) {
 
 		//create vBox that contains buttons
-		VBox vBox = new VBox(4);
+		HBox vBox = new HBox(4);
 		vBox.getChildren().addAll(howToBtn, playBtn, quitBtn);
 
 		//create a new GridPane that shall contain vBox
@@ -41,11 +42,11 @@ public class Menu extends Application {
 		grid.setVgap(8);
 		grid.setHgap(4);
 		grid.setPadding(new Insets(5, 5, 5, 5));
-		grid.add(vBox, 10, 5);
+		grid.add(vBox, 43, 35);
 
 		//create stage and scene
 		//put everything together
-		Scene scene = new Scene(grid, 400, 200);
+		Scene scene = new Scene(grid, 550, 356);
 		Stage stages = new Stage();
 		stages.setTitle("ERAU Risk");
 		stages.setScene(scene);
@@ -53,11 +54,11 @@ public class Menu extends Application {
 		stages.setScene(scene);
 		
 		//***
-		//I need to add RiskMenuImage.jpg to the background instead of WorldMap.jpg
-		BackgroundImage myBI= new BackgroundImage(new Image("WorldMap.jpg",400,200,false,true),
+		//Create background image and characteristics
+		BackgroundImage myBI= new BackgroundImage(new Image("RiskMenuImage.jpg",550,356,false,true),
 		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 		          BackgroundSize.DEFAULT);
-		//then you set to your node
+		//Set image to the grid
 		grid.setBackground(new Background(myBI));
 		//***
 		
