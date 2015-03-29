@@ -138,7 +138,7 @@ public class Game_Board {
             primaryStage.show();
             
             america.setOnMouseClicked(e2 -> {
-                neo[0][0] = actions(0,0, neo, e2.isPrimaryButtonDown());
+                neo[0][0] = actions(0,0, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
             });
             
@@ -200,9 +200,7 @@ public class Game_Board {
         
         public double actions(int row, int column, double [][] neo, Boolean button){
             //****************Reinforcement phase
-                //----> call set troop(current + 1)
-                //----> decrease troop count
-                //---->when 0 move to attack phase
+                //----> check to make sure that it is the same players territory
             //****************Attack Phase
                 //---->add 1 (to selected) when place is clicked
                 //---->increase font size of selected spot
@@ -232,7 +230,7 @@ public class Game_Board {
             } else if((int)neo[3][7] == 2){                                                  //attack phase
                 if (button){
                     america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-                }else if (button){	
+                }else {	
                         america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
                 }        
             } else if((int)neo[3][7] == 3){                                                   //fortification phase    
