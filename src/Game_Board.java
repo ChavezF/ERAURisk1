@@ -137,10 +137,7 @@ public class Game_Board {
             primaryStage.setScene(scene);
             primaryStage.show();
             
-            america.setOnMouseClicked(e2 -> {
-                neo[0][0] = actions(0,0, neo, e2.getButton() == MouseButton.PRIMARY);
-                updater(neo);
-            });
+            setButtonClick(neo);
             
             e1.setOnMouseClicked(e -> {
                 if ((int)neo[3][7] == 0){                   //initial add troops phase
@@ -188,6 +185,126 @@ public class Game_Board {
             return trp;
         }//troop
         
+        public void setButtonClick(double [][] neo){
+            america.setOnMouseClicked(e2 -> {
+                neo[0][0] = actions(0,0, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            
+            canadia.setOnMouseClicked(e2 -> {
+                neo[0][1] = actions(0,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            alaska.setOnMouseClicked(e2 -> {
+                neo[0][2] = actions(0,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            greenland.setOnMouseClicked(e2 -> {
+                neo[0][3] = actions(0,3, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            mexico.setOnMouseClicked(e2 -> {
+                neo[0][4] = actions(0,4, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            venezuella.setOnMouseClicked(e2 -> {
+                neo[0][5] = actions(0,5, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            brazil.setOnMouseClicked(e2 -> {
+                neo[0][6] = actions(0,6, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            argentina.setOnMouseClicked(e2 -> {
+                neo[0][7] = actions(0,7, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            nafrica.setOnMouseClicked(e2 -> {
+                neo[1][0] = actions(1,0, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            safrica.setOnMouseClicked(e2 -> {
+                neo[1][1] = actions(1,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            egypt.setOnMouseClicked(e2 -> {
+                neo[1][2] = actions(1,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            eafrica.setOnMouseClicked(e2 -> {
+                neo[1][3] = actions(1,3, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            madag.setOnMouseClicked(e2 -> {
+                neo[1][4] = actions(1,4, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            eaustralia.setOnMouseClicked(e2 -> {
+                neo[1][5] = actions(1,5, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            waustralia.setOnMouseClicked(e2 -> {
+                neo[1][6] = actions(1,6, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            nguninea.setOnMouseClicked(e2 -> {
+                neo[1][7] = actions(1,7, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            sasia.setOnMouseClicked(e2 -> {
+                neo[2][0] = actions(2,0, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            indonesia.setOnMouseClicked(e2 -> {
+                neo[2][1] = actions(2,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            india.setOnMouseClicked(e2 -> {
+                neo[2][2] = actions(2,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            china.setOnMouseClicked(e2 -> {
+                neo[2][3] = actions(2,3, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            russia.setOnMouseClicked(e2 -> {
+                neo[2][4] = actions(2,4, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            }); 
+            japan.setOnMouseClicked(e2 -> {
+                neo[2][5] = actions(2,5, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            meast.setOnMouseClicked(e2 -> {
+                neo[2][6] = actions(2,6, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            afghan.setOnMouseClicked(e2 -> {
+                neo[2][7] = actions(2,7, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            ireland.setOnMouseClicked(e2 -> {
+                neo[3][0] = actions(3,0, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            scandanavia.setOnMouseClicked(e2 -> {
+                neo[3][1] = actions(3,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            eeurope.setOnMouseClicked(e2 -> {
+                neo[3][2] = actions(3,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            weurope.setOnMouseClicked(e2 -> {
+                neo[3][3] = actions(3,3, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+            britain.setOnMouseClicked(e2 -> {
+                neo[3][4] = actions(3,4, neo, e2.getButton() == MouseButton.PRIMARY);
+                updater(neo);
+            });
+        }//setMouseClick
+        
         public double setTroop(int row, int col, double [][] neo, int newNumber){
             int player = player(neo[row][col]);
             return newNumber + (double)player/10;
@@ -228,10 +345,10 @@ public class Game_Board {
                     e1.setText("Fortify!");
                 }
             } else if((int)neo[3][7] == 2){                                                  //attack phase
-                if (button){
+                if (button){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
                     america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
                 }else {	
-                        america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
                 }        
             } else if((int)neo[3][7] == 3){                                                   //fortification phase    
                     
