@@ -778,8 +778,7 @@ public class Dice_Roll_GUI {
 				}
 			}	
 		});
-		
-		
+			
 		// Set the stage to display the scene
 		Scene scene = new Scene(pane, 250, 375);
 		Stage primaryStage = new Stage();
@@ -798,10 +797,7 @@ public class Dice_Roll_GUI {
                 });                       
 		
 		btLeave.setOnAction(e -> primaryStage.close());
-                return cor;
-                
+                return cor;             
         
 	}
-	
-	
 }
