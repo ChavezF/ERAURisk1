@@ -50,7 +50,7 @@ public class Game_Selection {
 
 		//create scene
 		//put everything together
-		Scene scene = new Scene(pane, 550, 356);
+		Scene scene = new Scene(pane, 550, 956);
 
 		//create stage 
 		Stage stage = new Stage();
