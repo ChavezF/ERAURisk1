@@ -104,12 +104,12 @@ public class Game_Board {
                 }else if((int)neo[3][7] == 2){       //attack phase
                     
                     e1.setText("End Turn");
-                    rein.setText("Reinforcements: " + Integer.toString(reinforce));
                     updater(neo);
                     neo[3][7] ++;
 
                 }else if((int)neo[3][7] == 3){       //fortification phase
                     
+                    rein.setText("Reinforcements: " + Integer.toString(reinforce));
                     updater(neo);
                     e1.setText("Reinforce Phase");
                     String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
@@ -297,7 +297,7 @@ public class Game_Board {
                     neo[3][7] ++;
                     reinforce = 3;
                     e1.setText("End Attack");
-                }
+                }//if
             } else if((int)neo[3][7] == 2){                                                  //attack phase
                 if (button){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
                     america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
