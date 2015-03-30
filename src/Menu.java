@@ -32,8 +32,8 @@ public class Menu extends Application {
 	public void start(Stage stage) {
 
 		//create vBox that contains buttons
-		HBox vBox = new HBox(4);
-		vBox.getChildren().addAll(howToBtn, playBtn, quitBtn);
+		HBox hBox = new HBox(4);
+		hBox.getChildren().addAll(howToBtn, playBtn, quitBtn);
 
 		//create a new GridPane that shall contain vBox
 		GridPane grid = new GridPane();
@@ -42,7 +42,7 @@ public class Menu extends Application {
 		grid.setVgap(8);
 		grid.setHgap(4);
 		grid.setPadding(new Insets(5, 5, 5, 5));
-		grid.add(vBox, 43, 35);
+		grid.add(hBox, 43, 35);
 
 		//create stage and scene
 		//put everything together
