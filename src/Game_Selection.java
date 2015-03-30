@@ -9,15 +9,22 @@
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class Game_Selection {
-        //this is the board that you will use for the whole game
-        public double [][] neo = new double[4][8];
-        
+	//this is the board that you will use for the whole game
+	public double [][] neo = new double[4][8];
+
 	public void play() {
 
 		//create buttons needed
@@ -26,27 +33,39 @@ public class Game_Selection {
 		final Button mainMenuBtn = new Button("Main Menu");
 
 		//create vBox that contains buttons
-		VBox vBox = new VBox(4);
-		vBox.getChildren().addAll(startNewBtn, loadPrevBtn, mainMenuBtn);
-
+		HBox hBox = new HBox(2);
+		HBox vBox2 = new HBox(1);
+		hBox.getChildren().addAll(startNewBtn, loadPrevBtn);
+		vBox2.getChildren().addAll(mainMenuBtn);
 		//create a new GridPane that shall contain vBox
 		GridPane pane = new GridPane();
-
+		
 		//add everything to the GridPane
 		pane.setVgap(8);
 		pane.setHgap(4);
 		pane.setPadding(new Insets(5, 5, 5, 5));
-		pane.add(vBox, 10, 5);
+		pane.add(hBox, 30, 32);
+		pane.add(vBox2, 30, 35);
+
 
 		//create scene
 		//put everything together
-		Scene scene = new Scene(pane, 200, 200);
-		
+		Scene scene = new Scene(pane, 550, 356);
+
 		//create stage 
 		Stage stage = new Stage();
 		stage.setScene(scene);
 		stage.setTitle("Play");
 		stage.show();
+
+		//***
+		//Create background image and characteristics
+		BackgroundImage myBI= new BackgroundImage(new Image("RiskMenuImage.jpg",550,356,false,true),
+				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+				BackgroundSize.DEFAULT);
+		//Set image to the grid
+		pane.setBackground(new Background(myBI));
+		//***
 
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
