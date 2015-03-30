@@ -1,16 +1,6 @@
-import javafx.application.Application;
-import static javafx.application.Application.launch;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
-import javafx.geometry.Insets;
-import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -19,8 +9,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.KeyCode;
+import javafx.stage.Stage;
 
 /**
  * @author Philip
@@ -34,32 +23,20 @@ public class Game_Board {
         Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
         Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
         Text sasia, indonesia, india, china, russia, japan, meast,afghan;
-        Text ireland, scandanavia, eeurope, weurope, britain, rein;
-        Button e1;
+        Text ireland, scandanavia, eeurope, weurope, britain, rein, turn;
+        Button e1, bGround;
                 
         public void Playgame(double[][]neo){
 		
             // Construct a border pane and four individual pane for scene
             BorderPane pane = new BorderPane();
             Pane paneForBoard = new Pane();
-
-            Text turn = new Text(10,39,"Turn: Blue");
-            rein = new Text(200,39, "Reinforcements: "+ Integer.toString(reinforce));
-
-            //-------------------Properties----------------------------
-            turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            turn.setFill(Color.WHITE);
-            rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            rein.setFill(Color.WHITE);
-
             //initialize the properties for the rest of the texts
             initializeProperties();
             //update the troops and numbers for rest of the world
             updater(neo);
-            
-            Image image = new Image("WorldMap.jpg");
 
-            Button bGround = new Button();
+            bGround = new Button();
             bGround.setMinSize(995, 47);
             bGround.setLayoutY(7);
             bGround.setStyle("-fx-background-color: #0033CC;");
@@ -74,62 +51,41 @@ public class Game_Board {
             s1.setLayoutY(7);
             s1.setLayoutX(720);//840
 
-            e1 = new Button("Attack Phase");
+            e1 = new Button("End Populate");
             e1.setMinSize(120, 47);
             e1.setLayoutY(7);
             e1.setLayoutX(580);//700
-            //----------------------------------
+            //-----------------------TO BE DELETED-----------------------
             Button dice = new Button("Dice");
             dice.setMinSize(120, 47);
             dice.setLayoutY(635);
             dice.setLayoutX(812);//700
-            //-----------------------------------
+            //--------------------------------------------------------
+            Image image = new Image("WorldMap.jpg");
             ImageView imageView1 = new ImageView(image);
             imageView1.setFitHeight(700);
             imageView1.setFitWidth(1000);
 
-            paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag);
-
-            // Place all the pane create and place them on the border pane 
+            paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag); 
             pane.setCenter(paneForBoard);
             
             b1.setOnMouseClicked(e -> {
                     System.exit(1);
             });
+            //------------------------------TO BE DELETED----------------------
+            
             dice.setOnMouseClicked(e -> {
-                    Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
-                    cor = diceBox.roll(cor);
+                Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
+                cor = diceBox.roll(cor);
             });
-
+            //----------------------------------------------------------------
             s1.setOnMouseClicked(e -> {
-                String numPlayers = neo[3][5] + " ";
-                String stringi = i + " ";
-                String [] [] array = {  
-                    {america.getText()+ " ", canadia.getText() + " ", alaska.getText() + " ", greenland.getText() + " ", mexico.getText() + " ", venezuella.getText() + " ", brazil.getText() + " ", argentina.getText() + " "},
-                    {nafrica.getText() + " ", safrica.getText() + " ", egypt.getText() + " ", eafrica.getText() + " ", madag.getText() + " ", eaustralia.getText() + " ", waustralia.getText() + " ", nguninea.getText() + " "},
-                    {sasia.getText() + " ", indonesia.getText() + " ", india.getText() + " ", china.getText() + " ",russia.getText() + " ", japan.getText() + " ", meast.getText() + " ", afghan.getText() + " "},
-                    {ireland.getText() + " ", scandanavia.getText() + " ", eeurope.getText() + " ", weurope.getText() + " ",britain.getText() + " ", numPlayers, stringi, Double.toString(neo[3][7])}};
-                java.io.File Riskfile = new java.io.File("gamedata.txt");
-                
-                try {
-                    java.io.PrintWriter output = new java.io.PrintWriter(Riskfile);
-                    for (int k = 0; k < 4; k++){
-                        output.print(array[k][0]);
-                        output.print(array[k][1]);
-                        output.print(array[k][2]);
-                        output.print(array[k][3]);
-                        output.print(array[k][4]);
-                        output.print(array[k][5]);
-                        output.print(array[k][6]);
-                        output.println(array[k][7]);
-                    }//for
-                    output.close();
-                    System.exit(1);
-                } catch (Exception e2){
-                    e2.printStackTrace();
-                }//catch    
+                save(neo);    
             });
-
+            e1.setOnMouseClicked(e -> {
+                eventButton(neo);
+            });
+            
             // Set the stage to display the scene
             Scene scene = new Scene(pane);
             Stage primaryStage = new Stage();
@@ -137,15 +93,14 @@ public class Game_Board {
             primaryStage.setScene(scene);
             primaryStage.show();
             
-            setButtonClick(neo);
-            
-            e1.setOnMouseClicked(e -> {
-                if ((int)neo[3][7] == 0){                   //initial add troops phase
+            setButtonClick(neo);//set all countries actions
+         
+        }//Game_Board
+        
+        public void eventButton(double [][] neo){
+            if ((int)neo[3][7] == 0){                   //initial add troops phase-->Button will do nothing
                     neo[3][7] ++;//delete this soon after////////////////////////////////////////////
-                    //This button will do nothing during this phase
-                
-                }else if ((int)neo[3][7] == 1){            //reinforcement phase
-                    
+                    e1.setText("Reinforce Phase");///delete this soon after////////////////////////////////////////////
                 }else if((int)neo[3][7] == 2){       //attack phase
                     
                     e1.setText("End Turn");
@@ -154,10 +109,9 @@ public class Game_Board {
 
                 }else if((int)neo[3][7] == 3){       //fortification phase
                     
+                    rein.setText("Reinforcements: " + Integer.toString(reinforce));
                     updater(neo);
-                    e1.setText("Attack phase!");
-
-                    //blue=0033CC||green=339933||red=E62E00
+                    e1.setText("Reinforce Phase");
                     String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
                     String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
                     if (i == 3){ //yellow
@@ -166,20 +120,18 @@ public class Game_Board {
                     }else{
                         rein.setFill(Color.WHITE);
                         turn.setFill(Color.WHITE);
-                    } 
+                    }//if 
                     bGround.setStyle(col[i]);
                     turn.setText(col2[i]);
-                    i = i + 1;
                     
-                    if (i == neo[3][5]){
+                    if (++i == neo[3][5]){
                         i = 0;
                     }//if
                     neo[3][7] = 1;              //reset to reinforcement phase
             
-                }//if    
-            });
-            //-----------------------------------------------------------------
-        }
+                }//if
+        }//eventButton
+                
         public int troop(double territory){
             int trp = (int)territory;
             return trp;
@@ -333,7 +285,9 @@ public class Game_Board {
             //---->add troops to second selected
 
             if ((int)neo[3][7] == 0){                                                        //initial add troops phase
-                        //-->Bruno add code here           
+                        //-->Bruno add code here
+                e1.setText("End Attack");//only once the last troop has been added
+                neo[3][7]++;//only once the last troop has been added
             } else if((int)neo[3][7] == 1){                                                  //reinforcement phase
                 
                 neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
@@ -342,8 +296,8 @@ public class Game_Board {
                 if(reinforce == 0){
                     neo[3][7] ++;
                     reinforce = 3;
-                    e1.setText("Fortify!");
-                }
+                    e1.setText("End Attack");
+                }//if
             } else if((int)neo[3][7] == 2){                                                  //attack phase
                 if (button){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
                     america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
@@ -398,6 +352,35 @@ public class Game_Board {
             
         }//update
         
+        public void save(double [][]neo){
+            String numPlayers = neo[3][5] + " ";
+                String stringi = i + " ";
+                String [] [] array = {  
+                    {america.getText()+ " ", canadia.getText() + " ", alaska.getText() + " ", greenland.getText() + " ", mexico.getText() + " ", venezuella.getText() + " ", brazil.getText() + " ", argentina.getText() + " "},
+                    {nafrica.getText() + " ", safrica.getText() + " ", egypt.getText() + " ", eafrica.getText() + " ", madag.getText() + " ", eaustralia.getText() + " ", waustralia.getText() + " ", nguninea.getText() + " "},
+                    {sasia.getText() + " ", indonesia.getText() + " ", india.getText() + " ", china.getText() + " ",russia.getText() + " ", japan.getText() + " ", meast.getText() + " ", afghan.getText() + " "},
+                    {ireland.getText() + " ", scandanavia.getText() + " ", eeurope.getText() + " ", weurope.getText() + " ",britain.getText() + " ", numPlayers, stringi, Double.toString(neo[3][7])}};
+                java.io.File Riskfile = new java.io.File("gamedata.txt");
+                
+                try {
+                    java.io.PrintWriter output = new java.io.PrintWriter(Riskfile);
+                    for (int k = 0; k < 4; k++){
+                        output.print(array[k][0]);
+                        output.print(array[k][1]);
+                        output.print(array[k][2]);
+                        output.print(array[k][3]);
+                        output.print(array[k][4]);
+                        output.print(array[k][5]);
+                        output.print(array[k][6]);
+                        output.println(array[k][7]);
+                    }//for
+                    output.close();
+                    System.exit(1);
+                } catch (Exception e2){
+                    e2.printStackTrace();
+                }//catch
+        }//save
+        
         public void initializeProperties(){
             //initialize countries
             america = new Text(122,216,"0");//america
@@ -434,6 +417,15 @@ public class Game_Board {
             eeurope = new Text(480,180,"0");//eeurope
             weurope = new Text(423,180,"0");//weurope
             britain = new Text(370,169,"0");//britain
+            
+            turn = new Text(10,39,"Turn: Blue");
+            rein = new Text(200,39, "Reinforcements: "+ Integer.toString(reinforce));
+
+            //-------------------Properties----------------------------
+            turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            turn.setFill(Color.WHITE);
+            rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            rein.setFill(Color.WHITE);
             
             ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
             ireland.setFill(Color.WHITE);
@@ -495,4 +487,4 @@ public class Game_Board {
             nguninea.setFill(Color.WHITE);
             
         }//initializeProperties
-}				
+}//Game_Board				
