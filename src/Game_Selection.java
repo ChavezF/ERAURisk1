@@ -6,7 +6,9 @@
  * @created 25-Feb-2015 03:23:09 PM
  */
 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -41,26 +43,37 @@ public class Game_Selection {
 		GridPane pane = new GridPane();
 		
 		//add everything to the GridPane
-		pane.setVgap(8);
+		/*pane.setVgap(8);
 		pane.setHgap(4);
 		pane.setPadding(new Insets(5, 5, 5, 5));
 		pane.add(hBox, 30, 32);
-		pane.add(vBox2, 30, 35);
+		pane.add(vBox2, 30, 35);*/
 
 
 		//create scene
 		//put everything together
-		Scene scene = new Scene(pane, 550, 356);
+	Scene scene = new Scene(pane, 600, 400);
 
 		//create stage 
 		Stage stage = new Stage();
-		stage.setScene(scene);
+	stage.setScene(scene);
 		stage.setTitle("Play");
 		stage.show();
 
 		//***
+		pane.add(startNewBtn, 0, 2);
+		pane.add(loadPrevBtn, 0, 3);
+		pane.add(mainMenuBtn, 0, 4);
+		GridPane.setHalignment(startNewBtn, HPos.CENTER);
+		GridPane.setHalignment(loadPrevBtn, HPos.CENTER);
+		GridPane.setHalignment(mainMenuBtn, HPos.CENTER);
+		pane.setAlignment(Pos.CENTER);
+		pane.setHgap(25);
+		pane.setVgap(15);
+		
+		stage.setScene(scene);
 		//Create background image and characteristics
-		BackgroundImage myBI= new BackgroundImage(new Image("RiskMenuImage.jpg",550,356,false,true),
+		BackgroundImage myBI= new BackgroundImage(new Image("RiskCannons.jpg",600,400,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 		//Set image to the grid
