@@ -6,6 +6,8 @@
  * @created 25-Feb-2015 03:23:09 PM
  */
 
+import java.util.Scanner;
+
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -73,7 +75,7 @@ public class Game_Selection {
 		
 		stage.setScene(scene);
 		//Create background image and characteristics
-		BackgroundImage myBI= new BackgroundImage(new Image("RiskCannons.jpg",600,400,false,true),
+		BackgroundImage myBI= new BackgroundImage(new Image("RiskMenuImage.jpg",600,400,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 		//Set image to the grid
@@ -87,14 +89,34 @@ public class Game_Selection {
 			numPlayers.play(neo);
 			stage.close();
 		});
+		loadPrevBtn.setOnAction(e -> {
+			java.io.File file = new java.io.File("gamedata.txt");
+			
+			try {
+				Scanner input = new Scanner(file);
+				while (input.hasNextDouble()){
+				for (int i = 0; i<4; i++){
+					for (int j=0; j<8; j++){
+						neo[i][j]=input.nextDouble();
+					}
+				}
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Game_Board board = new Game_Board();
+			board.Playgame(neo);
+			stage.close();
+		});
 		//use FileChooser to select and open a previously saved game
-		loadPrevBtn.setOnAction(e -> {FileChooser fileChooser = new FileChooser();
+		/*loadPrevBtn.setOnAction(e -> {FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Resource File");
 		fileChooser.showOpenDialog(stage);});
 		mainMenuBtn.setOnAction(e -> { 
 			Menu menu = new Menu();
 			menu.start(stage);
 			stage.close();
-		});
+		});*/
 	}
 }
