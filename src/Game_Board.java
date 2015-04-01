@@ -98,38 +98,35 @@ public class Game_Board {
         }//Game_Board
         
         public void eventButton(double [][] neo){
-            if ((int)neo[3][7] == 0){                   //initial add troops phase-->Button will do nothing
-                    neo[3][7] ++;//delete this soon after////////////////////////////////////////////
-                    e1.setText("Reinforce Phase");///delete this soon after////////////////////////////////////////////
-                }else if((int)neo[3][7] == 2){       //attack phase
+            if((int)neo[3][7] == 2){       //attack phase
                     
-                    e1.setText("End Turn");
-                    updater(neo);
-                    neo[3][7] ++;
+                e1.setText("End Turn");
+                updater(neo);
+                neo[3][7] ++;
 
-                }else if((int)neo[3][7] == 3){       //fortification phase
-                    
-                    rein.setText("Reinforcements: " + Integer.toString(reinforce));
-                    updater(neo);
-                    e1.setText("Reinforce Phase");
-                    String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-                    String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-                    if (i == 3){ //yellow
-                        rein.setFill(Color.BLACK);
-                        turn.setFill(Color.BLACK);
-                    }else{
-                        rein.setFill(Color.WHITE);
-                        turn.setFill(Color.WHITE);
-                    }//if 
-                    bGround.setStyle(col[i]);
-                    turn.setText(col2[i]);
-                    
-                    if (++i == neo[3][5]){
-                        i = 0;
-                    }//if
-                    neo[3][7] = 1;              //reset to reinforcement phase
-            
+            }else if((int)neo[3][7] == 3){       //fortification phase
+
+                rein.setText("Reinforcements: " + Integer.toString(reinforce));
+                updater(neo);
+                e1.setText("Reinforce Phase");
+                String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+                String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+                if (i == 3){ //yellow
+                    rein.setFill(Color.BLACK);
+                    turn.setFill(Color.BLACK);
+                }else{
+                    rein.setFill(Color.WHITE);
+                    turn.setFill(Color.WHITE);
+                }//if 
+                bGround.setStyle(col[i]);
+                turn.setText(col2[i]);
+
+                if (++i == neo[3][5]){
+                    i = 0;
                 }//if
+                neo[3][7] = 1;              //reset to reinforcement phase
+
+            }//if
         }//eventButton
                 
         public int troop(double territory){
@@ -141,119 +138,322 @@ public class Game_Board {
             america.setOnMouseClicked(e2 -> {
                 neo[0][0] = actions(0,0, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             
             canadia.setOnMouseClicked(e2 -> {
                 neo[0][1] = actions(0,1, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        canadia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             alaska.setOnMouseClicked(e2 -> {
                 neo[0][2] = actions(0,2, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        alaska.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        alaska.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             greenland.setOnMouseClicked(e2 -> {
                 neo[0][3] = actions(0,3, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        greenland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        greenland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             mexico.setOnMouseClicked(e2 -> {
                 neo[0][4] = actions(0,4, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        mexico.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        mexico.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             venezuella.setOnMouseClicked(e2 -> {
                 neo[0][5] = actions(0,5, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             brazil.setOnMouseClicked(e2 -> {
                 neo[0][6] = actions(0,6, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        brazil.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        brazil.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             argentina.setOnMouseClicked(e2 -> {
                 neo[0][7] = actions(0,7, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        argentina.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        argentina.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             nafrica.setOnMouseClicked(e2 -> {
                 neo[1][0] = actions(1,0, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             safrica.setOnMouseClicked(e2 -> {
                 neo[1][1] = actions(1,1, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        safrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        safrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             egypt.setOnMouseClicked(e2 -> {
                 neo[1][2] = actions(1,2, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             eafrica.setOnMouseClicked(e2 -> {
                 neo[1][3] = actions(1,3, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             madag.setOnMouseClicked(e2 -> {
                 neo[1][4] = actions(1,4, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        madag.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             eaustralia.setOnMouseClicked(e2 -> {
                 neo[1][5] = actions(1,5, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             waustralia.setOnMouseClicked(e2 -> {
                 neo[1][6] = actions(1,6, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             nguninea.setOnMouseClicked(e2 -> {
                 neo[1][7] = actions(1,7, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             sasia.setOnMouseClicked(e2 -> {
                 neo[2][0] = actions(2,0, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        sasia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        sasia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             indonesia.setOnMouseClicked(e2 -> {
                 neo[2][1] = actions(2,1, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             india.setOnMouseClicked(e2 -> {
                 neo[2][2] = actions(2,2, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        india.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        india.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             china.setOnMouseClicked(e2 -> {
                 neo[2][3] = actions(2,3, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        china.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        china.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             russia.setOnMouseClicked(e2 -> {
                 neo[2][4] = actions(2,4, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             }); 
             japan.setOnMouseClicked(e2 -> {
                 neo[2][5] = actions(2,5, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        japan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        japan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             meast.setOnMouseClicked(e2 -> {
                 neo[2][6] = actions(2,6, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             afghan.setOnMouseClicked(e2 -> {
                 neo[2][7] = actions(2,7, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        afghan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        afghan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             ireland.setOnMouseClicked(e2 -> {
                 neo[3][0] = actions(3,0, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        ireland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             scandanavia.setOnMouseClicked(e2 -> {
                 neo[3][1] = actions(3,1, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             eeurope.setOnMouseClicked(e2 -> {
                 neo[3][2] = actions(3,2, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             weurope.setOnMouseClicked(e2 -> {
                 neo[3][3] = actions(3,3, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
             britain.setOnMouseClicked(e2 -> {
                 neo[3][4] = actions(3,4, neo, e2.getButton() == MouseButton.PRIMARY);
                 updater(neo);
+                if((int)neo[3][7] == 2){                                                  //attack phase
+                    if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
+                        britain.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (e2.getButton() == MouseButton.SECONDARY) {	
+                        britain.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
+                }//if
             });
         }//setMouseClick
         
@@ -268,44 +468,41 @@ public class Game_Board {
         }//setPlayer
         
         public double actions(int row, int column, double [][] neo, Boolean button){
-            //****************Reinforcement phase
+            
+            if ((int)neo[3][7] == 0){                                                        //initial add troops phase
+                //-------------------------------------->Bruno add code here
+                e1.setText("End Attack");//only once the last troop has been added
+                neo[3][7]++;//only once the last troop has been added
+            } else if((int)neo[3][7] == 1){                                                  //reinforcement phase
+                //****************Reinforcement phase
                 //----> check to make sure that it is the same players territory
-            //****************Attack Phase
+                if(neo[3][6] == player(neo[row][column])){
+                    neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
+                    reinforce --;
+                    rein.setText("Reinforcements: " + Integer.toString(reinforce));
+                    if(reinforce == 0){
+                        neo[3][7] ++;
+                        reinforce = 3;
+                        e1.setText("End Attack");
+                    }//if
+                }//if
+            } else if((int)neo[3][7] == 2){                                                  //attack phase
+                //****************Attack Phase
                 //---->add 1 (to selected) when place is clicked
                 //---->increase font size of selected spot
                 //---->when 2 are selected check if they can attack each other
                 //---->call dice program with both troop amounts
                 //---->set both location with new troop values
-            //****************Fortification Phase
+                        
+            } else if((int)neo[3][7] == 3){                                                   //fortification phase    
+                //****************Fortification Phase
                 //---->add 1 (to selected) when place is clicked
                 //---->increase font size of selected spot
                 //---->when 2 are selected check to see if they are same player 
                 //---->bring up msgbox saying how many troops
                 //---->subtract troops from first(if that many are available
-            //---->add troops to second selected
-
-            if ((int)neo[3][7] == 0){                                                        //initial add troops phase
-                        //-->Bruno add code here
-                e1.setText("End Attack");//only once the last troop has been added
-                neo[3][7]++;//only once the last troop has been added
-            } else if((int)neo[3][7] == 1){                                                  //reinforcement phase
-                
-                neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
-                reinforce --;
-                rein.setText("Reinforcements: " + Integer.toString(reinforce));
-                if(reinforce == 0){
-                    neo[3][7] ++;
-                    reinforce = 3;
-                    e1.setText("End Attack");
-                }//if
-            } else if((int)neo[3][7] == 2){                                                  //attack phase
-                if (button){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-                    america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-                }else {	
-                    america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-                }        
-            } else if((int)neo[3][7] == 3){                                                   //fortification phase    
-                    
+                //---->add troops to second selected
+        
             }//if
             return neo[row][column];
         }//actions
@@ -353,32 +550,22 @@ public class Game_Board {
         }//update
         
         public void save(double [][]neo){
-            String numPlayers = neo[3][5] + " ";
-                String stringi = i + " ";
-                String [] [] array = {  
-                    {america.getText()+ " ", canadia.getText() + " ", alaska.getText() + " ", greenland.getText() + " ", mexico.getText() + " ", venezuella.getText() + " ", brazil.getText() + " ", argentina.getText() + " "},
-                    {nafrica.getText() + " ", safrica.getText() + " ", egypt.getText() + " ", eafrica.getText() + " ", madag.getText() + " ", eaustralia.getText() + " ", waustralia.getText() + " ", nguninea.getText() + " "},
-                    {sasia.getText() + " ", indonesia.getText() + " ", india.getText() + " ", china.getText() + " ",russia.getText() + " ", japan.getText() + " ", meast.getText() + " ", afghan.getText() + " "},
-                    {ireland.getText() + " ", scandanavia.getText() + " ", eeurope.getText() + " ", weurope.getText() + " ",britain.getText() + " ", numPlayers, stringi, Double.toString(neo[3][7])}};
-                java.io.File Riskfile = new java.io.File("gamedata.txt");
-                
-                try {
-                    java.io.PrintWriter output = new java.io.PrintWriter(Riskfile);
-                    for (int k = 0; k < 4; k++){
-                        output.print(array[k][0]);
-                        output.print(array[k][1]);
-                        output.print(array[k][2]);
-                        output.print(array[k][3]);
-                        output.print(array[k][4]);
-                        output.print(array[k][5]);
-                        output.print(array[k][6]);
-                        output.println(array[k][7]);
+            
+            java.io.File Riskfile = new java.io.File("gamedata.txt");
+
+            try {
+                java.io.PrintWriter output = new java.io.PrintWriter(Riskfile);
+                for (int k = 0; k < 4; k++){
+                    for (int l = 0; l < 8; l++){
+                        output.print(neo[k][l] + " ");
                     }//for
-                    output.close();
-                    System.exit(1);
-                } catch (Exception e2){
-                    e2.printStackTrace();
-                }//catch
+                    output.print("\n");
+                }//for
+                output.close();
+                System.exit(1);
+            } catch (Exception e2){
+                e2.printStackTrace();
+            }//catch
         }//save
         
         public void initializeProperties(){
