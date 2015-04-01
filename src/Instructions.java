@@ -53,9 +53,9 @@ public class Instructions extends Menu {
 
 	final String[] textPages = new String[]{
 			//First Page
-			"Playing: On your turn, try to capture territories by defeating your opponents’"
+			"Playing: On your turn, try to capture territories by defeating your opponents'"
 			+ "armies. But be careful: Winning battles will depend on careful planning, "
-			+ "quick decisions and bold moves. You’ll have to place your forces wisely, "
+			+ "quick decisions and bold moves. You'll have to place your forces wisely, "
 			+ "attack at just the right time and fortify your defenses against all enemies. "
 			+ "Each of your turns consists of three steps, in this order:\n"
 			+ "1. Getting and placing new armies\n"
@@ -70,10 +70,10 @@ public class Instructions extends Menu {
 			+ "you wish to attack at this time. The object of an attack is to capture a "
 			+ "territory by defeating all the opposing armies already on it. The battle is "
 			+ "fought by a roll of the dice. Study the board for a moment. Do you want to "
-			+ "attack? If  you  choose  to  attack,  you  must  follow  these  rules:\n"
-			+ "1. You may only attack a territory that’s adjacent (touching) to one of your "
+			+ "attack? If you choose to attack, you must follow these rules:\n"
+			+ "1. You may only attack a territory that's adjacent (touching) to one of your "
 			+ "own, or connected to it by a dashed line.\n"
-			+ "2. You must always have at least two armies in the territory you’re attacking "
+			+ "2. You must always have at least two armies in the territory you're attacking "
 			+ "from.\n"
 			+ "3. You may continue attacking one territory until you have eliminated all armies "
 			+ "on it, or you may shift your attack from one territory to another, attacking "
@@ -84,15 +84,15 @@ public class Instructions extends Menu {
 			+ "territory, you capture that territory and must occupy it immediately. "
 			+ "To do so, move in at least as many armies as the number of dice you rolled in "
 			+ "your last battle. Remember: In most cases, moving as many armies as you can to "
-			+ "the front is advantageous, because armies left behind can’t help "
+			+ "the front is advantageous, because armies left behind can't help "
 			+ "you when you are attacking. Also remember you must always leave at least "
 			+ "one army behind on the territory you attacked from. During the game, every "
 			+ "territory must always be occupied by at least one army.",
 			//Fifth Page
-			"Fortifying Your Position: No matter what you’ve done on your turn, you may, "
+			"Fortifying Your Position: No matter what you've done on your turn, you may, "
 			+ "if you wish, end your turn by fortifying your position. You are not required "
 			+ "to win a battle or even to try an attack to do so. Some players refer to this "
-			+ "as the “free move."
+			+ "as the \"free move.\""
 	};
 
 	public int itemsPerPage() {
