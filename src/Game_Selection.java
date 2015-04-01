@@ -1,7 +1,7 @@
 
 
 /**
- * @author Philip
+ * @author Philip, Bruno
  * @version 1.0
  * @created 25-Feb-2015 03:23:09 PM
  */
@@ -9,7 +9,6 @@
 import java.util.Scanner;
 
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,8 +19,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -32,48 +30,45 @@ public class Game_Selection {
 	public void play() {
 
 		//create buttons needed
-		final Button startNewBtn = new Button("Start New Game");
-		final Button loadPrevBtn = new Button("Load Previous Game");
+		final Button startNewBtn = new Button("New Game");
+		final Button loadPrevBtn = new Button("Load Game");
 		final Button mainMenuBtn = new Button("Main Menu");
-
-		//create vBox that contains buttons
-		HBox hBox = new HBox(2);
-		HBox vBox2 = new HBox(1);
-		hBox.getChildren().addAll(startNewBtn, loadPrevBtn);
-		vBox2.getChildren().addAll(mainMenuBtn);
-		//create a new GridPane that shall contain vBox
-		GridPane pane = new GridPane();
+		
+		GridPane pane = new GridPane();		
+		
+		startNewBtn.setTextFill(Color.GOLD);
+		startNewBtn.setStyle("-fx-font: 25 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");//#b6e7c9;
+		startNewBtn.setPrefWidth(200);
+		loadPrevBtn.setTextFill(Color.GOLD);
+		loadPrevBtn.setStyle("-fx-font: 25 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");
+		loadPrevBtn.setPrefWidth(200);
+		mainMenuBtn.setTextFill(Color.GOLD);
+		mainMenuBtn.setStyle("-fx-font: 25 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");
+		mainMenuBtn.setPrefWidth(200);
 		
 		//add everything to the GridPane
-		/*pane.setVgap(8);
-		pane.setHgap(4);
-		pane.setPadding(new Insets(5, 5, 5, 5));
-		pane.add(hBox, 30, 32);
-		pane.add(vBox2, 30, 35);*/
-
-
-		//create scene
-		//put everything together
-	Scene scene = new Scene(pane, 600, 400);
-
-		//create stage 
-		Stage stage = new Stage();
-	stage.setScene(scene);
-		stage.setTitle("Play");
-		stage.show();
-
-		//***
 		pane.add(startNewBtn, 0, 2);
 		pane.add(loadPrevBtn, 0, 3);
 		pane.add(mainMenuBtn, 0, 4);
 		GridPane.setHalignment(startNewBtn, HPos.CENTER);
 		GridPane.setHalignment(loadPrevBtn, HPos.CENTER);
 		GridPane.setHalignment(mainMenuBtn, HPos.CENTER);
+		//Main characteristics of the Gridpane
 		pane.setAlignment(Pos.CENTER);
 		pane.setHgap(25);
 		pane.setVgap(15);
-		
+
+		//create scene
+		//put everything together
+		Scene scene = new Scene(pane, 600, 400);
+
+		//create stage 
+		Stage stage = new Stage();
 		stage.setScene(scene);
+		stage.setTitle("Play");
+		stage.show();
+
+		//***
 		//Create background image and characteristics
 		BackgroundImage myBI= new BackgroundImage(new Image("RiskMenuImage.jpg",600,400,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
