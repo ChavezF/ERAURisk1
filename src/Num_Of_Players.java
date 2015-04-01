@@ -41,7 +41,7 @@ public class Num_Of_Players {
 		// Allow the button to be wider overriding preferred width		
 		labelNumPlayers.setPrefWidth(450);//Double.MAX_VALUE color:web("#0076a3")
 		labelNumPlayers.setTextFill(Color.GOLD);
-		labelNumPlayers.setStyle("-fx-font: 30 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");//#b6e7c9;
+		labelNumPlayers.setStyle("-fx-font: 30 courier; -fx-font-weight: BOLD");//#b6e7c9;
 
 		twoPlayers.setPrefWidth(200);
 		twoPlayers.setTextFill(Color.GOLD);
