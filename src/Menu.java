@@ -40,7 +40,7 @@ public class Menu extends Application {
 
 		//create a new GridPane that shall contain vBox
 		GridPane grid = new GridPane();
-//c
+//777
 		howToBtn.setTextFill(Color.web("#0076a3"));
 		howToBtn.setStyle("-fx-font: 20 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 		howToBtn.setPrefWidth(350);
