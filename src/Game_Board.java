@@ -34,8 +34,6 @@ public class Game_Board {
             Pane paneForBoard = new Pane();
             //initialize the properties for the rest of the texts
             initializeProperties(neo);
-            //update the troops and numbers for rest of the world
-            updater(neo);
 
             bGround = new Button();
             bGround.setMinSize(995, 47);
@@ -66,7 +64,9 @@ public class Game_Board {
             ImageView imageView1 = new ImageView(image);
             imageView1.setFitHeight(700);
             imageView1.setFitWidth(1000);
-
+            
+            eventButton(neo);
+            
             paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag); 
             pane.setCenter(paneForBoard);
             
@@ -105,7 +105,17 @@ public class Game_Board {
                 updater(neo);
                 endTurn(neo);
                 neo[3][7] ++;
-
+                String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+                String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+                if (neo[3][6] == 3||neo[3][6] ==4){ //yellow
+                    rein.setFill(Color.BLACK);
+                    turn.setFill(Color.BLACK);
+                }else{
+                    rein.setFill(Color.WHITE);
+                    turn.setFill(Color.WHITE);
+                }//if 
+                bGround.setStyle(col[(int)neo[3][6]]);
+                turn.setText(col2[(int)neo[3][6]]);
             }else if((int)neo[3][7] == 3){       //fortification phase
 
                 rein.setText("Reinforcements: " + Integer.toString(reinforce));
@@ -114,11 +124,10 @@ public class Game_Board {
                 e1.setText("Reinforce Phase");
                 String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
                 String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-                
                 if (neo[3][6]++ == neo[3][5]){
                     neo[3][6] = 1.0;
                 }//if
-                if (neo[3][6] == 3){ //yellow
+                if (neo[3][6] == 3||neo[3][6] ==4){ //yellow
                     rein.setFill(Color.BLACK);
                     turn.setFill(Color.BLACK);
                 }else{
@@ -128,7 +137,6 @@ public class Game_Board {
                 bGround.setStyle(col[(int)neo[3][6]]);
                 turn.setText(col2[(int)neo[3][6]]);
 
-                
                 neo[3][7] = 1;              //reset to reinforcement phase
 
             }//if
