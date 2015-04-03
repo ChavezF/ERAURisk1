@@ -1,3 +1,5 @@
+
+
 /** 
  * Author Bruno Malo Torres Trueba 
  * Project: Risk 
@@ -5,9 +7,9 @@
  * Class: SE300 
  */ 
 
+
 import javafx.scene.paint.Color; 
 import javafx.scene.text.Font; 
-import javafx.application.Application; 
 import javafx.geometry.Insets; 
 import javafx.geometry.Pos; 
 import javafx.scene.Scene; 
