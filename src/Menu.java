@@ -72,6 +72,7 @@ public class Menu extends Application {
 		stages.setScene(scene);
 		stages.show();
 		stages.setScene(scene);
+		stages.setResizable(false);
 		
 		//***
 		//Create background image and characteristics

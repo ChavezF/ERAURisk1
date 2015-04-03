@@ -84,6 +84,7 @@ public class Num_Of_Players {
 		Stage primaryStage = new Stage();
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		primaryStage.setResizable(false);
 
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method

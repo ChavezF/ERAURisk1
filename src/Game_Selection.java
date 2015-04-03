@@ -67,6 +67,7 @@ public class Game_Selection {
 		stage.setScene(scene);
 		stage.setTitle("Play");
 		stage.show();
+		stage.setResizable(false);
 
 		//***
 		//Create background image and characteristics

@@ -24,20 +24,20 @@ import javafx.stage.WindowEvent;
 public class Dice_Roll_GUI {
 
 	public double [] roll(double [] cor){
-		
+
 		// Construct a border pane and four individual pane for scene
 		GridPane pane = new GridPane();
 		Pane paneforDefenderRB = new VBox();
 		Pane paneforAttackerRB = new VBox();
-		
+
 		Text text1 = new Text("Defender");
 		Text text2 = new Text("Attacker");
 		Text text3 = new Text("10");
 		Text text4 = new Text("10");
-		
+
 		int Dnum = Integer.parseInt(text3.getText());
 		int Anum = Integer.parseInt(text4.getText());
-		
+
 		//Gather dice images
 		Image D1 = new Image("Dice21.jpg");
 		Image D2 = new Image("Dice22.jpg");
@@ -59,19 +59,19 @@ public class Dice_Roll_GUI {
 		ImageView View3 = new ImageView();
 		ImageView View4 = new ImageView();
 		ImageView View5 = new ImageView();
-		
+
 		//Input win markers 
 		Image Win1 = new Image("winmaker.jpg");	
 		ImageView W1 = new ImageView();
 		ImageView W2 = new ImageView();
 		ImageView W3 = new ImageView();
 		ImageView W4 = new ImageView();
-		
+
 		W1.setImage(Win1);
 		W2.setImage(Win1);
 		W3.setImage(Win1);
 		W4.setImage(Win1);
-		
+
 		//Resize markers
 		W1.setFitHeight(25);
 		W1.setFitWidth(15);
@@ -81,7 +81,7 @@ public class Dice_Roll_GUI {
 		W3.setFitWidth(15);
 		W4.setFitHeight(25);
 		W4.setFitWidth(15);
-		
+
 		W1.setVisible(false);
 		W2.setVisible(false);
 		W3.setVisible(false);
@@ -111,7 +111,7 @@ public class Dice_Roll_GUI {
 		pane.add(text4, 2, 1);
 		text3.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 		text4.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		
+
 		//Add nodes to scene and set alignment
 		GridPane.setHalignment(text2, HPos.RIGHT);
 		GridPane.setHalignment(text3, HPos.CENTER);
@@ -160,7 +160,7 @@ public class Dice_Roll_GUI {
 		pane.setAlignment(Pos.CENTER);
 		pane.setHgap(25);
 		pane.setVgap(15);
-		
+
 		if (Dnum < 2){
 			rbDef2.setVisible(false);
 			rbDef1.setSelected(true);
@@ -838,26 +838,26 @@ public class Dice_Roll_GUI {
 				}
 			}	
 		});
-			
+
 		// Set the stage to display the scene
 		Scene scene = new Scene(pane, 250, 375);
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("Roll Dice");
 		primaryStage.setScene(scene);
 		primaryStage.setX(cor[0]);  //line 350
-                primaryStage.setY(cor[1]);
-   
+		primaryStage.setY(cor[1]);
+		primaryStage.setResizable(false);
 		primaryStage.show();
-                
-                primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                    public void handle(WindowEvent we) {
-                        cor[0] = primaryStage.getX();
-                        cor[1] = primaryStage.getY();
-                     }
-                });                       
-		
+
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent we) {
+				cor[0] = primaryStage.getX();
+				cor[1] = primaryStage.getY();
+			}
+		});                       
+
 		btLeave.setOnAction(e -> primaryStage.close());
-                return cor;             
-        
+		return cor;             
+
 	}
 }

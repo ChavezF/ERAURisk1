@@ -10,14 +10,9 @@
  */
 
 import java.awt.Menu;
-
-import javafx.application.*;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextArea;
-import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -25,24 +20,11 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.util.Callback;
-
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Instructions extends Menu {
 
@@ -159,6 +141,7 @@ public class Instructions extends Menu {
 		stage.setScene(scene);
 		stage.setTitle("Instructions");
 		stage.show();
+		stage.setResizable(false);
 
 		//***
 		//Create background image and characteristics

@@ -93,6 +93,7 @@ public class Game_Board {
             primaryStage.setTitle("GUI_Widgets");
             primaryStage.setScene(scene);
             primaryStage.show();
+            primaryStage.setResizable(false);
             
             setButtonClick(neo);//set all countries actions
          
