@@ -7,7 +7,6 @@
  * Class: SE300 
  */ 
 
-
 import javafx.scene.paint.Color; 
 import javafx.scene.text.Font; 
 import javafx.geometry.Insets; 
