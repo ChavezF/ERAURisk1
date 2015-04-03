@@ -104,6 +104,8 @@ public class Game_Selection {
 			board.Playgame(neo);
 			stage.close();
 		});
+		//bruno's mac is dumbs
+		
 		//use FileChooser to select and open a previously saved game
 		/*loadPrevBtn.setOnAction(e -> {FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Resource File");

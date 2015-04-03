@@ -229,6 +229,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-1 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbAtt2.setVisible(false);
 							rbAtt3.setVisible(false);
@@ -247,6 +250,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text3.getText());
 						int sum = num-1 ;
 						text3.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -286,6 +292,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-1 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbAtt2.setVisible(false);
 							rbAtt3.setVisible(false);
@@ -304,6 +313,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text3.getText());
 						int sum = num-1 ;
 						text3.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -360,6 +372,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-1 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbAtt2.setVisible(false);
 							rbAtt3.setVisible(false);
@@ -378,6 +393,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text3.getText());
 						int sum = num-1 ;
 						text3.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -479,6 +497,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-1 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbAtt2.setVisible(false);
 							rbAtt3.setVisible(false);
@@ -497,6 +518,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text3.getText());
 						int sum = num-1 ;
 						text3.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -536,6 +560,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-2 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbAtt2.setVisible(false);
 							rbAtt3.setVisible(false);
@@ -554,9 +581,15 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-1 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						int num1 = Integer.parseInt(text3.getText());
 						int sum1 = num1-1 ;
 						text3.setText(String.format("%d", sum1));
+						if (sum1 < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum1 < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -579,9 +612,15 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-1 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						int num1 = Integer.parseInt(text3.getText());
 						int sum1 = num1-1 ;
 						text3.setText(String.format("%d", sum1));
+						if (sum1 < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum1 < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -604,6 +643,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text3.getText());
 						int sum = num-2 ;
 						text3.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -660,6 +702,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-2 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbAtt2.setVisible(false);
 							rbAtt3.setVisible(false);
@@ -678,9 +723,15 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-1 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						int num1 = Integer.parseInt(text3.getText());
 						int sum1 = num1-1 ;
 						text3.setText(String.format("%d", sum1));
+						if (sum1 < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum1 < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -703,9 +754,15 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text4.getText());
 						int sum = num-1 ;
 						text4.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						int num1 = Integer.parseInt(text3.getText());
 						int sum1 = num1-1 ;
 						text3.setText(String.format("%d", sum1));
+						if (sum1 < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum1 < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
@@ -728,6 +785,9 @@ public class Dice_Roll_GUI {
 						int num = Integer.parseInt(text3.getText());
 						int sum = num-2 ;
 						text3.setText(String.format("%d", sum));
+						if (sum < 1){
+							btAttack.setVisible(false);
+						}
 						if (sum < 2){
 							rbDef2.setVisible(false);
 							rbDef1.setSelected(true);
