@@ -18,8 +18,9 @@ import javafx.stage.Stage;
  */
 public class Game_Board {
 	
-	public int i = 1, reinforce = 3;
-	public double [] cor = {0,0};
+	private int reinforce = 3;//int i = 1, 
+	private double [] cor = {0,0};
+        private int [][] cord = new int[1][1];
         Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
         Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
         Text sasia, indonesia, india, china, russia, japan, meast,afghan;
@@ -32,7 +33,7 @@ public class Game_Board {
             BorderPane pane = new BorderPane();
             Pane paneForBoard = new Pane();
             //initialize the properties for the rest of the texts
-            initializeProperties();
+            initializeProperties(neo);
             //update the troops and numbers for rest of the world
             updater(neo);
 
@@ -102,28 +103,32 @@ public class Game_Board {
                     
                 e1.setText("End Turn");
                 updater(neo);
+                endTurn(neo);
                 neo[3][7] ++;
 
             }else if((int)neo[3][7] == 3){       //fortification phase
 
                 rein.setText("Reinforcements: " + Integer.toString(reinforce));
                 updater(neo);
+                endTurn(neo);
                 e1.setText("Reinforce Phase");
-                String[] col = {"-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-                String[] col2 = {"Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-                if (i == 3){ //yellow
+                String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+                String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+                
+                if (neo[3][6]++ == neo[3][5]){
+                    neo[3][6] = 1.0;
+                }//if
+                if (neo[3][6] == 3){ //yellow
                     rein.setFill(Color.BLACK);
                     turn.setFill(Color.BLACK);
                 }else{
                     rein.setFill(Color.WHITE);
                     turn.setFill(Color.WHITE);
                 }//if 
-                bGround.setStyle(col[i]);
-                turn.setText(col2[i]);
+                bGround.setStyle(col[(int)neo[3][6]]);
+                turn.setText(col2[(int)neo[3][6]]);
 
-                if (++i == neo[3][5]){
-                    i = 0;
-                }//if
+                
                 neo[3][7] = 1;              //reset to reinforcement phase
 
             }//if
@@ -473,6 +478,7 @@ public class Game_Board {
                 //-------------------------------------->Bruno add code here
                 e1.setText("End Attack");//only once the last troop has been added
                 neo[3][7]++;//only once the last troop has been added
+                
             } else if((int)neo[3][7] == 1){                                                  //reinforcement phase
                 //****************Reinforcement phase
                 //----> check to make sure that it is the same players territory
@@ -568,7 +574,78 @@ public class Game_Board {
             }//catch
         }//save
         
-        public void initializeProperties(){
+        public void endTurn(double [][] neo){
+
+            //-------------------Properties----------------------------
+            turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            turn.setFill(Color.WHITE);
+            rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            rein.setFill(Color.WHITE);
+            
+            Color[] ColorArray = {Color.WHITE, Color.BLUEVIOLET, Color.GREEN, Color.RED, Color.YELLOW};
+            america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    america.setFill(ColorArray[player(neo[0][0])]);
+            
+            canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    canadia.setFill(ColorArray[player(neo[0][1])]);
+            alaska.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    alaska.setFill(ColorArray[player(neo[0][2])]);
+            greenland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    greenland.setFill(ColorArray[player(neo[0][3])]);
+            mexico.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    mexico.setFill(ColorArray[player(neo[0][4])]);
+            venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    venezuella.setFill(ColorArray[player(neo[0][5])]);
+            brazil.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            brazil.setFill(ColorArray[player(neo[0][6])]);
+            argentina.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    argentina.setFill(ColorArray[player(neo[0][7])]);
+            nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    nafrica.setFill(ColorArray[player(neo[1][0])]);
+            safrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            safrica.setFill(ColorArray[player(neo[1][1])]);
+            eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            eafrica.setFill(ColorArray[player(neo[1][2])]);
+	    egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    egypt.setFill(ColorArray[player(neo[1][3])]);
+            madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    madag.setFill(ColorArray[player(neo[1][4])]);
+	    eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    eaustralia.setFill(ColorArray[player(neo[1][5])]);
+	    waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    waustralia.setFill(ColorArray[player(neo[1][6])]);
+            nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            nguninea.setFill(ColorArray[player(neo[1][7])]);
+            sasia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    sasia.setFill(ColorArray[player(neo[2][0])]);
+            indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            indonesia.setFill(ColorArray[player(neo[2][1])]);
+            india.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    india.setFill(ColorArray[player(neo[2][2])]);
+            china.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+   	    china.setFill(ColorArray[player(neo[2][3])]);
+            russia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+ 	    russia.setFill(ColorArray[player(neo[2][4])]);
+            japan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    japan.setFill(ColorArray[player(neo[2][5])]);
+            meast.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    meast.setFill(ColorArray[player(neo[2][6])]);
+            afghan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            afghan.setFill(ColorArray[player(neo[2][7])]);
+	    ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            ireland.setFill(ColorArray[player(neo[3][0])]);
+	    scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    scandanavia.setFill(ColorArray[player(neo[3][1])]);
+	    eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+            eeurope.setFill(ColorArray[player(neo[3][2])]);
+	    weurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    weurope.setFill(ColorArray[player(neo[3][3])]);
+	    britain.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+	    britain.setFill(ColorArray[player(neo[3][4])]);
+	   
+        }//endTurn
+        
+        public void initializeProperties(double [][] neo){
             //initialize countries
             america = new Text(122,216,"0");//america
             canadia = new Text(134,150,"0");//canadia
@@ -608,70 +685,7 @@ public class Game_Board {
             turn = new Text(10,39,"Turn: Blue");
             rein = new Text(200,39, "Reinforcements: "+ Integer.toString(reinforce));
 
-            //-------------------Properties----------------------------
-            turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            turn.setFill(Color.WHITE);
-            rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            rein.setFill(Color.WHITE);
-            
-            ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            ireland.setFill(Color.WHITE);
-	    scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    scandanavia.setFill(Color.WHITE);
-	    eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            eeurope.setFill(Color.WHITE);
-	    weurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    weurope.setFill(Color.WHITE);
-	    britain.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    britain.setFill(Color.WHITE);
-	    sasia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    sasia.setFill(Color.WHITE);
-            indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            indonesia.setFill(Color.WHITE);
-            india.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    india.setFill(Color.WHITE);
-            china.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-   	    china.setFill(Color.WHITE);
-            russia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
- 	    russia.setFill(Color.WHITE);
-            japan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    japan.setFill(Color.WHITE);
-            meast.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    meast.setFill(Color.WHITE);
-            afghan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            afghan.setFill(Color.WHITE);
-	    america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    america.setFill(Color.WHITE);
-            canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    canadia.setFill(Color.WHITE);
-            alaska.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    alaska.setFill(Color.WHITE);
-            greenland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    greenland.setFill(Color.WHITE);
-            mexico.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    mexico.setFill(Color.WHITE);
-            venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    venezuella.setFill(Color.WHITE);
-            brazil.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            brazil.setFill(Color.WHITE);
-            argentina.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    argentina.setFill(Color.WHITE);
-            nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    nafrica.setFill(Color.WHITE);
-            safrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            safrica.setFill(Color.WHITE);
-            eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            eafrica.setFill(Color.WHITE);
-	    egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    egypt.setFill(Color.WHITE);
-            madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    madag.setFill(Color.WHITE);
-	    eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    eaustralia.setFill(Color.WHITE);
-	    waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-	    waustralia.setFill(Color.WHITE);
-            nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-            nguninea.setFill(Color.WHITE);
+            endTurn(neo);
             
         }//initializeProperties
 }//Game_Board				
