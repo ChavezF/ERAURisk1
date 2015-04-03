@@ -71,7 +71,7 @@ public class Game_Selection {
 
 		//***
 		//Create background image and characteristics
-		BackgroundImage myBI= new BackgroundImage(new Image("RiskMenuImage.jpg",600,400,false,true),
+		BackgroundImage myBI= new BackgroundImage(new Image("RiskCannons.jpg",600,400,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 		//Set image to the grid
