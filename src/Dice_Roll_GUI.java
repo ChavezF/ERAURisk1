@@ -846,8 +846,8 @@ public class Dice_Roll_GUI {
 		primaryStage.setScene(scene);
 		primaryStage.setX(cor[0]);  //line 350
 		primaryStage.setY(cor[1]);
-		primaryStage.setResizable(false);
 		primaryStage.show();
+		primaryStage.setResizable(false);
 
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			public void handle(WindowEvent we) {
