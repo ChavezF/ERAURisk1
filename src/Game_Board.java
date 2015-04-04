@@ -100,6 +100,7 @@ public class Game_Board {
 	}//Game_Board
 
 	public void eventButton(double [][] neo){
+
 		if((int)neo[3][7] == 2){       //attack phase
 
 			e1.setText("End Turn");
@@ -483,17 +484,21 @@ public class Game_Board {
 
 	public double actions(int row, int column, double [][] neo, Boolean button){
 
-		if ((int)neo[3][7] == 0){                                                        //initial add troops phase
+		if ((int)neo[3][7] == 0){     
+			//initial add troops phase
 			//-------------------------------------->Bruno add code here
-			
-			  while( neo[0][0] != 0 || neo [0][1] != 0) {//|| neo [0][1] != 0 || neo [0][2] != 0 || neo [0][3] != 0 || neo [0][4] != 0 || neo [0][7] != 0 || neo [0][0] != 1 || neo [1][0] != 1 || neo [1][0] != 1   || neo[3][4] != 1
-			  System.out.println(neo[0][0]);
-			  
-			  }
-			  
+			neo[row][column] = 1;
 
+			double n = neo[0][0] + neo[0][1] + neo[0][2] + neo[0][3] + neo[0][4] + neo[0][5] + neo[0][6] + neo[0][7]+ neo[1][0] + neo[1][1] + neo[1][2] + neo[1][3] + neo[1][4] + neo[1][5] + neo[1][6] + neo[1][7] + neo[2][0] + neo[2][1] + neo[2][2] + neo[2][3] + neo[2][4] + neo[2][5] + neo[2][6] + neo[2][7] + neo[3][0] + neo[3][1] + neo[3][2] + neo[3][3] + neo[3][4];
+			if (n != 29.0) {
+				neo[3][7] = 0;
+				setButtonClick(neo);
+			}else if (n == 29.0){
+				neo[3][7]++;//only once the last troop has been added
+			}
+			System.out.println(n);
 			e1.setText("End Attack");//only once the last troop has been added
-			neo[3][7]++;//only once the last troop has been added
+		//	
 
 		} else if((int)neo[3][7] == 1){                                                  //reinforcement phase
 			//****************Reinforcement phase
@@ -601,7 +606,6 @@ public class Game_Board {
 		Color[] ColorArray = {Color.WHITE, Color.BLUEVIOLET, Color.GREEN, Color.RED, Color.YELLOW};
 		america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 		america.setFill(ColorArray[player(neo[0][0])]);
-
 		canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 		canadia.setFill(ColorArray[player(neo[0][1])]);
 		alaska.setFont(Font.font("Courier", FontWeight.BOLD, 25));
