@@ -549,12 +549,7 @@ public class Game_Board {
                     cor[3] = troop(neo[(int)troops[1][0]][(int)troops[1][1]]);
                     Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
                     cor = diceBox.roll(cor);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Game_Board.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
+                                        
                     System.out.println(cor[2] +" " + cor[3] + " :)");
                     //have while loop where it doesnt break out until diceBox sends break
                     //try pause code
