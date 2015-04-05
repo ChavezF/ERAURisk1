@@ -651,9 +651,9 @@ public class Game_Board {
 		safrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 		safrica.setFill(ColorArray[player(neo[1][1])]);
 		eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		eafrica.setFill(ColorArray[player(neo[1][2])]);
+		eafrica.setFill(ColorArray[player(neo[1][3])]);
 		egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		egypt.setFill(ColorArray[player(neo[1][3])]);
+		egypt.setFill(ColorArray[player(neo[1][2])]);
 		madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
 		madag.setFill(ColorArray[player(neo[1][4])]);
 		eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
