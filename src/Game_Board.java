@@ -10,6 +10,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.EventHandler;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.stage.WindowEvent;
 
 /**
  * @author Philip
@@ -19,7 +25,9 @@ import javafx.stage.Stage;
 public class Game_Board {
 
 	private int reinforce = 3;//int i = 1, 
-	private double [] cor = {0,0};
+	private double [] cor = {0,0,0,0};
+        private double [][] troops = new double[2][2];
+        private int selected = 0;
 	private int [][] cord = new int[1][1];
 	Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
 	Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
@@ -54,32 +62,20 @@ public class Game_Board {
 		e1.setMinSize(120, 47);
 		e1.setLayoutY(7);
 		e1.setLayoutX(580);//700
-		//-----------------------TO BE DELETED-----------------------
-		Button dice = new Button("Dice");
-		dice.setMinSize(120, 47);
-		dice.setLayoutY(635);
-		dice.setLayoutX(812);//700
-		//--------------------------------------------------------
-		Image image = new Image("WorldMap.jpg");
+		
+                Image image = new Image("WorldMap.jpg");
 		ImageView imageView1 = new ImageView(image);
 		imageView1.setFitHeight(700);
 		imageView1.setFitWidth(1000);
 
 		eventButton(neo);
 
-		paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,dice,madag); 
+		paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,madag); 
 		pane.setCenter(paneForBoard);
 
 		b1.setOnMouseClicked(e -> {
 			System.exit(1);
 		});
-		//------------------------------TO BE DELETED----------------------
-
-		dice.setOnMouseClicked(e -> {
-			Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
-			cor = diceBox.roll(cor);
-		});
-		//----------------------------------------------------------------
 		s1.setOnMouseClicked(e -> {
 			save(neo);    
 		});
@@ -118,8 +114,9 @@ public class Game_Board {
 			}//if 
 			bGround.setStyle(col[(int)neo[3][6]]);
 			turn.setText(col2[(int)neo[3][6]]);
-		}else if((int)neo[3][7] == 3){       //fortification phase
-
+                        selected = 0;
+                }else if((int)neo[3][7] == 3){       //fortification phase
+                        reinforce = 3;
 			rein.setText("Reinforcements: " + Integer.toString(reinforce));
 			updater(neo);
 			endTurn(neo);
@@ -483,15 +480,13 @@ public class Game_Board {
 	}//setPlayer
 
 	public double actions(int row, int column, double [][] neo, Boolean button){
-
+//-------------------INITIAL DEPLOYMENT--------------------------------------------------------------
 		if ((int)neo[3][7] == 0){     
 			//initial add troops phase
-			//-------------------------------------->Bruno add code here
-
 			if (neo[row][column] == 0){
 				neo[row][column] = 1;
 
-				double n = neo[0][0] + neo[0][1] + neo[0][2] + neo[0][3] + neo[0][4] + neo[0][5] + neo[0][6] + neo[0][7]+ neo[1][0] + neo[1][1] + neo[1][2] + neo[1][3] + neo[1][4] + neo[1][5] + neo[1][6] + neo[1][7] + neo[2][0] + neo[2][1] + neo[2][2] + neo[2][3] + neo[2][4] + neo[2][5] + neo[2][6] + neo[2][7] + neo[3][0] + neo[3][1] + neo[3][2] + neo[3][3] + neo[3][4];
+				int n = (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
 				if (n != 29.0) {
 					neo[3][7] = 0;
 
@@ -524,37 +519,105 @@ public class Game_Board {
 				}
 			}	
 
-		} else if((int)neo[3][7] == 1){                                                  //reinforcement phase
-			//****************Reinforcement phase
-			//----> check to make sure that it is the same players territory
-			if(neo[3][6] == player(neo[row][column])){
-				neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
-				reinforce --;
-				rein.setText("Reinforcements: " + Integer.toString(reinforce));
-				if(reinforce == 0){
-					neo[3][7] ++;
-					reinforce = 3;
-					e1.setText("End Attack");
-				}//if
-			}//if
-		} else if((int)neo[3][7] == 2){                                                  //attack phase
-			//****************Attack Phase
-			//---->add 1 (to selected) when place is clicked
-			//---->increase font size of selected spot
-			//---->when 2 are selected check if they can attack each other
-			//---->call dice program with both troop amounts
-			//---->set both location with new troop values
-
-		} else if((int)neo[3][7] == 3){                                                   //fortification phase    
-			//****************Fortification Phase
-			//---->add 1 (to selected) when place is clicked
-			//---->increase font size of selected spot
-			//---->when 2 are selected check to see if they are same player 
-			//---->bring up msgbox saying how many troops
-			//---->subtract troops from first(if that many are available
-			//---->add troops to second selected
-
-		}//if
+	//------------------------REINFORCEMENT PHASE--------------------------------------------------------------------------
+            } else if((int)neo[3][7] == 1){                                                  
+                //*****************set this  so that the first turn you have 3 + the number of extra reinforcements from initial phase
+                if(neo[3][6] == player(neo[row][column])){
+                    neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
+                    reinforce --;
+                    rein.setText("Reinforcements: " + Integer.toString(reinforce));
+                    if(reinforce == 0){
+                        neo[3][7] ++;
+                        reinforce = 3;
+                        e1.setText("End Attack");
+                    }//if
+                }//if
+//------------------------ATTACK PHASE---------------------------------------------------------------------------
+            } else if((int)neo[3][7] == 2){                                                 
+                
+                if (button){
+                    troops[selected][0] = row;
+                    troops[selected][1] = column;
+                    selected ++;
+                }else{
+                    selected --;
+                }//if
+                if (selected == -1){
+                    selected = 0;
+                }else if(selected == 2){
+                    cor[2] = troop(neo[(int)troops[0][0]][(int)troops[0][1]]);
+                    cor[3] = troop(neo[(int)troops[1][0]][(int)troops[1][1]]);
+                    Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
+                    cor = diceBox.roll(cor);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Game_Board.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    System.out.println(cor[2] +" " + cor[3] + " :)");
+                    //have while loop where it doesnt break out until diceBox sends break
+                    //try pause code
+                    neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0],(int)troops[0][1], neo, (int)cor[2]);
+                    neo[(int)troops[1][0]][(int)troops[1][1]] = setTroop((int)troops[1][0],(int)troops[1][1], neo, (int)cor[3]);
+                    System.out.println(cor[2]+ " " + cor[3]);
+                    System.out.println(cor[0] + " " + cor[1]);
+                    selected = 0;
+                    endTurn(neo);
+                }//if
+                //****************Attack Phase
+                //---->add 1 (to selected) when place is clicked
+                //---->increase font size of selected spot
+                //---->when 2 are selected check if they can attack each other
+                //---->call dice program with both troop amounts
+                //---->set both location with new troop values
+//----------------------------------FORTIFICATION PHASE---------------------------------------------------------------                        
+            } else if((int)neo[3][7] == 3){                                                  
+                if(player(neo[row][column]) == neo[3][6]){  //if its actually the players spot
+                    troops[selected][0] = row;              //save the row
+                    troops[selected][1] = column;           //save the column
+                    selected ++;                    
+                    if (selected == 2 && (troops[0][0] != troops[1][0] || troops[0][1] != troops[1][1])){
+                        selected = 0;
+                        
+                        //create a pop-up to get the # of troops to move
+                        Label label1 = new Label("Enter number of troops to move: ");
+                        label1.setLayoutY(5);
+                        label1.setLayoutX(3);
+                        TextField textField = new TextField ();
+                        textField.setMaxWidth(50);
+                        textField.setLayoutX(230);
+                        Button leave = new Button("Move Troops");
+                        leave.setMinSize(290, 30);
+                        leave.setLayoutY(40);
+                        Pane hb = new Pane();
+                        hb.getChildren().addAll(label1, textField, leave);
+                        Scene scenes = new Scene(hb);
+                        Stage primaryStage2 = new Stage();
+                        //insert pause until primary stage2 closes
+                        leave.setOnMouseClicked(e -> {
+                            reinforce = Integer.parseInt(textField.getText());
+                            primaryStage2.close();
+                        });
+                        
+                        primaryStage2.setTitle("GUI_Widgets");
+                        primaryStage2.setScene(scenes);
+                        primaryStage2.setMinHeight(60);
+                        primaryStage2.setMinWidth(290);
+                        primaryStage2.showAndWait();
+                        if ((neo[(int)troops[0][0]][(int)troops[0][1]] -1) > reinforce){
+                            neo[(int)troops[1][0]][(int)troops[1][1]] =setTroop((int)troops[1][0], (int)troops[1][1], neo, ((int)neo[(int)troops[1][0]][(int)troops[1][1]] + reinforce));
+                            neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0], (int)troops[0][1], neo, ((int)neo[(int)troops[0][0]][(int)troops[0][1]] - reinforce));
+                        }//if
+                        updater(neo);
+                    }else{
+                        selected = 1;
+                    }//if
+                }//if
+        
+            }//if
+ //----------------------------------FORTIFICATION PHASE----------------------------------------------
+			
 		return neo[row][column];
 	}//actions
 
