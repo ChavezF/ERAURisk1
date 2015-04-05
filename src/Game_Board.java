@@ -487,39 +487,43 @@ public class Game_Board {
 		if ((int)neo[3][7] == 0){     
 			//initial add troops phase
 			//-------------------------------------->Bruno add code here
-			neo[row][column] = 1;
+
+			if (neo[row][column] == 0){
+				neo[row][column] = 1;
+
+				double n = neo[0][0] + neo[0][1] + neo[0][2] + neo[0][3] + neo[0][4] + neo[0][5] + neo[0][6] + neo[0][7]+ neo[1][0] + neo[1][1] + neo[1][2] + neo[1][3] + neo[1][4] + neo[1][5] + neo[1][6] + neo[1][7] + neo[2][0] + neo[2][1] + neo[2][2] + neo[2][3] + neo[2][4] + neo[2][5] + neo[2][6] + neo[2][7] + neo[3][0] + neo[3][1] + neo[3][2] + neo[3][3] + neo[3][4];
+				if (n != 29.0) {
+					neo[3][7] = 0;
 
 
-			double n = neo[0][0] + neo[0][1] + neo[0][2] + neo[0][3] + neo[0][4] + neo[0][5] + neo[0][6] + neo[0][7]+ neo[1][0] + neo[1][1] + neo[1][2] + neo[1][3] + neo[1][4] + neo[1][5] + neo[1][6] + neo[1][7] + neo[2][0] + neo[2][1] + neo[2][2] + neo[2][3] + neo[2][4] + neo[2][5] + neo[2][6] + neo[2][7] + neo[3][0] + neo[3][1] + neo[3][2] + neo[3][3] + neo[3][4];
-			if (n != 29.0) {
-				neo[3][7] = 0;
+					//setButtonClick(neo);
 
+					if (neo[3][6] == neo[3][5]) {// If it's the last player's turn
+						neo[3][6] = 1;			//Restart cycle
 
+					}else if ( neo[3][6] == 0){	//If it is player 0
+						neo[3][6] = 2;			//To avoid repeating pleayer 1 (blue)
 
-				setButtonClick(neo);
+					}else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
+						neo[3][6]++;
+					}
 
-				if (neo[3][6] == neo[3][5]) {
-					neo[3][6] = 1;
+					String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+					String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+					turn.setText(col2[(int)neo[3][6]]);
+					bGround.setStyle(col[(int)neo[3][6]]);
 					
-				}else if ( neo[3][6] == 0){	
-					neo[3][6] = 2;
+					neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);
+
 					
-				}else if (neo[3][6] != neo[3][5]) {
-					neo[3][6]++;
+					endTurn(neo);
+				}else if (n == 29.0){
+					neo[3][7] = 1;//only once the last troop has been added
+					e1.setText("End Attack");//only once the last troop has been added
 				}
-
-				String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-				String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-				turn.setText(col2[(int)neo[3][6]]);
-				bGround.setStyle(col[(int)neo[3][6]]);
-
-				endTurn(neo);
-			}else if (n == 29.0){
-				neo[3][7]++;//only once the last troop has been added
-				e1.setText("End Attack");//only once the last troop has been added
 			}
 			//System.out.println(n);
-			System.out.println(neo[3][6]);
+			System.out.println(neo);
 			//	
 
 		} else if((int)neo[3][7] == 1){                                                  //reinforcement phase
