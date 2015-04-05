@@ -481,44 +481,44 @@ public class Game_Board {
 
 	public double actions(int row, int column, double [][] neo, Boolean button){
 //-------------------INITIAL DEPLOYMENT--------------------------------------------------------------
-		if ((int)neo[3][7] == 0){     
-			//initial add troops phase
-			if (neo[row][column] == 0){
-				neo[row][column] = 1;
+            if ((int)neo[3][7] == 0){     
+                //initial add troops phase
+                if (neo[row][column] == 0){
+                    neo[row][column] = 1;
 
-				int n = (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
-				if (n != 29.0) {
-					neo[3][7] = 0;
+                    int n = (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
+                    if (n != 29.0) {
+                        neo[3][7] = 0;
 
-					if (neo[3][6] == neo[3][5]) {// If it's the last player's turn
-						neo[3][6] = 1;			//Restart cycle
+                        if (neo[3][6] == neo[3][5]) {// If it's the last player's turn
+                            neo[3][6] = 1;			//Restart cycle
 
-					}else if ( neo[3][6] == 0){	//If it is player 0
-						neo[3][6] = 2;			//To avoid repeating player 1 (blue)
+                        }else if ( neo[3][6] == 0){	//If it is player 0
+                            neo[3][6] = 2;			//To avoid repeating player 1 (blue)
 
-					}else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
-						neo[3][6]++;
-					}
-					//Change the color of the bar
-					String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-					String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-					turn.setText(col2[(int)neo[3][6]]);
-					bGround.setStyle(col[(int)neo[3][6]]);
+                        }else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
+                            neo[3][6]++;
+                        }//if
+                        //Change the color of the bar
+                        String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+                        String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+                        turn.setText(col2[(int)neo[3][6]]);
+                        bGround.setStyle(col[(int)neo[3][6]]);
 
-					if(neo[3][6] == 1){//Paint yellow but keep continuation of cycle
-						neo[row][column] = setPlayer(row, column, neo, (int)neo[3][5] );
+                        if(neo[3][6] == 1){//Paint yellow but keep continuation of cycle
+                            neo[row][column] = setPlayer(row, column, neo, (int)neo[3][5] );
 
-					}else {//Paint the rest of the numbers
-						neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);	
-					}
+                        }else {//Paint the rest of the numbers
+                            neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);	
+                        }//if
 
-					endTurn(neo);
-				}else if (n == 29.0){
-					neo[3][7] = 1;//only once the last troop has been added
-					e1.setText("End Attack");//only once the last troop has been added
-				}
-			}	
-
+                        endTurn(neo);
+                    }else if (n == 29.0){
+                        neo[3][7] = 1;//only once the last troop has been added
+                        e1.setText("End Attack");//only once the last troop has been added
+                    }//if
+                }//if	
+        //-------------------------END INITIAL DEPLOYMENT                
 	//------------------------REINFORCEMENT PHASE--------------------------------------------------------------------------
             } else if((int)neo[3][7] == 1){                                                  
                 //*****************set this  so that the first turn you have 3 + the number of extra reinforcements from initial phase
@@ -532,6 +532,7 @@ public class Game_Board {
                         e1.setText("End Attack");
                     }//if
                 }//if
+//------------------------END REINFORCEMENT PHASE----------------------------------------------------------------------
 //------------------------ATTACK PHASE---------------------------------------------------------------------------
             } else if((int)neo[3][7] == 2){                                                 
                 
@@ -566,6 +567,7 @@ public class Game_Board {
                 //---->when 2 are selected check if they can attack each other
                 //---->call dice program with both troop amounts
                 //---->set both location with new troop values
+//----------------------------------END ATTACK PHASE----------------------------------------------------------------                
 //----------------------------------FORTIFICATION PHASE---------------------------------------------------------------                        
             } else if((int)neo[3][7] == 3){                                                  
                 if(player(neo[row][column]) == neo[3][6]){  //if its actually the players spot
