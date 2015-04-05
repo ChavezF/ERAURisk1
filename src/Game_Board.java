@@ -495,36 +495,34 @@ public class Game_Board {
 				if (n != 29.0) {
 					neo[3][7] = 0;
 
-
-					//setButtonClick(neo);
-
 					if (neo[3][6] == neo[3][5]) {// If it's the last player's turn
 						neo[3][6] = 1;			//Restart cycle
 
 					}else if ( neo[3][6] == 0){	//If it is player 0
-						neo[3][6] = 2;			//To avoid repeating pleayer 1 (blue)
+						neo[3][6] = 2;			//To avoid repeating player 1 (blue)
 
 					}else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
 						neo[3][6]++;
 					}
-
+					//Change the color of the bar
 					String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
 					String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
 					turn.setText(col2[(int)neo[3][6]]);
 					bGround.setStyle(col[(int)neo[3][6]]);
-					
-					neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);
 
-					
+					if(neo[3][6] == 1){//Paint yellow but keep continuation of cycle
+						neo[row][column] = setPlayer(row, column, neo, (int)neo[3][5] );
+
+					}else {//Paint the rest of the numbers
+						neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);	
+					}
+
 					endTurn(neo);
 				}else if (n == 29.0){
 					neo[3][7] = 1;//only once the last troop has been added
 					e1.setText("End Attack");//only once the last troop has been added
 				}
-			}
-			//System.out.println(n);
-			System.out.println(neo);
-			//	
+			}	
 
 		} else if((int)neo[3][7] == 1){                                                  //reinforcement phase
 			//****************Reinforcement phase
