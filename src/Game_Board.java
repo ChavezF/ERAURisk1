@@ -514,6 +514,8 @@ public class Game_Board {
 
                         endTurn(neo);
                     }else if (n == 29.0){
+                    	neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6]);	
+                    	endTurn(neo);
                         neo[3][7] = 1;//only once the last troop has been added
                         e1.setText("End Attack");//only once the last troop has been added
                     }//if

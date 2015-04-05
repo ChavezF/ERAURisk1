@@ -174,6 +174,9 @@ public class Dice_Roll_GUI {
 			rbAtt3.setVisible(false);
 			rbAtt1.setSelected(true);
 		}
+		if (Dnum < 1 || Anum < 1){
+			btAttack.setVisible(false);
+		}
 
 		//Have the radio buttons toggle between each other
 		rbDef1.setOnAction(e -> {
