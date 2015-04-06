@@ -135,6 +135,8 @@ public class Game_Board {
 			}//if 
 			bGround.setStyle(col[(int)neo[3][6]]);
 			turn.setText(col2[(int)neo[3][6]]);
+			
+			//winner call goes here...right Phil????
 
 			neo[3][7] = 1;              //reset to reinforcement phase
 
