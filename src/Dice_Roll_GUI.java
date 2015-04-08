@@ -1,5 +1,3 @@
-
-
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -35,7 +33,7 @@ public class Dice_Roll_GUI {
 		Text text1 = new Text("Defender");
 		Text text2 = new Text("Attacker");
 		Text text3 = new Text(Integer.toString((int)(cor[3])));
-		Text text4 = new Text(Integer.toString((int)(cor[2])));
+		Text text4 = new Text(Integer.toString((int)(cor[2]-1)));
 
 		int Dnum = Integer.parseInt(text3.getText());
 		int Anum = Integer.parseInt(text4.getText());
@@ -862,8 +860,21 @@ public class Dice_Roll_GUI {
 		});                       
 
 		btLeave.setOnAction(e -> {
-			cor[2] = Double.parseDouble(text4.getText());
+                    cor[0] = primaryStage.getX();
+                    cor[1] = primaryStage.getY();
+                    cor[2] = Double.parseDouble(text4.getText());
 			cor[3] = Double.parseDouble(text3.getText());
+			if (cor[2] == 0){
+				cor[2] = 1;
+			}
+			else if (cor[3] == 0){
+				cor[3] = cor[2];
+				cor[2] = 1;
+			}
+			else{
+				cor[2] = cor[2] + 1;
+				
+			}
 		primaryStage.close();
 		});
 		return cor;             
