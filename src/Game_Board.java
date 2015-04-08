@@ -26,8 +26,8 @@ public class Game_Board {
 
 	private int reinforce = 3;//int i = 1, 
 	private double [] cor = {0,0,0,0};
-    private double [][] troops = new double[2][2];
-    private int selected = 0;
+        private double [][] troops = new double[2][2];
+        private int selected = 0;
 	private int [][] cord = new int[1][1];
 	Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
 	Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
@@ -543,7 +543,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][0])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[0][4]))) {
                 		troops[selected][0] = row;
@@ -555,7 +555,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][1])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][0]) || (neo[row][column] == neo[0][2]) || (neo[row][column] == neo[0][3]))) {
                 		troops[selected][0] = row;
@@ -567,7 +567,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][2])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[2][4]))) {
                 		troops[selected][0] = row;
@@ -579,7 +579,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][3])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[3][0]))) {
                 		troops[selected][0] = row;
@@ -591,7 +591,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][4])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][0]) || (neo[row][column] == neo[0][5]))) {
                 		troops[selected][0] = row;
@@ -603,7 +603,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][5])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][4]) || (neo[row][column] == neo[0][6]) || (neo[row][column] == neo[0][7]))) {
                 		troops[selected][0] = row;
@@ -615,7 +615,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][6])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][5]) || (neo[row][column] == neo[0][7]) || (neo[row][column] == neo[1][0]))) {
                 		troops[selected][0] = row;
@@ -627,7 +627,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][7])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][5]) || (neo[row][column] == neo[0][6]))) {
                 		troops[selected][0] = row;
@@ -639,7 +639,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][0])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][6]) || (neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[3][3]))) {
                 		troops[selected][0] = row;
@@ -651,7 +651,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][1])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[1][4]))) {
                 		troops[selected][0] = row;
@@ -663,7 +663,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][2])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][3]))) {
                 		troops[selected][0] = row;
@@ -675,7 +675,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][3])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][4]) || (neo[row][column] == neo[2][6]))) {
                 		troops[selected][0] = row;
@@ -687,7 +687,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][4])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][3]))) {
                 		troops[selected][0] = row;
@@ -699,7 +699,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][5])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && (neo[row][column] == neo[1][6])) {
                 		troops[selected][0] = row;
@@ -711,7 +711,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][6])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][5]) || (neo[row][column] == neo[1][7]) || (neo[row][column] == neo[2][1]))) {
                 		troops[selected][0] = row;
@@ -723,7 +723,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][7])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][6]) || (neo[row][column] == neo[2][1]))) {
                 		troops[selected][0] = row;
@@ -735,7 +735,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][0])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][1]) || (neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][3]))) {
                 		troops[selected][0] = row;
@@ -747,7 +747,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][1])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][6]) || (neo[row][column] == neo[1][7]) || (neo[row][column] == neo[2][0]))) {
                 		troops[selected][0] = row;
@@ -759,7 +759,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][2])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][0]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][7]))) {
                 		troops[selected][0] = row;
@@ -771,7 +771,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][3])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][0]) || (neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][5]) || (neo[row][column] == neo[2][7]))) {
                 		troops[selected][0] = row;
@@ -783,7 +783,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][4])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][2]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][5]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[2][7]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][2]))) {
                 		troops[selected][0] = row;
@@ -795,7 +795,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][5])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][4]))) {
                 		troops[selected][0] = row;
@@ -807,7 +807,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][6])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][7]) || (neo[row][column] == neo[3][2]))) {
                 		troops[selected][0] = row;
@@ -819,7 +819,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][7])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][6]))) {
                 		troops[selected][0] = row;
@@ -831,7 +831,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][0])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][3]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][4]))) {
                 		troops[selected][0] = row;
@@ -843,7 +843,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][1])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][4]) || (neo[row][column] == neo[3][0]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][3]))) {
                 		troops[selected][0] = row;
@@ -855,7 +855,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][2])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][2]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][3]))) {
                 		troops[selected][0] = row;
@@ -867,7 +867,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][3])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][4]))) {
                 		troops[selected][0] = row;
@@ -879,7 +879,7 @@ public class Game_Board {
                 	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][4])) {
                     	troops[selected][0] = row;
                     	troops[selected][1] = column;
-                    	selected ++;
+                    	selected = 1;
                 	}
                 	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[3][0]) || (neo[row][column] == neo[3][3]))) {
                 		troops[selected][0] = row;
@@ -897,7 +897,38 @@ public class Game_Board {
                     cor[3] = troop(neo[(int)troops[1][0]][(int)troops[1][1]]);
                     Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
                     cor = diceBox.roll(cor);
-                                        
+                    //-------------------------------------------------------------------------------------------------------                    
+                    //create a pop-up to get the # of troops to move
+                        Label label1 = new Label("Enter number of troops to move: ");
+                        label1.setLayoutY(5);
+                        label1.setLayoutX(3);
+                        TextField textField = new TextField ();
+                        textField.setMaxWidth(50);
+                        textField.setLayoutX(230);
+                        Button leave = new Button("Move Troops");
+                        leave.setMinSize(290, 30);
+                        leave.setLayoutY(40);
+                        Pane hb = new Pane();
+                        hb.getChildren().addAll(label1, textField, leave);
+                        Scene scenes = new Scene(hb);
+                        Stage primaryStage2 = new Stage();
+                        //insert pause until primary stage2 closes
+                        leave.setOnMouseClicked(e -> {
+                            reinforce = Integer.parseInt(textField.getText());
+                            if (reinforce > 0){
+                                primaryStage2.close();
+                            }//IF    
+                        });
+                        
+                        primaryStage2.setTitle("Troop Counter");
+                        primaryStage2.setScene(scenes);
+                        primaryStage2.setMinHeight(60);
+                        primaryStage2.setMinWidth(290);
+                        primaryStage2.setX(0);
+                        primaryStage2.setY(450);
+                        primaryStage2.showAndWait();
+                        
+//------------------------------------------------------------------------------------------------------                    
                     System.out.println(cor[2] +" " + cor[3] + " :)");
                     //have while loop where it doesnt break out until diceBox sends break
                     //try pause code
