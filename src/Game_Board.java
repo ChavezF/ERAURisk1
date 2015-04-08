@@ -22,6 +22,7 @@ import javafx.stage.WindowEvent;
  * @version 1.0
  * @created 25-Feb-2015 03:23:09 PM
  */
+
 public class Game_Board {
 
 	private int reinforce = 3;//int i = 1, 
