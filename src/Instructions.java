@@ -10,6 +10,7 @@
  */
 
 import java.awt.Menu;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextArea;
@@ -21,6 +22,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -99,6 +101,7 @@ public class Instructions extends Menu {
 	public void playGame() {
 
 		pagination = new Pagination(5, 0);
+		pagination.setStyle("-fx-font: 20 courier;" /*  -fx-font-weight: BOLD;*/ + " -fx-base: #0076a3");
 		pagination.setPageFactory(new Callback<Integer, Node>() {
 			@Override
 			public Node call(Integer pageIndex) {
@@ -121,7 +124,7 @@ public class Instructions extends Menu {
 		//Place Pagination Buttons and it's Text Area in AnchorPane
 		AnchorPane.setTopAnchor(pagination, 10.0);
 		AnchorPane.setRightAnchor(pagination, 10.0);
-		AnchorPane.setBottomAnchor(pagination, 10.0);
+		AnchorPane.setBottomAnchor(pagination, 60.0);
 		AnchorPane.setLeftAnchor(pagination, 10.0);
 
 		//Place Play Button in AnchorPane
@@ -131,6 +134,15 @@ public class Instructions extends Menu {
 		//Place Quit Button in AnchorPane
 		AnchorPane.setBottomAnchor(quitBtn, 23.0);
 		AnchorPane.setRightAnchor(quitBtn, 85.0);
+
+		//Give good looking characteristics to buttons
+		playBtn.setTextFill(Color.GOLD);
+		playBtn.setStyle("-fx-font: 20 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");
+		playBtn.setPrefWidth(110);
+
+		quitBtn.setTextFill(Color.GOLD);
+		quitBtn.setStyle("-fx-font: 20 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");
+		quitBtn.setPrefWidth(110);
 
 		//Add Elements to AnchorPane
 		anchor.getChildren().addAll(pagination, playBtn, quitBtn);
