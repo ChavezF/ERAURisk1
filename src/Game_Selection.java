@@ -33,9 +33,9 @@ public class Game_Selection {
 		final Button startNewBtn = new Button("New Game");
 		final Button loadPrevBtn = new Button("Load Game");
 		final Button mainMenuBtn = new Button("Main Menu");
-		
+
 		GridPane pane = new GridPane();		
-		
+
 		startNewBtn.setTextFill(Color.GOLD);
 		startNewBtn.setStyle("-fx-font: 25 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");//#b6e7c9;
 		startNewBtn.setPrefWidth(200);
@@ -45,7 +45,7 @@ public class Game_Selection {
 		mainMenuBtn.setTextFill(Color.GOLD);
 		mainMenuBtn.setStyle("-fx-font: 25 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");
 		mainMenuBtn.setPrefWidth(200);
-		
+
 		//add everything to the GridPane
 		pane.add(startNewBtn, 0, 2);
 		pane.add(loadPrevBtn, 0, 3);
@@ -87,15 +87,15 @@ public class Game_Selection {
 		});
 		loadPrevBtn.setOnAction(e -> {
 			java.io.File file = new java.io.File("gamedata.txt");
-			
+
 			try {
 				Scanner input = new Scanner(file);
 				while (input.hasNextDouble()){
-				for (int i = 0; i<4; i++){
-					for (int j=0; j<8; j++){
-						neo[i][j]=input.nextDouble();
+					for (int i = 0; i<4; i++){
+						for (int j=0; j<8; j++){
+							neo[i][j]=input.nextDouble();
+						}
 					}
-				}
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -105,12 +105,7 @@ public class Game_Selection {
 			board.Playgame(neo);
 			stage.close();
 		});
-		//bruno's mac is dumbs
-		
-		//use FileChooser to select and open a previously saved game
-		/*loadPrevBtn.setOnAction(e -> {FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open Resource File");
-		fileChooser.showOpenDialog(stage);});*/
+
 		mainMenuBtn.setOnAction(e -> { 
 			Menu menu = new Menu();
 			menu.start(stage);

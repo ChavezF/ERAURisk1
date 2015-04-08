@@ -19,13 +19,11 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Menu extends Application {
 
-	//hello
 	//create buttons needed
 	final Button howToBtn = new Button("Instructions");
 	final Button playBtn = new Button("Play!");
@@ -34,13 +32,13 @@ public class Menu extends Application {
 	@Override
 	public void start(Stage stage) {
 
-		//create vBox that contains buttons
+		//create hBox that contains buttons
 		HBox hBox = new HBox(4);
 		hBox.getChildren().addAll(howToBtn, playBtn, quitBtn);
 
 		//create a new GridPane that shall contain vBox
 		GridPane grid = new GridPane();
-//777
+		
 		howToBtn.setTextFill(Color.web("#0076a3"));
 		howToBtn.setStyle("-fx-font: 20 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 		howToBtn.setPrefWidth(350);
@@ -62,7 +60,6 @@ public class Menu extends Application {
 		grid.setHgap(4);
 		grid.setPadding(new Insets(5, 5, 5, 5));
 		grid.setAlignment(Pos.BOTTOM_CENTER);
-		//grid.add(hBox, 43, 35);
 
 		//create stage and scene
 		//put everything together
@@ -74,14 +71,12 @@ public class Menu extends Application {
 		stages.setScene(scene);
 		stages.setResizable(false);
 		
-		//***
 		//Create background image and characteristics
 		BackgroundImage myBI= new BackgroundImage(new Image("RiskMenuImage.jpg",550,356,false,true),
 		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 		          BackgroundSize.DEFAULT);
 		//Set image to the grid
 		grid.setBackground(new Background(myBI));
-		//***
 		
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
