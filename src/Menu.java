@@ -1,5 +1,5 @@
 /**
- * @author Philip
+ * @author Leydi, Bruno
  * @version 1.0
  * @created 25-Feb-2015 03:23:09 PM
  */
@@ -29,6 +29,10 @@ public class Menu extends Application {
 	final Button playBtn = new Button("Play!");
 	final Button quitBtn = new Button("Quit");
 
+	/**
+	 *@author Leydi (Structure), Bruno (Structure and layout)
+	 * @param stage
+	 */
 	@Override
 	public void start(Stage stage) {
 
