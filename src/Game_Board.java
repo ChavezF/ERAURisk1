@@ -53,16 +53,22 @@ public class Game_Board {
 		b1.setMinSize(120, 47);
 		b1.setLayoutY(7);
 		b1.setLayoutX(860);
+		b1.setTextFill(Color.web("#0076a3"));
+		b1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
 		Button s1 = new Button("Save");
 		s1.setMinSize(120, 47);
 		s1.setLayoutY(7);
 		s1.setLayoutX(720);//840
+		s1.setTextFill(Color.web("#0076a3"));
+		s1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
 		e1 = new Button("End Populate");
 		e1.setMinSize(120, 47);
 		e1.setLayoutY(7);
 		e1.setLayoutX(580);//700
+		e1.setTextFill(Color.web("#0076a3"));
+		e1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 		
         Image image = new Image("WorldMap.jpg");
 		ImageView imageView1 = new ImageView(image);
