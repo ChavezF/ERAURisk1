@@ -1,5 +1,5 @@
 /**
- * Author Bruno Malo Torres Trueba
+ * Author Bruno, Fernando
  * Project: Risk
  * Date: March 7, 2015
  * Class: SE300
