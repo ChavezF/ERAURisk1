@@ -27,8 +27,8 @@ public class Game_Board {
 
 	private int reinforce = 3;//int i = 1, 
 	private double [] cor = {0,0,0,0};
-        private double [][] troops = new double[2][2];
-        private int selected = 0;
+	private double [][] troops = new double[2][2];
+	private int selected = 0;
 	private int [][] cord = new int[1][1];
 	Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
 	Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
@@ -69,8 +69,8 @@ public class Game_Board {
 		e1.setLayoutX(580);//700
 		e1.setTextFill(Color.web("#0076a3"));
 		e1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
-		
-        Image image = new Image("WorldMap.jpg");
+
+		Image image = new Image("WorldMap.jpg");
 		ImageView imageView1 = new ImageView(image);
 		imageView1.setFitHeight(700);
 		imageView1.setFitWidth(1000);
@@ -120,9 +120,9 @@ public class Game_Board {
 			}//if 
 			bGround.setStyle(col[(int)neo[3][6]]);
 			turn.setText(col2[(int)neo[3][6]]);
-            selected = 0;
+			selected = 0;
 		}else if((int)neo[3][7] == 3){       //fortification phase
-            reinforce = 3;
+			reinforce = 3;
 			rein.setText("Reinforcements: " + Integer.toString(reinforce));
 			updater(neo);
 			endTurn(neo);
@@ -141,7 +141,7 @@ public class Game_Board {
 			}//if 
 			bGround.setStyle(col[(int)neo[3][6]]);
 			turn.setText(col2[(int)neo[3][6]]);
-			
+
 			//winner call goes here...right Phil????
 
 			neo[3][7] = 1;              //reset to reinforcement phase
@@ -488,694 +488,705 @@ public class Game_Board {
 	}//setPlayer
 
 	public double actions(int row, int column, double [][] neo, Boolean button){
-//-------------------INITIAL DEPLOYMENT--------------------------------------------------------------
-            if ((int)neo[3][7] == 0){     
-                //initial add troops phase
-                if (neo[row][column] == 0){
-                    neo[row][column] = 1;
+		//-------------------INITIAL DEPLOYMENT--------------------------------------------------------------
+		if ((int)neo[3][7] == 0){     
+			//initial add troops phase
 
-                    int n = (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
-                    if (n != 29.0) {
-                        neo[3][7] = 0;
+			/* */		int n = 1 + (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
+			if (n != 35.0) {
+				neo[3][7] = 0;
 
-                        if (neo[3][6] == neo[3][5]) {// If it's the last player's turn
-                            neo[3][6] = 1;			//Restart cycle
+				if (neo[row][column] == 0){
+					neo[row][column] = 1;
+				}else if (neo[row][column] != 0){
+					neo[row][column]++;
+				}
 
-                        }else if ( neo[3][6] == 0){	//If it is player 0
-                            neo[3][6] = 2;			//To avoid repeating player 1 (blue)
 
-                        }else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
-                            neo[3][6]++;
-                        }//if
-                        //Change the color of the bar
-                        String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-                        String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-                        turn.setText(col2[(int)neo[3][6]]);
-                        bGround.setStyle(col[(int)neo[3][6]]);
 
-                        if(neo[3][6] == 1){//Paint yellow but keep continuation of cycle
-                            neo[row][column] = setPlayer(row, column, neo, (int)neo[3][5] );
+				if (neo[3][6] == neo[3][5]) {// If it's the last player's turn
+					neo[3][6] = 1;			//Restart cycle
 
-                        }else {//Paint the rest of the numbers
-                            neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);	
-                        }//if
+				}else if ( neo[3][6] == 0){	//If it is player 0
+					neo[3][6] = 2;			//To avoid repeating player 1 (blue)
 
-                        endTurn(neo);
-                    }else if (n == 29.0){
-                    	neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6]);	
-                    	endTurn(neo);
-                        neo[3][7] = 1;//only once the last troop has been added
-                        e1.setText("End Attack");//only once the last troop has been added
-                    }//if
-                }//if	
-        //-------------------------END INITIAL DEPLOYMENT                
-	//------------------------REINFORCEMENT PHASE--------------------------------------------------------------------------
-            } else if((int)neo[3][7] == 1){                                                  
-                //*****************set this  so that the first turn you have 3 + the number of extra reinforcements from initial phase
-                if(neo[3][6] == player(neo[row][column])){
-                    neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
-                    reinforce --;
-                    rein.setText("Reinforcements: " + Integer.toString(reinforce));
-                    if(reinforce == 0){
-                        neo[3][7] ++;
-                        reinforce = 3;
-                        e1.setText("End Attack");
-                    }//if
-                }//if
-//------------------------END REINFORCEMENT PHASE----------------------------------------------------------------------
-//------------------------ATTACK PHASE---------------------------------------------------------------------------
-            } else if((int)neo[3][7] == 2){                      
-                if (button){
-                	// Attack From America
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][0])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[0][4]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Canada
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][1])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][0]) || (neo[row][column] == neo[0][2]) || (neo[row][column] == neo[0][3]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Alaska
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][2])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[2][4]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Greenland
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][3])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[3][0]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Mexico
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][4])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][0]) || (neo[row][column] == neo[0][5]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Venezuella
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][5])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][4]) || (neo[row][column] == neo[0][6]) || (neo[row][column] == neo[0][7]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Brazil
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][6])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][5]) || (neo[row][column] == neo[0][7]) || (neo[row][column] == neo[1][0]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Argentina
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][7])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][5]) || (neo[row][column] == neo[0][6]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From North Africa
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][0])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][6]) || (neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[3][3]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From South Africa
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][1])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[1][4]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Egypt
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][2])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][3]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From East Africa
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][3])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][4]) || (neo[row][column] == neo[2][6]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Madagascar
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][4])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][3]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From East Australia
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][5])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && (neo[row][column] == neo[1][6])) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From West Australia
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][6])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][5]) || (neo[row][column] == neo[1][7]) || (neo[row][column] == neo[2][1]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From New Guninea
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][7])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][6]) || (neo[row][column] == neo[2][1]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From South Asia
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][0])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][1]) || (neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][3]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Indonesia
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][1])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][6]) || (neo[row][column] == neo[1][7]) || (neo[row][column] == neo[2][0]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From India
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][2])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][0]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][7]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From China
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][3])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][0]) || (neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][5]) || (neo[row][column] == neo[2][7]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Russia
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][4])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][2]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][5]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[2][7]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][2]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Japan
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][5])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][4]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Middle East
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][6])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][7]) || (neo[row][column] == neo[3][2]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Afghanistan
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][7])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][6]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Iceland
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][0])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][3]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][4]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Scandanavia
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][1])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][4]) || (neo[row][column] == neo[3][0]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][3]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From East Europe
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][2])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][2]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][3]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From West Europe
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][3])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][4]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                	// Attack From Britain
-                	if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][4])) {
-                    	troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected = 1;
-                	}
-                	else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[3][0]) || (neo[row][column] == neo[3][3]))) {
-                		troops[selected][0] = row;
-                    	troops[selected][1] = column;
-                    	selected ++;
-                	}
-                	
-                }else{
-                    selected --;
-                }//if
-                if (selected == -1) {
-                    selected = 0;
-                }else if(selected == 2){
-                    cor[2] = troop(neo[(int)troops[0][0]][(int)troops[0][1]]);
-                    cor[3] = troop(neo[(int)troops[1][0]][(int)troops[1][1]]);
-                    Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
-                    cor = diceBox.roll(cor);
-                    //-------------------------------------------------------------------------------------------------------                    
-                    //create a pop-up to get the # of troops to move
-                        Label label1 = new Label("Enter number of troops to move: ");
-                        label1.setLayoutY(5);
-                        label1.setLayoutX(3);
-                        TextField textField = new TextField ();
-                        textField.setMaxWidth(50);
-                        textField.setLayoutX(230);
-                        Button leave = new Button("Move Troops");
-                        leave.setMinSize(290, 30);
-                        leave.setLayoutY(40);
-                        Pane hb = new Pane();
-                        hb.getChildren().addAll(label1, textField, leave);
-                        Scene scenes = new Scene(hb);
-                        Stage primaryStage2 = new Stage();
-                        //insert pause until primary stage2 closes
-                        leave.setOnMouseClicked(e -> {
-                            reinforce = Integer.parseInt(textField.getText());
-                            if (reinforce > 0){
-                                primaryStage2.close();
-                            }//IF    
-                        });
-                        
-                        primaryStage2.setTitle("Troop Counter");
-                        primaryStage2.setScene(scenes);
-                        primaryStage2.setMinHeight(60);
-                        primaryStage2.setMinWidth(290);
-                        primaryStage2.setX(0);
-                        primaryStage2.setY(450);
-                        primaryStage2.showAndWait();
-                        
-//------------------------------------------------------------------------------------------------------                    
-                    System.out.println(cor[2] +" " + cor[3] + " :)");
-                    //have while loop where it doesnt break out until diceBox sends break
-                    //try pause code
-                    neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0],(int)troops[0][1], neo, (int)cor[2]);
-                    neo[(int)troops[1][0]][(int)troops[1][1]] = setTroop((int)troops[1][0],(int)troops[1][1], neo, (int)cor[3]);
-                    System.out.println(cor[2]+ " " + cor[3]);
-                    System.out.println(cor[0] + " " + cor[1]);
-                    selected = 0;
-                    endTurn(neo);
-                }//if
-            	
-                //****************Attack Phase
-                //---->add 1 (to selected) when place is clicked
-                //---->increase font size of selected spot
-                //---->when 2 are selected check if they can attack each other
-                //---->call dice program with both troop amounts
-                //---->set both location with new troop values
-//----------------------------------END ATTACK PHASE----------------------------------------------------------------                
-//----------------------------------FORTIFICATION PHASE---------------------------------------------------------------                        
-            } else if((int)neo[3][7] == 3){                                                  
-                if(player(neo[row][column]) == neo[3][6]){  //if its actually the players spot
-                    troops[selected][0] = row;              //save the row
-                    troops[selected][1] = column;           //save the column
-                    selected ++;                    
-                    if (selected == 2 && (troops[0][0] != troops[1][0] || troops[0][1] != troops[1][1])){
-                        selected = 0;
-                        
-                        //create a pop-up to get the # of troops to move
-                        Label label1 = new Label("Enter number of troops to move: ");
-                        label1.setLayoutY(5);
-                        label1.setLayoutX(3);
-                        TextField textField = new TextField ();
-                        textField.setMaxWidth(50);
-                        textField.setLayoutX(230);
-                        Button leave = new Button("Move Troops");
-                        leave.setMinSize(290, 30);
-                        leave.setLayoutY(40);
-                        Pane hb = new Pane();
-                        hb.getChildren().addAll(label1, textField, leave);
-                        Scene scenes = new Scene(hb);
-                        Stage primaryStage2 = new Stage();
-                        //insert pause until primary stage2 closes
-                        leave.setOnMouseClicked(e -> {
-                            reinforce = Integer.parseInt(textField.getText());
-                            primaryStage2.close();
-                        });
-                        
-                        primaryStage2.setTitle("GUI_Widgets");
-                        primaryStage2.setScene(scenes);
-                        primaryStage2.setMinHeight(60);
-                        primaryStage2.setMinWidth(290);
-                        primaryStage2.showAndWait();
-                        if ((neo[(int)troops[0][0]][(int)troops[0][1]] -1) > reinforce){
-                            neo[(int)troops[1][0]][(int)troops[1][1]] =setTroop((int)troops[1][0], (int)troops[1][1], neo, ((int)neo[(int)troops[1][0]][(int)troops[1][1]] + reinforce));
-                            neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0], (int)troops[0][1], neo, ((int)neo[(int)troops[0][0]][(int)troops[0][1]] - reinforce));
-                        }//if
-                        updater(neo);
-                    }else{
-                        selected = 1;
-                    }//if
-                }//if
-        
-            }//if
- //----------------------------------FORTIFICATION PHASE----------------------------------------------
-			
-		return neo[row][column];
-	}//actions
+				}else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
+					neo[3][6]++;
+				}//if
+				//Change the color of the bar
+				String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+				String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+				turn.setText(col2[(int)neo[3][6]]);
+				bGround.setStyle(col[(int)neo[3][6]]);
 
-	public int player(double territory){
-		return ((int)(10*territory))%10;
-	}//player
+				if(neo[3][6] == 1){//Paint yellow but keep continuation of cycle
+					neo[row][column] = setPlayer(row, column, neo, (int)neo[3][5] );
 
-	public void updater(double[][]neo){
-		america.setText(Integer.toString(troop(neo[0][0])));//america
-		canadia.setText(Integer.toString(troop(neo[0][1])));//canadia
-		alaska.setText(Integer.toString(troop(neo[0][2])));//alaska
-		greenland.setText(Integer.toString(troop(neo[0][3])));//greenland
-		mexico.setText(Integer.toString(troop(neo[0][4])));//Mexico
+				}else {//Paint the rest of the numbers
+					neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);	
+				}//if
 
-		venezuella.setText(Integer.toString(troop(neo[0][5])));//venezuella
-		brazil.setText(Integer.toString(troop(neo[0][6])));//brazil
-		argentina.setText(Integer.toString(troop(neo[0][7])));//argentina
+				endTurn(neo);
+				System.out.println(n);
 
-		nafrica.setText(Integer.toString(troop(neo[1][0])));//nafrica
-		safrica.setText(Integer.toString(troop(neo[1][1])));//safrica
-		egypt.setText(Integer.toString(troop(neo[1][2])));//egypt
-		eafrica.setText(Integer.toString(troop(neo[1][3])));//eafrica
-		madag.setText(Integer.toString(troop(neo[1][4])));//madag
 
-		eaustralia.setText(Integer.toString(troop(neo[1][5])));//eaustralia
-		waustralia.setText(Integer.toString(troop(neo[1][6])));//waustralia
-		nguninea.setText(Integer.toString(troop(neo[1][7])));//nguninea
 
-		sasia.setText(Integer.toString(troop(neo[2][0])));//sasia
-		indonesia.setText(Integer.toString(troop(neo[2][1])));//indonesia
-		india.setText(Integer.toString(troop(neo[2][2])));//india
-		china.setText(Integer.toString(troop(neo[2][3])));//china
-		russia.setText(Integer.toString(troop(neo[2][4])));//russia
-		japan.setText(Integer.toString(troop(neo[2][5])));//japan
-		meast.setText(Integer.toString(troop(neo[2][6])));//meast
-		afghan.setText(Integer.toString(troop(neo[2][7])));//afghan
+			}else if (neo[3][5] == 35) {
+				neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6]);	
+				endTurn(neo);
+				neo[3][7] = 1;//only once the last troop has been added
+				e1.setText("End Attack");//only once the last troop has been added
+			}//if
 
-		ireland.setText(Integer.toString(troop(neo[3][0])));//ireland
-		scandanavia.setText(Integer.toString(troop(neo[3][1])));//scandanavia
-		eeurope.setText(Integer.toString(troop(neo[3][2])));//eeurope
-		weurope.setText(Integer.toString(troop(neo[3][3])));//weurope
-		britain.setText(Integer.toString(troop(neo[3][4])));//britain
+			//-------------------------END INITIAL DEPLOYMENT                
+			//------------------------REINFORCEMENT PHASE--------------------------------------------------------------------------
 
-	}//update
+			} else if((int)neo[3][7] == 1){                                                  
+				//*****************set this  so that the first turn you have 3 + the number of extra reinforcements from initial phase
+				if(neo[3][6] == player(neo[row][column])){
+					neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
+					reinforce --;
+					rein.setText("Reinforcements: " + Integer.toString(reinforce));
+					if(reinforce == 0){
+						neo[3][7] ++;
+						reinforce = 3;
+						e1.setText("End Attack");
+					}//if
+				}//if
+				//------------------------END REINFORCEMENT PHASE----------------------------------------------------------------------
+				//------------------------ATTACK PHASE---------------------------------------------------------------------------
+			} else if((int)neo[3][7] == 2){                      
+				if (button){
+					// Attack From America
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][0])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[0][4]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
 
-	public void save(double [][]neo){
+					// Attack From Canada
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][1])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][0]) || (neo[row][column] == neo[0][2]) || (neo[row][column] == neo[0][3]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
 
-		java.io.File Riskfile = new java.io.File("gamedata.txt");
+					// Attack From Alaska
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][2])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[2][4]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
 
-		try {
-			java.io.PrintWriter output = new java.io.PrintWriter(Riskfile);
-			for (int k = 0; k < 4; k++){
-				for (int l = 0; l < 8; l++){
-					output.print(neo[k][l] + " ");
+					// Attack From Greenland
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][3])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[3][0]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Mexico
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][4])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][0]) || (neo[row][column] == neo[0][5]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Venezuella
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][5])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][4]) || (neo[row][column] == neo[0][6]) || (neo[row][column] == neo[0][7]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Brazil
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][6])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][5]) || (neo[row][column] == neo[0][7]) || (neo[row][column] == neo[1][0]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Argentina
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][7])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][5]) || (neo[row][column] == neo[0][6]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From North Africa
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][0])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][6]) || (neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[3][3]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From South Africa
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][1])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[1][4]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Egypt
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][2])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][3]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From East Africa
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][3])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][4]) || (neo[row][column] == neo[2][6]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Madagascar
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][4])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][3]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From East Australia
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][5])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && (neo[row][column] == neo[1][6])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From West Australia
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][6])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][5]) || (neo[row][column] == neo[1][7]) || (neo[row][column] == neo[2][1]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From New Guninea
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][7])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][6]) || (neo[row][column] == neo[2][1]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From South Asia
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][0])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][1]) || (neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][3]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Indonesia
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][1])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][6]) || (neo[row][column] == neo[1][7]) || (neo[row][column] == neo[2][0]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From India
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][2])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][0]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][7]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From China
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][3])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][0]) || (neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][5]) || (neo[row][column] == neo[2][7]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Russia
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][4])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][2]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][5]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[2][7]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][2]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Japan
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][5])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][4]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Middle East
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][6])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][7]) || (neo[row][column] == neo[3][2]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Afghanistan
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][7])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][6]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Iceland
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][0])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][3]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][4]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Scandanavia
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][1])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][4]) || (neo[row][column] == neo[3][0]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][3]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From East Europe
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][2])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][2]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][3]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From West Europe
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][3])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][4]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+					// Attack From Britain
+					if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][4])) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected = 1;
+					}
+					else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[3][0]) || (neo[row][column] == neo[3][3]))) {
+						troops[selected][0] = row;
+						troops[selected][1] = column;
+						selected ++;
+					}
+
+				}else{
+					selected --;
+				}//if
+				if (selected == -1) {
+					selected = 0;
+				}else if(selected == 2){
+					cor[2] = troop(neo[(int)troops[0][0]][(int)troops[0][1]]);
+					cor[3] = troop(neo[(int)troops[1][0]][(int)troops[1][1]]);
+					Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
+					cor = diceBox.roll(cor);
+					//-------------------------------------------------------------------------------------------------------                    
+					//create a pop-up to get the # of troops to move
+					Label label1 = new Label("Enter number of troops to move: ");
+					label1.setLayoutY(5);
+					label1.setLayoutX(3);
+					TextField textField = new TextField ();
+					textField.setMaxWidth(50);
+					textField.setLayoutX(230);
+					Button leave = new Button("Move Troops");
+					leave.setMinSize(290, 30);
+					leave.setLayoutY(40);
+					Pane hb = new Pane();
+					hb.getChildren().addAll(label1, textField, leave);
+					Scene scenes = new Scene(hb);
+					Stage primaryStage2 = new Stage();
+					//insert pause until primary stage2 closes
+					leave.setOnMouseClicked(e -> {
+						reinforce = Integer.parseInt(textField.getText());
+						if (reinforce > 0){
+							primaryStage2.close();
+						}//IF    
+					});
+
+					primaryStage2.setTitle("Troop Counter");
+					primaryStage2.setScene(scenes);
+					primaryStage2.setMinHeight(60);
+					primaryStage2.setMinWidth(290);
+					primaryStage2.setX(0);
+					primaryStage2.setY(450);
+					primaryStage2.showAndWait();
+
+					//------------------------------------------------------------------------------------------------------                    
+					System.out.println(cor[2] +" " + cor[3] + " :)");
+					//have while loop where it doesnt break out until diceBox sends break
+					//try pause code
+					neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0],(int)troops[0][1], neo, (int)cor[2]);
+					neo[(int)troops[1][0]][(int)troops[1][1]] = setTroop((int)troops[1][0],(int)troops[1][1], neo, (int)cor[3]);
+					System.out.println(cor[2]+ " " + cor[3]);
+					System.out.println(cor[0] + " " + cor[1]);
+					selected = 0;
+					endTurn(neo);
+				}//if
+
+				//****************Attack Phase
+				//---->add 1 (to selected) when place is clicked
+				//---->increase font size of selected spot
+				//---->when 2 are selected check if they can attack each other
+				//---->call dice program with both troop amounts
+				//---->set both location with new troop values
+				//----------------------------------END ATTACK PHASE----------------------------------------------------------------                
+				//----------------------------------FORTIFICATION PHASE---------------------------------------------------------------                        
+			} else if((int)neo[3][7] == 3){                                                  
+				if(player(neo[row][column]) == neo[3][6]){  //if its actually the players spot
+					troops[selected][0] = row;              //save the row
+					troops[selected][1] = column;           //save the column
+					selected ++;                    
+					if (selected == 2 && (troops[0][0] != troops[1][0] || troops[0][1] != troops[1][1])){
+						selected = 0;
+
+						//create a pop-up to get the # of troops to move
+						Label label1 = new Label("Enter number of troops to move: ");
+						label1.setLayoutY(5);
+						label1.setLayoutX(3);
+						TextField textField = new TextField ();
+						textField.setMaxWidth(50);
+						textField.setLayoutX(230);
+						Button leave = new Button("Move Troops");
+						leave.setMinSize(290, 30);
+						leave.setLayoutY(40);
+						Pane hb = new Pane();
+						hb.getChildren().addAll(label1, textField, leave);
+						Scene scenes = new Scene(hb);
+						Stage primaryStage2 = new Stage();
+						//insert pause until primary stage2 closes
+						leave.setOnMouseClicked(e -> {
+							reinforce = Integer.parseInt(textField.getText());
+							primaryStage2.close();
+						});
+
+						primaryStage2.setTitle("GUI_Widgets");
+						primaryStage2.setScene(scenes);
+						primaryStage2.setMinHeight(60);
+						primaryStage2.setMinWidth(290);
+						primaryStage2.showAndWait();
+						if ((neo[(int)troops[0][0]][(int)troops[0][1]] -1) > reinforce){
+							neo[(int)troops[1][0]][(int)troops[1][1]] =setTroop((int)troops[1][0], (int)troops[1][1], neo, ((int)neo[(int)troops[1][0]][(int)troops[1][1]] + reinforce));
+							neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0], (int)troops[0][1], neo, ((int)neo[(int)troops[0][0]][(int)troops[0][1]] - reinforce));
+						}//if
+						updater(neo);
+					}else{
+						selected = 1;
+					}//if
+				}//if
+
+			}//if
+			//----------------------------------FORTIFICATION PHASE----------------------------------------------
+
+			return neo[row][column];
+		}//actions
+
+		public int player(double territory){
+			return ((int)(10*territory))%10;
+		}//player
+
+		public void updater(double[][]neo){
+			america.setText(Integer.toString(troop(neo[0][0])));//america
+			canadia.setText(Integer.toString(troop(neo[0][1])));//canadia
+			alaska.setText(Integer.toString(troop(neo[0][2])));//alaska
+			greenland.setText(Integer.toString(troop(neo[0][3])));//greenland
+			mexico.setText(Integer.toString(troop(neo[0][4])));//Mexico
+
+			venezuella.setText(Integer.toString(troop(neo[0][5])));//venezuella
+			brazil.setText(Integer.toString(troop(neo[0][6])));//brazil
+			argentina.setText(Integer.toString(troop(neo[0][7])));//argentina
+
+			nafrica.setText(Integer.toString(troop(neo[1][0])));//nafrica
+			safrica.setText(Integer.toString(troop(neo[1][1])));//safrica
+			egypt.setText(Integer.toString(troop(neo[1][2])));//egypt
+			eafrica.setText(Integer.toString(troop(neo[1][3])));//eafrica
+			madag.setText(Integer.toString(troop(neo[1][4])));//madag
+
+			eaustralia.setText(Integer.toString(troop(neo[1][5])));//eaustralia
+			waustralia.setText(Integer.toString(troop(neo[1][6])));//waustralia
+			nguninea.setText(Integer.toString(troop(neo[1][7])));//nguninea
+
+			sasia.setText(Integer.toString(troop(neo[2][0])));//sasia
+			indonesia.setText(Integer.toString(troop(neo[2][1])));//indonesia
+			india.setText(Integer.toString(troop(neo[2][2])));//india
+			china.setText(Integer.toString(troop(neo[2][3])));//china
+			russia.setText(Integer.toString(troop(neo[2][4])));//russia
+			japan.setText(Integer.toString(troop(neo[2][5])));//japan
+			meast.setText(Integer.toString(troop(neo[2][6])));//meast
+			afghan.setText(Integer.toString(troop(neo[2][7])));//afghan
+
+			ireland.setText(Integer.toString(troop(neo[3][0])));//ireland
+			scandanavia.setText(Integer.toString(troop(neo[3][1])));//scandanavia
+			eeurope.setText(Integer.toString(troop(neo[3][2])));//eeurope
+			weurope.setText(Integer.toString(troop(neo[3][3])));//weurope
+			britain.setText(Integer.toString(troop(neo[3][4])));//britain
+
+		}//update
+
+		public void save(double [][]neo){
+
+			java.io.File Riskfile = new java.io.File("gamedata.txt");
+
+			try {
+				java.io.PrintWriter output = new java.io.PrintWriter(Riskfile);
+				for (int k = 0; k < 4; k++){
+					for (int l = 0; l < 8; l++){
+						output.print(neo[k][l] + " ");
+					}//for
+					output.print("\n");
 				}//for
-				output.print("\n");
-			}//for
-			output.close();
-			System.exit(1);
-		} catch (Exception e2){
-			e2.printStackTrace();
-		}//catch
-	}//save
+				output.close();
+				System.exit(1);
+			} catch (Exception e2){
+				e2.printStackTrace();
+			}//catch
+		}//save
 
-	public void endTurn(double [][] neo){
+		public void endTurn(double [][] neo){
 
-		//-------------------Properties----------------------------
-		turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		turn.setFill(Color.WHITE);
-		rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		rein.setFill(Color.WHITE);
+			//-------------------Properties----------------------------
+			turn.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			turn.setFill(Color.WHITE);
+			rein.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			rein.setFill(Color.WHITE);
 
-		Color[] ColorArray = {Color.WHITE, Color.BLUEVIOLET, Color.GREEN, Color.RED, Color.YELLOW};
-		america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		america.setFill(ColorArray[player(neo[0][0])]);
-		canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		canadia.setFill(ColorArray[player(neo[0][1])]);
-		alaska.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		alaska.setFill(ColorArray[player(neo[0][2])]);
-		greenland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		greenland.setFill(ColorArray[player(neo[0][3])]);
-		mexico.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		mexico.setFill(ColorArray[player(neo[0][4])]);
-		venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		venezuella.setFill(ColorArray[player(neo[0][5])]);
-		brazil.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		brazil.setFill(ColorArray[player(neo[0][6])]);
-		argentina.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		argentina.setFill(ColorArray[player(neo[0][7])]);
-		nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		nafrica.setFill(ColorArray[player(neo[1][0])]);
-		safrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		safrica.setFill(ColorArray[player(neo[1][1])]);
-		eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		eafrica.setFill(ColorArray[player(neo[1][3])]);
-		egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		egypt.setFill(ColorArray[player(neo[1][2])]);
-		madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		madag.setFill(ColorArray[player(neo[1][4])]);
-		eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		eaustralia.setFill(ColorArray[player(neo[1][5])]);
-		waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		waustralia.setFill(ColorArray[player(neo[1][6])]);
-		nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		nguninea.setFill(ColorArray[player(neo[1][7])]);
-		sasia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		sasia.setFill(ColorArray[player(neo[2][0])]);
-		indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		indonesia.setFill(ColorArray[player(neo[2][1])]);
-		india.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		india.setFill(ColorArray[player(neo[2][2])]);
-		china.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		china.setFill(ColorArray[player(neo[2][3])]);
-		russia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		russia.setFill(ColorArray[player(neo[2][4])]);
-		japan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		japan.setFill(ColorArray[player(neo[2][5])]);
-		meast.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		meast.setFill(ColorArray[player(neo[2][6])]);
-		afghan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		afghan.setFill(ColorArray[player(neo[2][7])]);
-		ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		ireland.setFill(ColorArray[player(neo[3][0])]);
-		scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		scandanavia.setFill(ColorArray[player(neo[3][1])]);
-		eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		eeurope.setFill(ColorArray[player(neo[3][2])]);
-		weurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		weurope.setFill(ColorArray[player(neo[3][3])]);
-		britain.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-		britain.setFill(ColorArray[player(neo[3][4])]);
+			Color[] ColorArray = {Color.WHITE, Color.BLUEVIOLET, Color.GREEN, Color.RED, Color.YELLOW};
+			america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			america.setFill(ColorArray[player(neo[0][0])]);
+			canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			canadia.setFill(ColorArray[player(neo[0][1])]);
+			alaska.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			alaska.setFill(ColorArray[player(neo[0][2])]);
+			greenland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			greenland.setFill(ColorArray[player(neo[0][3])]);
+			mexico.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			mexico.setFill(ColorArray[player(neo[0][4])]);
+			venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			venezuella.setFill(ColorArray[player(neo[0][5])]);
+			brazil.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			brazil.setFill(ColorArray[player(neo[0][6])]);
+			argentina.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			argentina.setFill(ColorArray[player(neo[0][7])]);
+			nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			nafrica.setFill(ColorArray[player(neo[1][0])]);
+			safrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			safrica.setFill(ColorArray[player(neo[1][1])]);
+			eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			eafrica.setFill(ColorArray[player(neo[1][3])]);
+			egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			egypt.setFill(ColorArray[player(neo[1][2])]);
+			madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			madag.setFill(ColorArray[player(neo[1][4])]);
+			eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			eaustralia.setFill(ColorArray[player(neo[1][5])]);
+			waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			waustralia.setFill(ColorArray[player(neo[1][6])]);
+			nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			nguninea.setFill(ColorArray[player(neo[1][7])]);
+			sasia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			sasia.setFill(ColorArray[player(neo[2][0])]);
+			indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			indonesia.setFill(ColorArray[player(neo[2][1])]);
+			india.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			india.setFill(ColorArray[player(neo[2][2])]);
+			china.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			china.setFill(ColorArray[player(neo[2][3])]);
+			russia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			russia.setFill(ColorArray[player(neo[2][4])]);
+			japan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			japan.setFill(ColorArray[player(neo[2][5])]);
+			meast.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			meast.setFill(ColorArray[player(neo[2][6])]);
+			afghan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			afghan.setFill(ColorArray[player(neo[2][7])]);
+			ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			ireland.setFill(ColorArray[player(neo[3][0])]);
+			scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			scandanavia.setFill(ColorArray[player(neo[3][1])]);
+			eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			eeurope.setFill(ColorArray[player(neo[3][2])]);
+			weurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			weurope.setFill(ColorArray[player(neo[3][3])]);
+			britain.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+			britain.setFill(ColorArray[player(neo[3][4])]);
 
-	}//endTurn
+		}//endTurn
 
-	public void initializeProperties(double [][] neo){
-		//initialize countries
-		america = new Text(122,216,"0");//america
-		canadia = new Text(134,150,"0");//canadia
-		alaska = new Text(60,120,"0");//alaska
-		greenland = new Text(330,90,"0");//greenland
-		mexico = new Text(100,295,"0");//Mexico
+		public void initializeProperties(double [][] neo){
+			//initialize countries
+			america = new Text(122,216,"0");//america
+			canadia = new Text(134,150,"0");//canadia
+			alaska = new Text(60,120,"0");//alaska
+			greenland = new Text(330,90,"0");//greenland
+			mexico = new Text(100,295,"0");//Mexico
 
-		venezuella = new Text(205,475,"0");//venezuella
-		brazil = new Text(235,405,"0");//brazil
-		argentina = new Text(170,385,"0");//argentina
+			venezuella = new Text(205,475,"0");//venezuella
+			brazil = new Text(235,405,"0");//brazil
+			argentina = new Text(170,385,"0");//argentina
 
-		nafrica = new Text(400,295,"0");//nafrica
-		safrica = new Text(470,420,"0");//safrica
-		egypt = new Text(480,295,"0");//egypt
-		eafrica = new Text(536,348,"0");//eafrica
-		madag = new Text(545,445,"0");//madag
+			nafrica = new Text(400,295,"0");//nafrica
+			safrica = new Text(470,420,"0");//safrica
+			egypt = new Text(480,295,"0");//egypt
+			eafrica = new Text(536,348,"0");//eafrica
+			madag = new Text(545,445,"0");//madag
 
-		eaustralia = new Text(907,565,"0");//eaustralia
-		waustralia = new Text(800,470,"0");//waustralia
-		nguninea = new Text(833,395,"0");//nguninea
+			eaustralia = new Text(907,565,"0");//eaustralia
+			waustralia = new Text(800,470,"0");//waustralia
+			nguninea = new Text(833,395,"0");//nguninea
 
-		sasia = new Text(718,314,"0");//sasia
-		indonesia = new Text(750,370,"0");//indonesia
-		india = new Text(647,278,"0");//india
-		china = new Text(700,220,"0");//china
-		russia = new Text(640,128,"0");//russia
-		japan = new Text(820,233,"0");//japan
-		meast = new Text(538,250,"0");//meast
-		afghan = new Text(595,200,"0");//afghan
+			sasia = new Text(718,314,"0");//sasia
+			indonesia = new Text(750,370,"0");//indonesia
+			india = new Text(647,278,"0");//india
+			china = new Text(700,220,"0");//china
+			russia = new Text(640,128,"0");//russia
+			japan = new Text(820,233,"0");//japan
+			meast = new Text(538,250,"0");//meast
+			afghan = new Text(595,200,"0");//afghan
 
-		ireland = new Text(390,108,"0");//ireland
-		scandanavia = new Text(447,127,"0");//scandanavia
-		eeurope = new Text(480,180,"0");//eeurope
-		weurope = new Text(423,180,"0");//weurope
-		britain = new Text(370,169,"0");//britain
+			ireland = new Text(390,108,"0");//ireland
+			scandanavia = new Text(447,127,"0");//scandanavia
+			eeurope = new Text(480,180,"0");//eeurope
+			weurope = new Text(423,180,"0");//weurope
+			britain = new Text(370,169,"0");//britain
 
-		turn = new Text(10,39,"Turn: Blue");
-		rein = new Text(200,39, "Reinforcements: "+ Integer.toString(reinforce));
+			turn = new Text(10,39,"Turn: Blue");
+			rein = new Text(200,39, "Reinforcements: "+ Integer.toString(reinforce));
 
-		endTurn(neo);
+			endTurn(neo);
 
-	}//initializeProperties
-}//Game_Board				
+		}//initializeProperties
+	}//Game_Board				
