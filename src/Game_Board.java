@@ -45,27 +45,27 @@ public class Game_Board {
 		initializeProperties(neo);
 
 		bGround = new Button();
-		bGround.setMinSize(995, 47);
-		bGround.setLayoutY(7);
+		bGround.setMinSize(999, 48);
+		bGround.setLayoutY(1);
 		bGround.setStyle("-fx-background-color: #0033CC;");
 
 		Button b1 = new Button("Quit");
-		b1.setMinSize(120, 47);
-		b1.setLayoutY(7);
+		b1.setMinSize(120, 48);
+		b1.setLayoutY(1);
 		b1.setLayoutX(860);
 		b1.setTextFill(Color.web("#0076a3"));
 		b1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
 		Button s1 = new Button("Save");
-		s1.setMinSize(120, 47);
-		s1.setLayoutY(7);
+		s1.setMinSize(120, 48);
+		s1.setLayoutY(1);
 		s1.setLayoutX(720);//840
 		s1.setTextFill(Color.web("#0076a3"));
 		s1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
 		e1 = new Button("End Populate");
-		e1.setMinSize(120, 47);
-		e1.setLayoutY(7);
+		e1.setMinSize(120, 48);
+		e1.setLayoutY(1);
 		e1.setLayoutX(580);//700
 		e1.setTextFill(Color.web("#0076a3"));
 		e1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
@@ -126,7 +126,7 @@ public class Game_Board {
 			rein.setText("Reinforcements: " + Integer.toString(reinforce));
 			updater(neo);
 			endTurn(neo);
-			e1.setText("Reinforce Phase");
+			e1.setText("Reinforce");
 			String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
 			String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
 			if (neo[3][6]++ == neo[3][5]){
@@ -1141,11 +1141,11 @@ public class Game_Board {
 		canadia = new Text(134,150,"0");//canadia
 		alaska = new Text(60,120,"0");//alaska
 		greenland = new Text(330,90,"0");//greenland
-		mexico = new Text(110,295,"0");//Mexico
+		mexico = new Text(100,295,"0");//Mexico
 
-		venezuella = new Text(220,450,"0");//venezuella
-		brazil = new Text(245,400,"0");//brazil
-		argentina = new Text(185,375,"0");//argentina
+		venezuella = new Text(205,475,"0");//venezuella
+		brazil = new Text(235,405,"0");//brazil
+		argentina = new Text(170,385,"0");//argentina
 
 		nafrica = new Text(400,295,"0");//nafrica
 		safrica = new Text(470,420,"0");//safrica
@@ -1153,7 +1153,7 @@ public class Game_Board {
 		eafrica = new Text(536,348,"0");//eafrica
 		madag = new Text(545,445,"0");//madag
 
-		eaustralia = new Text(903,558,"0");//eaustralia
+		eaustralia = new Text(907,565,"0");//eaustralia
 		waustralia = new Text(800,470,"0");//waustralia
 		nguninea = new Text(833,395,"0");//nguninea
 
