@@ -28,8 +28,11 @@ public class Game_Board {
 	private int reinforce = 3;//int i = 1, 
 	private double [] cor = {0,0,0,0};
 	private double [][] troops = new double[2][2];
+	private double [][] atkCor = new double[1][2];
 	private int selected = 0;
 	private int [][] cord = new int[1][1];
+	private String attacker;
+	private String defender;
 	Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
 	Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
 	Text sasia, indonesia, india, china, russia, japan, meast,afghan;
@@ -487,6 +490,13 @@ public class Game_Board {
 		return (double)troops + (double)newPlayer/10;
 	}//setPlayer
 
+	public int attack(int row, int column, String attacker, String defender){
+		troops[1][0] = row;
+		troops[1][1] = column;
+		System.out.println(attacker + " -> " + defender);
+		return selected = 2;
+	}//attack
+
 	public double actions(int row, int column, double [][] neo, Boolean button){
 		//-------------------INITIAL DEPLOYMENT--------------------------------------------------------------
 		if ((int)neo[3][7] == 0){     
@@ -556,354 +566,508 @@ public class Game_Board {
 			//------------------------ATTACK PHASE---------------------------------------------------------------------------
 		} else if((int)neo[3][7] == 2){                      
 			if (button){
-				// Attack From America
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][0])) {
+
+				// Attacker Selected
+				if((selected == 0) && (player(neo[row][column]) == neo[3][6])) {
 					troops[selected][0] = row;
 					troops[selected][1] = column;
+					atkCor[0][0] = row;
+					atkCor[0][1] = column;
 					selected = 1;
 				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[0][4]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
 
-				// Attack From Canada
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][1])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][0]) || (neo[row][column] == neo[0][2]) || (neo[row][column] == neo[0][3]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+				// Defender Selected
+				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6])) {
 
-				// Attack From Alaska
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][2])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[2][4]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From America
+					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 0)) {
+						if ((row == 0) && (column == 1)) {
+							attack(row, column, attacker = "America", defender = "Canada");
+						}
+						else if ((row == 0) && (column == 4)) {
+							attack(row, column, attacker = "America", defender = "Mexico");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Greenland
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][3])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][1]) || (neo[row][column] == neo[3][0]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Canada
+					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 1)) {
+						if ((row == 0) && (column == 0)) {
+							attack(row, column, attacker = "Canada", defender = "America");
+						}
+						else if ((row == 0) && (column == 2)) {
+							attack(row, column, attacker = "Canada", defender = "Alaska");
+						}
+						else if ((row == 0) && (column == 3)) {
+							attack(row, column, attacker = "Canada", defender = "Greenland");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Mexico
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][4])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][0]) || (neo[row][column] == neo[0][5]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Alaska
+					if ((atkCor[0][0] == 0.0) && (atkCor[0][1] == 2.0)) {
+						if ((row == 0) && (column == 1)) {
+							attack(row, column, attacker = "Alaska", defender = "Canada");
+						}
+						else if ((row == 2) && (column == 4)) {
+							attack(row, column, attacker = "Alaska", defender = "Russia");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Venezuella
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][5])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][4]) || (neo[row][column] == neo[0][6]) || (neo[row][column] == neo[0][7]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Greenland
+					if ((atkCor[0][0] == 0.0) && (atkCor[0][1] == 3.0)) {
+						if ((row == 0) && (column == 1)) {
+							attack(row, column, attacker = "Greenland", defender = "Canada");
+						}
+						else if ((row == 3) && (column == 0)) {
+							attack(row, column, attacker = "Greenland", defender = "Iceland");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Brazil
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][6])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][5]) || (neo[row][column] == neo[0][7]) || (neo[row][column] == neo[1][0]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Mexico
+					if ((atkCor[0][0] == 0.0) && (atkCor[0][1] == 4.0)) {
+						if ((row == 0) && (column == 0)) {
+							attack(row, column, attacker = "Mexico", defender = "America");
+						}
+						else if ((row == 0) && (column == 5)) {
+							attack(row, column, attacker = "Mexico", defender = "Venezuela");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Argentina
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[0][7])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][5]) || (neo[row][column] == neo[0][6]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Venezuela
+					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 5)) {
+						if ((row == 0) && (column == 4)) {
+							attack(row, column, attacker = "Venezuela", defender = "Mexico");
+						}
+						else if ((row == 0) && (column == 6)) {
+							attack(row, column, attacker = "Venezuela", defender = "Brazil");
+						}
+						else if ((row == 0) && (column == 7)) {
+							attack(row, column, attacker = "Venezuela", defender = "Argentina");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From North Africa
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][0])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][6]) || (neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[3][3]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Brazil
+					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 6)) {
+						if ((row == 0) && (column == 5)) {
+							attack(row, column, attacker = "Brazil", defender = "Venezuela");
+						}
+						else if ((row == 0) && (column == 7)) {
+							attack(row, column, attacker = "Brazil", defender = "Argentina");
+						}
+						else if ((row == 1) && (column == 0)) {
+							attack(row, column, attacker = "Brazil", defender = "North Africa");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From South Africa
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][1])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[1][4]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Argentina
+					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 7)) {
+						if ((row == 0) && (column == 5)) {
+							attack(row, column, attacker = "Argentina", defender = "Venezuela");
+						}
+						else if ((row == 0) && (column == 6)) {
+							attack(row, column, attacker = "Argentina", defender = "Brazil");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Egypt
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][2])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][3]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From North Africa
+					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 0)) {
+						if ((row == 0) && (column == 6)) {
+							attack(row, column, attacker = "North Africa", defender = "Brazil");
+						}
+						else if ((row == 1) && (column == 1)) {
+							attack(row, column, attacker = "North Africa", defender = "South Africa");
+						}
+						else if ((row == 1) && (column == 2)) {
+							attack(row, column, attacker = "North Africa", defender = "Egypt");
+						}
+						else if ((row == 3) && (column == 3)) {
+							attack(row, column, attacker = "North Africa", defender = "West Europe");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From East Africa
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][3])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][4]) || (neo[row][column] == neo[2][6]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From South Africa
+					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 1)) {
+						if ((row == 1) && (column == 0)) {
+							attack(row, column, attacker = "South Africa", defender = "North Africa");
+						}
+						else if ((row == 1) && (column == 2)) {
+							attack(row, column, attacker = "South Africa", defender = "Egypt");
+						}
+						else if ((row == 1) && (column == 3)) {
+							attack(row, column, attacker = "South Africa", defender = "East Africa");
+						}
+						else if ((row == 1) && (column == 4)) {
+							attack(row, column, attacker = "South Africa", defender = "Madagascar");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Madagascar
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][4])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][1]) || (neo[row][column] == neo[1][3]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Egypt
+					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 2)) {
+						if ((row == 1) && (column == 0)) {
+							attack(row, column, attacker = "Egypt", defender = "North Africa");
+						}
+						else if ((row == 1) && (column == 1)) {
+							attack(row, column, attacker = "Egypt", defender = "South Africa");
+						}
+						else if ((row == 1) && (column == 3)) {
+							attack(row, column, attacker = "Egypt", defender = "East Africa");
+						}
+						else if ((row == 2) && (column == 6)) {
+							attack(row, column, attacker = "Egypt", defender = "Middle East");
+						}
+						else if ((row == 3) && (column == 2)) {
+							attack(row, column, attacker = "Egypt", defender = "East Europe");
+						}
+						else if ((row == 3) && (column == 3)) {
+							attack(row, column, attacker = "Egypt", defender = "West Europe");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From East Australia
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][5])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && (neo[row][column] == neo[1][6])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From East Africa
+					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 3)) {
+						if ((row == 1) && (column == 1)) {
+							attack(row, column, attacker = "East Africa", defender = "South Africa");
+						}
+						else if ((row == 1) && (column == 2)) {
+							attack(row, column, attacker = "East Africa", defender = "Egypt");
+						}
+						else if ((row == 1) && (column == 4)) {
+							attack(row, column, attacker = "East Africa", defender = "Madagascar");
+						}
+						else if ((row == 2) && (column == 6)) {
+							attack(row, column, attacker = "East Africa", defender = "Middle East");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From West Australia
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][6])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][5]) || (neo[row][column] == neo[1][7]) || (neo[row][column] == neo[2][1]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Madagascar
+					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 4)) {
+						if ((row == 1) && (column == 1)) {
+							attack(row, column, attacker = "Madagascar", defender = "South Africa");
+						}
+						else if ((row == 1) && (column == 3)) {
+							attack(row, column, attacker = "Madagascar", defender = "East Africa");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From New Guninea
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[1][7])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][6]) || (neo[row][column] == neo[2][1]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From East Australia
+					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 5)) {
+						if ((row == 1) && (column == 6)) {
+							attack(row, column, attacker = "East Australia", defender = "West Australia");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From South Asia
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][0])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][1]) || (neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][3]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From West Australia
+					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 6)) {
+						if ((row == 1) && (column == 5)) {
+							attack(row, column, attacker = "West Australia", defender = "East Australia");
+						}
+						else if ((row == 1) && (column == 7)) {
+							attack(row, column, attacker = "West Australia", defender = "New Guninea");
+						}
+						else if ((row == 2) && (column == 1)) {
+							attack(row, column, attacker = "West Australia", defender = "Indonesia");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Indonesia
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][1])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][6]) || (neo[row][column] == neo[1][7]) || (neo[row][column] == neo[2][0]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From New Guninea
+					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 7)) {
+						if ((row == 1) && (column == 6)) {
+							attack(row, column, attacker = "New Guninea", defender = "West Australia");
+						}
+						else if ((row == 2) && (column == 1)) {
+							attack(row, column, attacker = "New Guninea", defender = "Indonesia");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From India
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][2])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][0]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][7]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From South Asia
+					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 0)) {
+						if ((row == 2) && (column == 1)) {
+							attack(row, column, attacker = "South Asia", defender = "Indonesia");
+						}
+						else if ((row == 2) && (column == 2)) {
+							attack(row, column, attacker = "South Asia", defender = "India");
+						}
+						else if ((row == 2) && (column == 3)) {
+							attack(row, column, attacker = "South Asia", defender = "China");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From China
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][3])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][0]) || (neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][5]) || (neo[row][column] == neo[2][7]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Indonesia
+					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 1)) {
+						if ((row == 1) && (column == 6)) {
+							attack(row, column, attacker = "Indonesia", defender = "West Australia");
+						}
+						else if ((row == 1) && (column == 7)) {
+							attack(row, column, attacker = "Indonesia", defender = "New Guninea");
+						}
+						else if ((row == 2) && (column == 0)) {
+							attack(row, column, attacker = "Indonesia", defender = "South Asia");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Russia
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][4])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][2]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][5]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[2][7]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][2]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From India
+					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 2)) {
+						if ((row == 2) && (column == 0)) {
+							attack(row, column, attacker = "India", defender = "South Asia");
+						}
+						else if ((row == 2) && (column == 3)) {
+							attack(row, column, attacker = "India", defender = "China");
+						}
+						else if ((row == 2) && (column == 7)) {
+							attack(row, column, attacker = "India", defender = "Afghanistan");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Japan
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][5])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][4]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From China
+					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 3)) {
+						if ((row == 2) && (column == 0)) {
+							attack(row, column, attacker = "China", defender = "South Asia");
+						}
+						else if ((row == 2) && (column == 2)) {
+							attack(row, column, attacker = "China", defender = "India");
+						}
+						else if ((row == 2) && (column == 4)) {
+							attack(row, column, attacker = "China", defender = "Russia");
+						}
+						else if ((row == 2) && (column == 5)) {
+							attack(row, column, attacker = "China", defender = "Japan");
+						}
+						else if ((row == 2) && (column == 7)) {
+							attack(row, column, attacker = "China", defender = "Afghanistan");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Middle East
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][6])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][2]) || (neo[row][column] == neo[1][3]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][7]) || (neo[row][column] == neo[3][2]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Russia
+					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 4)) {
+						if ((row == 0) && (column == 2)) {
+							attack(row, column, attacker = "Russia", defender = "Alaska");
+						}
+						else if ((row == 2) && (column == 3)) {
+							attack(row, column, attacker = "Russia", defender = "China");
+						}
+						else if ((row == 2) && (column == 5)) {
+							attack(row, column, attacker = "Russia", defender = "Japan");
+						}
+						else if ((row == 2) && (column == 6)) {
+							attack(row, column, attacker = "Russia", defender = "Middle East");
+						}
+						else if ((row == 2) && (column == 7)) {
+							attack(row, column, attacker = "Russia", defender = "Afghanistan");
+						}
+						else if ((row == 3) && (column == 1)) {
+							attack(row, column, attacker = "Russia", defender = "Scandanavia");
+						}
+						else if ((row == 3) && (column == 2)) {
+							attack(row, column, attacker = "Russia", defender = "East Europe");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Afghanistan
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[2][7])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][2]) || (neo[row][column] == neo[2][3]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][6]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Japan
+					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 5)) {
+						if ((row == 2) && (column == 3)) {
+							attack(row, column, attacker = "Japan", defender = "China");
+						}
+						else if ((row == 2) && (column == 4)) {
+							attack(row, column, attacker = "Japan", defender = "Russia");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Iceland
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][0])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[0][3]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][4]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Middle East
+					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 6)) {
+						if ((row == 1) && (column == 2)) {
+							attack(row, column, attacker = "Middle East", defender = "Egypt");
+						}
+						else if ((row == 1) && (column == 3)) {
+							attack(row, column, attacker = "Middle East", defender = "East Africa");
+						}
+						else if ((row == 2) && (column == 4)) {
+							attack(row, column, attacker = "Middle East", defender = "Russia");
+						}
+						else if ((row == 2) && (column == 7)) {
+							attack(row, column, attacker = "Middle East", defender = "Afghanistan");
+						}
+						else if ((row == 3) && (column == 2)) {
+							attack(row, column, attacker = "Middle East", defender = "East Europe");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Scandanavia
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][1])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[2][4]) || (neo[row][column] == neo[3][0]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][3]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Afghanistan
+					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 7)) {
+						if ((row == 2) && (column == 2)) {
+							attack(row, column, attacker = "Afghanistan", defender = "India");
+						}
+						else if ((row == 1) && (column == 3)) {
+							attack(row, column, attacker = "Afghanistan", defender = "China");
+						}
+						else if ((row == 2) && (column == 4)) {
+							attack(row, column, attacker = "Afghanistan", defender = "Russia");
+						}
+						else if ((row == 2) && (column == 7)) {
+							attack(row, column, attacker = "Afghanistan", defender = "Middle East");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From East Europe
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][2])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][2]) || (neo[row][column] == neo[2][4]) || (neo[row][column] == neo[2][6]) || (neo[row][column] == neo[3][1]) || (neo[row][column] == neo[3][3]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Iceland
+					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 0)) {
+						if ((row == 0) && (column == 3)) {
+							attack(row, column, attacker = "Iceland", defender = "Greenland");
+						}
+						else if ((row == 3) && (column == 1)) {
+							attack(row, column, attacker = "Iceland", defender = "Scandanavia");
+						}
+						else if ((row == 3) && (column == 4)) {
+							attack(row, column, attacker = "Iceland", defender = "Britain");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From West Europe
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][3])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[1][0]) || (neo[row][column] == neo[1][2]) || (neo[row][column] == neo[3][2]) || (neo[row][column] == neo[3][4]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From Scandanavia
+					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 1)) {
+						if ((row == 2) && (column == 4)) {
+							attack(row, column, attacker = "Scandanavia", defender = "Russia");
+						}
+						else if ((row == 3) && (column == 0)) {
+							attack(row, column, attacker = "Scandanavia", defender = "Iceland");
+						}
+						else if ((row == 3) && (column == 2)) {
+							attack(row, column, attacker = "Scandanavia", defender = "East Europe");
+						}
+						else if ((row == 3) && (column == 3)) {
+							attack(row, column, attacker = "Scandanavia", defender = "West Europe");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
-				// Attack From Britain
-				if((selected == 0) && (player(neo[row][column]) == neo[3][6]) && (neo[row][column] == neo[3][4])) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected = 1;
-				}
-				else if ((selected == 1) && (player(neo[row][column]) != neo[3][6]) && ((neo[row][column] == neo[3][0]) || (neo[row][column] == neo[3][3]))) {
-					troops[selected][0] = row;
-					troops[selected][1] = column;
-					selected ++;
-				}
+					// Attack From East Europe
+					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 2)) {
+						if ((row == 1) && (column == 2)) {
+							attack(row, column, attacker = "East Europe", defender = "Egypt");
+						}
+						else if ((row == 2) && (column == 4)) {
+							attack(row, column, attacker = "East Europe", defender = "Russia");
+						}
+						else if ((row == 2) && (column == 6)) {
+							attack(row, column, attacker = "East Europe", defender = "Middle East");
+						}
+						else if ((row == 3) && (column == 1)) {
+							attack(row, column, attacker = "East Europe", defender = "Scandanavia");
+						}
+						else if ((row == 3) && (column == 3)) {
+							attack(row, column, attacker = "East Europe", defender = "West Europe");
+						}
+						else {
+							selected = 0;
+						}
+					}
 
+					// Attack From West Europe
+					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 3)) {
+						if ((row == 1) && (column == 0)) {
+							attack(row, column, attacker = "West Europe", defender = "North Africa");
+						}
+						else if ((row == 1) && (column == 2)) {
+							attack(row, column, attacker = "West Europe", defender = "Egypt");
+						}
+						else if ((row == 3) && (column == 2)) {
+							attack(row, column, attacker = "West Europe", defender = "East Europe");
+						}
+						else if ((row == 3) && (column == 4)) {
+							attack(row, column, attacker = "West Europe", defender = "Britain");
+						}
+						else {
+							selected = 0;
+						}
+					}
+
+					// Attack From Britain
+					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 4)) {
+						if ((row == 3) && (column == 0)) {
+							attack(row, column, attacker = "Britain", defender = "Iceland");
+						}
+						else if ((row == 3) && (column == 3)) {
+							attack(row, column, attacker = "Britain", defender = "West Europe");
+						}
+						else {
+							selected = 0;
+						}
+					}
+
+				}//if
 			}else{
 				selected --;
 			}//if
