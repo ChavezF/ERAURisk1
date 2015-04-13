@@ -73,7 +73,7 @@ public class Game_Board {
 		e1.setTextFill(Color.web("#0076a3"));
 		e1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
-		Image image = new Image("WorldMap.jpg");
+		Image image = new Image("WorldMap1.jpg");
 		ImageView imageView1 = new ImageView(image);
 		imageView1.setFitHeight(700);
 		imageView1.setFitWidth(1000);
