@@ -503,7 +503,7 @@ public class Game_Board {
 			//initial add troops phase
 
 			int n = 1 + (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
-			if (n != 35.0) {
+			if (n != 72.0) {
 				neo[3][7] = 0;
 
 				if (neo[row][column] == 0){
@@ -539,7 +539,7 @@ public class Game_Board {
 
 
 
-			}else /*if (n == 35)*/ {
+			}else /*if (n == 72.0)*/ {
 				System.out.println("works" + n);
 				neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6]);	
 				endTurn(neo);
