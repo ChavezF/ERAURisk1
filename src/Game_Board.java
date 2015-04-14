@@ -539,7 +539,7 @@ public class Game_Board {
 				endTurn(neo);
 				System.out.println(n);
 
-
+//B777
 
 			}else /*if (n == 72.0)*/ {
 				System.out.println("works" + n);
