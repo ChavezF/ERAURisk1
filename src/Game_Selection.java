@@ -1,7 +1,5 @@
-
-
 /**
- * @author Philip, Bruno
+ * @author Leydi, Bruno
  * @version 1.0
  * @created 25-Feb-2015 03:23:09 PM
  */
@@ -27,6 +25,10 @@ public class Game_Selection {
 	//this is the board that you will use for the whole game
 	public double [][] neo = new double[4][8];
 
+	/**
+	 * @author Leydi (Structure), Bruno (Layout) 
+	 * Give the options to play a new game or load a previous game; otherwise go to the main menu
+	 */
 	public void play() {
 
 		//create buttons needed
@@ -36,6 +38,7 @@ public class Game_Selection {
 
 		GridPane pane = new GridPane();		
 
+		//Provide good looking layout for buttons
 		startNewBtn.setTextFill(Color.GOLD);
 		startNewBtn.setStyle("-fx-font: 25 courier; -fx-font-weight: BOLD; -fx-base: #0076a3");//#b6e7c9;
 		startNewBtn.setPrefWidth(200);
@@ -69,14 +72,12 @@ public class Game_Selection {
 		stage.show();
 		stage.setResizable(false);
 
-		//***
 		//Create background image and characteristics
 		BackgroundImage myBI= new BackgroundImage(new Image("RiskCannons.jpg",600,400,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 		//Set image to the grid
 		pane.setBackground(new Background(myBI));
-		//***
 
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method
@@ -95,7 +96,7 @@ public class Game_Selection {
 						for (int j=0; j<8; j++){
 							neo[i][j]=input.nextDouble();
 						}
-					}
+					}///
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
