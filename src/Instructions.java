@@ -1,7 +1,7 @@
 
 
 /**
- * @author Andrew
+ * @author Andrew, Bruno
  * @version 1.5
  * @updated 17-Mar-2015
  * 
@@ -98,10 +98,15 @@ public class Instructions extends Menu {
 
 	}
 
+	/** @author Andrew (structure), Bruno (layout)
+	 * Create a 5 pages instructions.
+	 * Number buttons and arrows to move from one page to another
+	 * Play and Quit buttons.
+	 */
 	public void playGame() {
 
 		pagination = new Pagination(5, 0);
-		pagination.setStyle("-fx-font: 20 courier;" /*  -fx-font-weight: BOLD;*/ + " -fx-base: #0076a3");
+		pagination.setStyle("-fx-font: 20 courier; -fx-base: #0076a3");
 		pagination.setPageFactory(new Callback<Integer, Node>() {
 			@Override
 			public Node call(Integer pageIndex) {
@@ -155,14 +160,12 @@ public class Instructions extends Menu {
 		stage.show();
 		stage.setResizable(false);
 
-		//***
 		//Create background image and characteristics
 		BackgroundImage myBI= new BackgroundImage(new Image("RiskMenuImage.jpg",550,356,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 		//Set image to the grid
 		anchor.setBackground(new Background(myBI));
-		//***
 
 		//use lambda expressions to determine what the buttons do
 		//each button shall call its respective method

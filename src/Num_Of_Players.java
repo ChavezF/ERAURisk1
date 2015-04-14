@@ -1,5 +1,5 @@
 /**
- * Author Bruno Malo Torres Trueba
+ * Author Bruno, Fernando
  * Project: Risk
  * Date: March 7, 2015
  * Class: SE300
@@ -22,6 +22,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * @author Bruno (Structure and Layout), Fernando (actions)
+ * Gives the user the option to choose a number of players between 2 and 4.
+ *
+ */
 public class Num_Of_Players {
 
 	public void play(double [][]neo) {
@@ -70,15 +75,12 @@ public class Num_Of_Players {
 		root.setHgap(25);
 		root.setVgap(15);
 
-
-		//***
 		//Create background image and characteristics
 		BackgroundImage myBI= new BackgroundImage(new Image("RiskCannons.jpg",600,400,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 		//Set image to the grid
 		root.setBackground(new Background(myBI));
-		//***
 
 		Scene scene = new Scene(root,600,400);
 		Stage primaryStage = new Stage();
