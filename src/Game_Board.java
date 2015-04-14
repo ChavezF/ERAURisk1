@@ -966,13 +966,13 @@ public class Game_Board {
 						if ((row == 2) && (column == 2)) {
 							attack(row, column, attacker = "Afghanistan", defender = "India");
 						}
-						else if ((row == 1) && (column == 3)) {
+						else if ((row == 2) && (column == 3)) {
 							attack(row, column, attacker = "Afghanistan", defender = "China");
 						}
 						else if ((row == 2) && (column == 4)) {
 							attack(row, column, attacker = "Afghanistan", defender = "Russia");
 						}
-						else if ((row == 2) && (column == 7)) {
+						else if ((row == 2) && (column == 6)) {
 							attack(row, column, attacker = "Afghanistan", defender = "Middle East");
 						}
 						else {
