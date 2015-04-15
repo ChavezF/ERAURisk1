@@ -151,12 +151,26 @@ public class Game_Board {
 			turn.setText(col2[(int)neo[3][6]]);
 
 			//winner call goes here...right Phil????
+                        
+                        for(int i = 0; i < 4; i++){
+                                for (int j = 0; j < 8; j++){
+                                        if (player(neo[i][j]) == 1){//this line
+                                            count1 ++;
+                                        }else if == 2
+                                                count2 ++;
+                                        }you get the point  right?
+                                }}
+                        if (count1 == 29){
+                            chicken dinnner!!!!!!!!!!!!!!;
+                        }else if (count2 == 29){
+                            more chicken dinerr!!!!!!!!!;
+                        }//if
 			File file = new File("gamedata.txt");
 			try {
 				Scanner scanner = new Scanner(file);
 				while (scanner.hasNext()) {
 					String line = scanner.next();
-					if ((line.contains(".1"))){
+					if ((line.contains(".1"))){//this line is really ^^^^^^^
 						int count = 0 ;
 						while ( count < 29 )
 						{
@@ -218,7 +232,7 @@ public class Game_Board {
 			} catch(FileNotFoundException e) { 
 				//handle this
 			}
-
+                                }}
 			neo[3][7] = 1;              //reset to reinforcement phase
 
 		}//if
