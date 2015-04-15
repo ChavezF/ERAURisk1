@@ -583,52 +583,76 @@ public class Game_Board {
 		return selected = 2;
 	}//attack
 
+	//***
+	/**
+	 * @author Bruno
+	 * @param row
+	 * @param column
+	 * @param neo
+	 * Give the color to the troops added. Change the color of the top bar. Continue cycle
+	 */
+	public void addTroops(int row, int column, double [] [] neo) {
+		//Cycle structure
+		if (neo[3][6] == neo[3][5]) {// If it's the last player's turn
+			neo[3][6] = 1;			//Restart cycle
+
+		} else if ( neo[3][6] == 0){	//If it is player 0
+			neo[3][6] = 2;			//To avoid repeating player 1 (blue)
+
+		} else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
+			neo[3][6]++;
+		}//if
+		
+		//Change the color and text of the bar
+		String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+		String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+		turn.setText(col2[(int)neo[3][6]]);
+		bGround.setStyle(col[(int)neo[3][6]]);
+
+		//Paint territory and set characteristics
+		if(neo[3][6] == 1){//Paint last player's color but keep continuation of cycle
+			neo[row][column] = setPlayer(row, column, neo, (int)neo[3][5] );
+
+		}else {//Paint the rest of the numbers
+			neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);	
+		}//if
+	}
+	//***
+	
+	
+	
 	public double actions(int row, int column, double [][] neo, Boolean button){
 		//-------------------INITIAL DEPLOYMENT--------------------------------------------------------------
 		if ((int)neo[3][7] == 0){     
 			//initial add troops phase
 
 			//Check if current player is the owner -> if(neo[3][6] == player(neo[row][column])
-
+			
 			int n = 1 + (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
 			if (n != 72.0) {
 				neo[3][7] = 0;
 
+				
+				
+				//Add the first troop to the territory
 				if (neo[row][column] == 0){
 					neo[row][column] = 1;
-				}else if (neo[row][column] != 0){
+					
+					//Add more troops to the territory
+				} else if (neo[row][column] != 0){
 					neo[row][column]++;
 				}
-
-				if (neo[3][6] == neo[3][5]) {// If it's the last player's turn
-					neo[3][6] = 1;			//Restart cycle
-
-				}else if ( neo[3][6] == 0){	//If it is player 0
-					neo[3][6] = 2;			//To avoid repeating player 1 (blue)
-
-				}else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
-					neo[3][6]++;
-				}//if
-				//Change the color of the bar
-				String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-				String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-				turn.setText(col2[(int)neo[3][6]]);
-				bGround.setStyle(col[(int)neo[3][6]]);
-
-				if(neo[3][6] == 1){//Paint yellow but keep continuation of cycle
-					neo[row][column] = setPlayer(row, column, neo, (int)neo[3][5] );
-
-				}else {//Paint the rest of the numbers
-					neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);	
-				}//if
-
+				
+				addTroops(row, column, neo);	
+	/*			//Cycle structure
+				//Change the color and text of the bar
+				//Paint territory and set characteristics	*/
 				endTurn(neo);
-				System.out.println(n);
 
-				//B777
+
 
 			}else /*if (n == 72.0)*/ {
-				System.out.println("works" + n);
+				
 				neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6]);	
 				endTurn(neo);
 				neo[3][7] = 1;//only once the last troop has been added
@@ -637,6 +661,7 @@ public class Game_Board {
 
 			//-------------------------END INITIAL DEPLOYMENT                
 			//------------------------REINFORCEMENT PHASE--------------------------------------------------------------------------
+
 
 		} else if((int)neo[3][7] == 1){                                                  
 			//*****************set this  so that the first turn you have 3 + the number of extra reinforcements from initial phase
