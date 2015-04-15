@@ -17,9 +17,9 @@ import javafx.stage.Stage;
 
 public class Winner{ 
 
-	public void display(double winner) { 
+	public void display() { 
 
-		String		winnerPyr = "s";
+		//String		winnerPyr = "s";
 
 
 		final int TWO_COLUMN_SPAN = 2; 
@@ -29,7 +29,7 @@ public class Winner{
 		RPane.setPadding(new Insets(10)); 
 		
 		RPane.setAlignment(Pos.CENTER);
-		Label winnerMessage = new Label("  Congratulations!\n" + winnerPyr + "won the game");  
+		Label winnerMessage = new Label("  Congratulations!\n" +"won the game");  
 
 		Button mainMenuButton = new Button ("Main Menu"); 
 		Button quitButton = new Button ("Quit"); 

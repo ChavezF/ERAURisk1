@@ -96,7 +96,7 @@ public class Game_Selection {
 						for (int j=0; j<8; j++){
 							neo[i][j]=input.nextDouble();
 						}
-					}///
+					}
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

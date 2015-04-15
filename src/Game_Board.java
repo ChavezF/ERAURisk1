@@ -10,8 +10,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
@@ -146,6 +151,73 @@ public class Game_Board {
 			turn.setText(col2[(int)neo[3][6]]);
 
 			//winner call goes here...right Phil????
+			File file = new File("gamedata.txt");
+			try {
+				Scanner scanner = new Scanner(file);
+				while (scanner.hasNext()) {
+					String line = scanner.next();
+					if ((line.contains(".1"))){
+						int count = 0 ;
+						while ( count < 29 )
+						{
+							count++ ;
+						}
+						//System.out.println(count);
+						if (count == 29){
+							Winner winner = new Winner();
+							winner.display();
+						}
+						else {
+							
+						}
+						//System.out.println("player one");
+					}
+					if ((line.contains(".2"))){
+						int count = 0 ;
+						while ( count < 29 )
+						{
+							count++ ;
+						}
+						//System.out.println(count);
+						if (count == 29){
+							Winner winner = new Winner();
+							winner.display();
+						}
+						//System.out.println("player one");
+					}
+					if ((line.contains(".3"))){
+						int count = 0 ;
+						while ( count < 29 )
+						{
+							count++ ;
+						}
+						//System.out.println(count);
+						if (count == 29){
+							Winner winner = new Winner();
+							winner.display();
+						}
+						//System.out.println("player one");
+					}
+
+					if ((line.contains(".4"))){
+						int count = 0 ;
+						while ( count < 29 )
+						{
+							count++ ;
+						}
+						//System.out.println(count);
+						if (count == 29){
+							Winner winner = new Winner();
+							winner.display();
+						}
+						//System.out.println("player one");
+					}
+
+				}
+
+			} catch(FileNotFoundException e) { 
+				//handle this
+			}
 
 			neo[3][7] = 1;              //reset to reinforcement phase
 
@@ -503,7 +575,7 @@ public class Game_Board {
 			//initial add troops phase
 
 			//Check if current player is the owner -> if(neo[3][6] == player(neo[row][column])
-			
+
 			int n = 1 + (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
 			if (n != 72.0) {
 				neo[3][7] = 0;
@@ -539,7 +611,7 @@ public class Game_Board {
 				endTurn(neo);
 				System.out.println(n);
 
-//B777
+				//B777
 
 			}else /*if (n == 72.0)*/ {
 				System.out.println("works" + n);
@@ -1219,6 +1291,8 @@ public class Game_Board {
 		eeurope.setText(Integer.toString(troop(neo[3][2])));//eeurope
 		weurope.setText(Integer.toString(troop(neo[3][3])));//weurope
 		britain.setText(Integer.toString(troop(neo[3][4])));//britain
+
+
 
 	}//update
 
