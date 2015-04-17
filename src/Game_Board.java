@@ -110,6 +110,9 @@ public class Game_Board {
 
 	}//Game_Board
 
+	/**
+	 * @param neo
+	 */
 	public void eventButton(double [][] neo){
 
 		if((int)neo[3][7] == 2){       //attack phase
@@ -151,88 +154,39 @@ public class Game_Board {
 			turn.setText(col2[(int)neo[3][6]]);
 
 			//winner call goes here...right Phil????
-                        
-                        for(int i = 0; i < 4; i++){
-                                for (int j = 0; j < 8; j++){
-                                        if (player(neo[i][j]) == 1){//this line
-                                            count1 ++;
-                                        }else if == 2
-                                                count2 ++;
-                                        }you get the point  right?
-                                }}
-                        if (count1 == 29){
-                            chicken dinnner!!!!!!!!!!!!!!;
-                        }else if (count2 == 29){
-                            more chicken dinerr!!!!!!!!!;
-                        }//if
-			File file = new File("gamedata.txt");
-			try {
-				Scanner scanner = new Scanner(file);
-				while (scanner.hasNext()) {
-					String line = scanner.next();
-					if ((line.contains(".1"))){//this line is really ^^^^^^^
-						int count = 0 ;
-						while ( count < 29 )
-						{
-							count++ ;
-						}
-						//System.out.println(count);
-						if (count == 29){
-							Winner winner = new Winner();
-							winner.display();
-						}
-						else {
-							
-						}
-						//System.out.println("player one");
-					}
-					if ((line.contains(".2"))){
-						int count = 0 ;
-						while ( count < 29 )
-						{
-							count++ ;
-						}
-						//System.out.println(count);
-						if (count == 29){
-							Winner winner = new Winner();
-							winner.display();
-						}
-						//System.out.println("player one");
-					}
-					if ((line.contains(".3"))){
-						int count = 0 ;
-						while ( count < 29 )
-						{
-							count++ ;
-						}
-						//System.out.println(count);
-						if (count == 29){
-							Winner winner = new Winner();
-							winner.display();
-						}
-						//System.out.println("player one");
-					}
 
-					if ((line.contains(".4"))){
-						int count = 0 ;
-						while ( count < 29 )
-						{
-							count++ ;
-						}
-						//System.out.println(count);
-						if (count == 29){
-							Winner winner = new Winner();
-							winner.display();
-						}
-						//System.out.println("player one");
+			for(int i = 0; i < 4; i++){
+				int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
+				for (int j = 0; j < 8; j++){
+					if (player(neo[i][j]) == 1){//this line
+						count1 ++;
 					}
-
+					else if(player(neo[i][j]) == 2){
+						count2 ++;
+					}
+					else if (player(neo[i][j]) == 3){
+						count3++;
+					}
+					else if (player(neo[i][j]) == 4){
+						count4++;
+					}}
+				if (count1 == 29){
+					Winner winner = new Winner();
+					winner.display(1);
 				}
-
-			} catch(FileNotFoundException e) { 
-				//handle this
+				else if (count2 == 29){
+					Winner winner = new Winner();
+					winner.display(2);
+				}
+				else if (count3 == 29){
+					Winner winner = new Winner();
+					winner.display(3);
+				}
+				else if (count4 == 29){
+					Winner winner = new Winner();
+					winner.display(4);
+				}
 			}
-                                }}
 			neo[3][7] = 1;              //reset to reinforcement phase
 
 		}//if
@@ -583,7 +537,6 @@ public class Game_Board {
 		return selected = 2;
 	}//attack
 
-	//***
 	/**
 	 * @author Bruno
 	 * @param row
@@ -602,7 +555,7 @@ public class Game_Board {
 		} else if (neo[3][6] != neo[3][5]) {//Proceed with the next color
 			neo[3][6]++;
 		}//if
-		
+
 		//Change the color and text of the bar
 		String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
 		String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
@@ -617,34 +570,32 @@ public class Game_Board {
 			neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6] - 1);	
 		}//if
 	}
-	//***
-	
-	
-	
+
+
 	public double actions(int row, int column, double [][] neo, Boolean button){
 		//-------------------INITIAL DEPLOYMENT--------------------------------------------------------------
 		if ((int)neo[3][7] == 0){     
 			//initial add troops phase
 
 			//Check if current player is the owner -> if(neo[3][6] == player(neo[row][column])
-			
+
 			int n = 1 + (int)neo[0][0] + (int)neo[0][1] + (int)neo[0][2] + (int)neo[0][3] + (int)neo[0][4] + (int)neo[0][5] + (int)neo[0][6] + (int)neo[0][7]+ (int)neo[1][0] + (int)neo[1][1] + (int)neo[1][2] + (int)neo[1][3] + (int)neo[1][4] + (int)neo[1][5] + (int)neo[1][6] + (int)neo[1][7] + (int)neo[2][0] + (int)neo[2][1] + (int)neo[2][2] + (int)neo[2][3] + (int)neo[2][4] + (int)neo[2][5] + (int)neo[2][6] + (int)neo[2][7] + (int)neo[3][0] + (int)neo[3][1] + (int)neo[3][2] + (int)neo[3][3] + (int)neo[3][4];
 			if (n != 72.0) {
 				neo[3][7] = 0;
 
-				
-				
+
+
 				//Add the first troop to the territory
 				if (neo[row][column] == 0){
 					neo[row][column] = 1;
-					
+
 					//Add more troops to the territory
 				} else if (neo[row][column] != 0){
 					neo[row][column]++;
 				}
-				
+
 				addTroops(row, column, neo);	
-	/*			//Cycle structure
+				/*			//Cycle structure
 				//Change the color and text of the bar
 				//Paint territory and set characteristics	*/
 				endTurn(neo);
@@ -652,7 +603,7 @@ public class Game_Board {
 
 
 			}else /*if (n == 72.0)*/ {
-				
+
 				neo[row][column] = setPlayer(row, column, neo, (int)neo[3][6]);	
 				endTurn(neo);
 				neo[3][7] = 1;//only once the last troop has been added
