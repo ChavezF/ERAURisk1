@@ -30,167 +30,167 @@ import javafx.stage.WindowEvent;
 
 public class Game_Board {
 
-	private int reinforce = 3;//int i = 1, 
-	private double [] cor = {0,0,0,0,0,0};
-	private double [][] troops = new double[2][2];
-	private double [][] atkCor = new double[1][2];
-	private int selected = 0;
-	private int [][] cord = new int[1][1];
-	private String attacker;
-	private String defender;
-	Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
-	Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
-	Text sasia, indonesia, india, china, russia, japan, meast,afghan;
-	Text ireland, scandanavia, eeurope, weurope, britain, rein, turn;
-	Button e1, bGround;
+    private int reinforce = 3;//int i = 1, 
+    private double [] cor = {0,0,0,0,0,0};
+    private double [][] troops = new double[2][2];
+    private double [][] atkCor = new double[1][2];
+    private int selected = 0;
+    private int [][] cord = new int[1][1];
+    private String attacker;
+    private String defender;
+    Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
+    Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
+    Text sasia, indonesia, india, china, russia, japan, meast,afghan;
+    Text ireland, scandanavia, eeurope, weurope, britain, rein, turn;
+    Button e1, bGround;
 
-	public void Playgame(double[][]neo){
+    public void Playgame(double[][]neo){
 
-		// Construct a border pane and four individual pane for scene
-		BorderPane pane = new BorderPane();
-		Pane paneForBoard = new Pane();
-		//initialize the properties for the rest of the texts
-		initializeProperties(neo);
-                updater(neo);
-		bGround = new Button();
-		bGround.setMinSize(999, 48);
-		bGround.setLayoutY(1);
-		bGround.setStyle("-fx-background-color: #0033CC;");
+        // Construct a border pane and four individual pane for scene
+        BorderPane pane = new BorderPane();
+        Pane paneForBoard = new Pane();
+        //initialize the properties for the rest of the texts
+        initializeProperties(neo);
+        updater(neo);
+        bGround = new Button();
+        bGround.setMinSize(999, 48);
+        bGround.setLayoutY(1);
+        bGround.setStyle("-fx-background-color: #0033CC;");
 
-		Button b1 = new Button("Quit");
-		b1.setMinSize(120, 48);
-		b1.setLayoutY(1);
-		b1.setLayoutX(860);
-		b1.setTextFill(Color.web("#0076a3"));
-		b1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
+        Button b1 = new Button("Quit");
+        b1.setMinSize(120, 48);
+        b1.setLayoutY(1);
+        b1.setLayoutX(860);
+        b1.setTextFill(Color.web("#0076a3"));
+        b1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
-		Button s1 = new Button("Save");
-		s1.setMinSize(120, 48);
-		s1.setLayoutY(1);
-		s1.setLayoutX(720);//840
-		s1.setTextFill(Color.web("#0076a3"));
-		s1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
+        Button s1 = new Button("Save");
+        s1.setMinSize(120, 48);
+        s1.setLayoutY(1);
+        s1.setLayoutX(720);//840
+        s1.setTextFill(Color.web("#0076a3"));
+        s1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
-		e1 = new Button("End Populate");
-		e1.setMinSize(120, 48);
-		e1.setLayoutY(1);
-		e1.setLayoutX(580);//700
-		e1.setTextFill(Color.web("#0076a3"));
-		e1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
+        e1 = new Button("End Populate");
+        e1.setMinSize(120, 48);
+        e1.setLayoutY(1);
+        e1.setLayoutX(580);//700
+        e1.setTextFill(Color.web("#0076a3"));
+        e1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
-		Image image = new Image("WorldMap1.jpg");
-		ImageView imageView1 = new ImageView(image);
-		imageView1.setFitHeight(700);
-		imageView1.setFitWidth(1000);
+        Image image = new Image("WorldMap1.jpg");
+        ImageView imageView1 = new ImageView(image);
+        imageView1.setFitHeight(700);
+        imageView1.setFitWidth(1000);
 
-		eventButton(neo);
+        eventButton(neo);
 
-		paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,madag); 
-		pane.setCenter(paneForBoard);
+        paneForBoard.getChildren().addAll(imageView1,bGround, turn,rein, b1,s1,e1, america,canadia,alaska,greenland,mexico,venezuella,brazil,argentina,nafrica,safrica,eafrica,egypt,eaustralia,waustralia,nguninea,sasia,indonesia,india,china,russia,japan,meast,afghan,ireland,scandanavia,eeurope,weurope,britain,madag); 
+        pane.setCenter(paneForBoard);
 
-		b1.setOnMouseClicked(e -> {
-			System.exit(1);
-		});
-		s1.setOnMouseClicked(e -> {
-			save(neo);    
-		});
-		e1.setOnMouseClicked(e -> {
-			eventButton(neo);
-		});
+        b1.setOnMouseClicked(e -> {
+                System.exit(1);
+        });
+        s1.setOnMouseClicked(e -> {
+                save(neo);    
+        });
+        e1.setOnMouseClicked(e -> {
+                eventButton(neo);
+        });
 
-		// Set the stage to display the scene
-		Scene scene = new Scene(pane);
-		Stage primaryStage = new Stage();
-		primaryStage.setTitle("GUI_Widgets");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		primaryStage.setResizable(false);
+        // Set the stage to display the scene
+        Scene scene = new Scene(pane);
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("GUI_Widgets");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        primaryStage.setResizable(false);
 
-		setButtonClick(neo);//set all countries actions
+        setButtonClick(neo);//set all countries actions
 
-	}//Game_Board
+    }//Game_Board
 
-	/**
-	 * @param neo
-	 */
-	public void eventButton(double [][] neo){
+    /**
+     * @param neo
+     */
+    public void eventButton(double [][] neo){
 
-		if((int)neo[3][7] == 2){       //attack phase
-			e1.setText("End Turn");
-			updater(neo);
-			endTurn(neo);
-			neo[3][7] ++;
-			String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-			String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-			if (neo[3][6] == 3||neo[3][6] ==4){ //yellow
-				rein.setFill(Color.BLACK);
-				turn.setFill(Color.BLACK);
-			}else{
-				rein.setFill(Color.WHITE);
-				turn.setFill(Color.WHITE);
-			}//if 
-			bGround.setStyle(col[(int)neo[3][6]]);
-			turn.setText(col2[(int)neo[3][6]]);
-			selected = 0;
-		}else if((int)neo[3][7] == 3){       //fortification phase
-			reinforce = 3;
-			rein.setText("Reinforcements: " + Integer.toString(reinforce));
-			updater(neo);
-			endTurn(neo);
-			e1.setText("Reinforce");
-			String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-			String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
-			if (neo[3][6]++ == neo[3][5]){
-				neo[3][6] = 1.0;
-			}//if
-			if (neo[3][6] == 3||neo[3][6] ==4){ //yellow
-				rein.setFill(Color.BLACK);
-				turn.setFill(Color.BLACK);
-			}else{
-				rein.setFill(Color.WHITE);
-				turn.setFill(Color.WHITE);
-			}//if 
-			bGround.setStyle(col[(int)neo[3][6]]);
-			turn.setText(col2[(int)neo[3][6]]);
+        if((int)neo[3][7] == 2){       //attack phase
+            e1.setText("End Turn");
+            updater(neo);
+            endTurn(neo);
+            neo[3][7] ++;
+            String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+            String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+            if (neo[3][6] == 3||neo[3][6] ==4){ //yellow
+                rein.setFill(Color.BLACK);
+                turn.setFill(Color.BLACK);
+            }else{
+                rein.setFill(Color.WHITE);
+                turn.setFill(Color.WHITE);
+            }//if 
+            bGround.setStyle(col[(int)neo[3][6]]);
+            turn.setText(col2[(int)neo[3][6]]);
+            selected = 0;
+        }else if((int)neo[3][7] == 3){       //fortification phase
+            reinforce = 3;
+            rein.setText("Reinforcements: " + Integer.toString(reinforce));
+            updater(neo);
+            endTurn(neo);
+            e1.setText("Reinforce");
+            String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+            String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+            if (neo[3][6]++ == neo[3][5]){
+                    neo[3][6] = 1.0;
+            }//if
+            if (neo[3][6] == 3||neo[3][6] ==4){ //yellow
+                rein.setFill(Color.BLACK);
+                turn.setFill(Color.BLACK);
+            }else{
+                rein.setFill(Color.WHITE);
+                turn.setFill(Color.WHITE);
+            }//if 
+            bGround.setStyle(col[(int)neo[3][6]]);
+            turn.setText(col2[(int)neo[3][6]]);
 
-			//winner call goes here...right Phil????
+            //winner call goes here...right Phil????
 
-			for(int i = 0; i < 4; i++){
-				int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
-				for (int j = 0; j < 8; j++){
-					if (player(neo[i][j]) == 1){//this line
-						count1 ++;
-					}
-					else if(player(neo[i][j]) == 2){
-						count2 ++;
-					}
-					else if (player(neo[i][j]) == 3){
-						count3++;
-					}
-					else if (player(neo[i][j]) == 4){
-						count4++;
-					}}
-				if (count1 == 29){
-					Winner winner = new Winner();
-					winner.display(1);
-				}
-				else if (count2 == 29){
-					Winner winner = new Winner();
-					winner.display(2);
-				}
-				else if (count3 == 29){
-					Winner winner = new Winner();
-					winner.display(3);
-				}
-				else if (count4 == 29){
-					Winner winner = new Winner();
-					winner.display(4);
-				}
-			}
-			neo[3][7] = 1;              //reset to reinforcement phase
-
-		}//if
-	}//eventButton
+            for(int i = 0; i < 4; i++){
+                int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
+                for (int j = 0; j < 8; j++){
+                    if (player(neo[i][j]) == 1){//this line
+                        count1 ++;
+                    }
+                    else if(player(neo[i][j]) == 2){
+                        count2 ++;
+                    }
+                    else if (player(neo[i][j]) == 3){
+                        count3++;
+                    }
+                    else if (player(neo[i][j]) == 4){
+                        count4++;
+                    }//if
+                }//for
+                if (count1 == 29){
+                    Winner winner = new Winner();
+                    winner.display(1);
+                }
+                else if (count2 == 29){
+                    Winner winner = new Winner();
+                    winner.display(2);
+                }
+                else if (count3 == 29){
+                    Winner winner = new Winner();
+                    winner.display(3);
+                }
+                else if (count4 == 29){
+                    Winner winner = new Winner();
+                    winner.display(4);
+                }//if
+            }//for
+            neo[3][7] = 1;              //reset to reinforcement phase
+        }//if
+    }//eventButton
 
 	public int troop(double territory){
 		int trp = (int)territory;
@@ -524,8 +524,6 @@ public class Game_Board {
 			if (n != 72.0) {
 				neo[3][7] = 0;
 
-
-
 				//Add the first troop to the territory
 				if (neo[row][column] == 0){
 					neo[row][column] = 1;
@@ -533,7 +531,7 @@ public class Game_Board {
 					//Add more troops to the territory
 				} else if (neo[row][column] != 0){
 					neo[row][column]++;
-				}
+				}//if
 
 				addTroops(row, column, neo);	
 				/*			//Cycle structure
@@ -1182,7 +1180,7 @@ public class Game_Board {
 				cor = diceBox.roll(cor);
 				//-------------------------------------------------------------------------------------------------------                    
 				//create a pop-up to get the # of troops to move
-				Label label1 = new Label("Enter troops to move: ");
+				Label label1 = new Label("Troops to new colony: ");
 				label1.setLayoutY(5);
 				label1.setLayoutX(3);
 				TextField textField = new TextField ();
@@ -1195,20 +1193,20 @@ public class Game_Board {
 				hb.getChildren().addAll(label1, textField, leave);
 				Scene scenes = new Scene(hb);
 				Stage primaryStage2 = new Stage();
-				//insert pause until primary stage2 closes
-                                
+				primaryStage2.setResizable(false);
                                         
 				leave.setOnMouseClicked(e -> {
                                     String get = textField.getText();
-                                    char let = get.charAt(0);
-                                    System.out.println((int)let);
-                                    if( !(get.isEmpty()) && ((int)let< 58  && (int)let >47)){
-                                        reinforce = Integer.parseInt(get);
-                                    }else{
-                                        reinforce = 0;
+                                    char let;
+                                    reinforce = 0;
+                                    if(!(get.isEmpty())){ 
+                                        let = get.charAt(0);
+                                        if ((int)let< 58  && (int)let >47){
+                                            reinforce = Integer.parseInt(get);
+                                        }//if
                                     }//if
-                                    System.out.println(cor[2] + " " + cor[3]);
                                     
+                                    primaryStage2.close();                                    
                                 });
 
 				primaryStage2.setTitle("Troop Counter");
@@ -1219,30 +1217,22 @@ public class Game_Board {
 				primaryStage2.setY(450);
 				do{
                                     primaryStage2.showAndWait();
-                                    System.out.println(cor[4]);
                                 }while(cor[4] == 0);
 				//------------------------------------------------------------------------------------------------------                    
-				System.out.println(cor[2] +" " + cor[3] + " :)");
-				//have while loop where it doesnt break out until diceBox sends break
-				//try pause code
 				neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0],(int)troops[0][1], neo, (int)cor[2]);
 				neo[(int)troops[1][0]][(int)troops[1][1]] = setTroop((int)troops[1][0],(int)troops[1][1], neo, (int)cor[3]);
 				if(cor[5] == 1){
                                     neo[(int)troops[1][0]][(int)troops[1][1]] = setPlayer((int)troops[1][0],(int)troops[1][1], neo, (int)neo[3][6]);
+                                    if(reinforce <= troop(neo[(int)troops[1][0]][(int)troops[1][1]]) && reinforce > 0){
+                                        int num = troop(neo[(int)troops[1][0]][(int)troops[1][1]]) - reinforce;
+                                        neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0],(int)troops[0][1], neo, num+1);
+                                        neo[(int)troops[1][0]][(int)troops[1][1]] = setTroop((int)troops[1][0],(int)troops[1][1], neo, reinforce);        
+                                    }//if
                                 }//if
-                                System.out.println(cor[2]+ " " + cor[3]);
-				System.out.println(cor[0] + " " + cor[1]);
-				selected = 0;
+                		selected = 0;
 				endTurn(neo);
 			}//if
-
-			//****************Attack Phase
-			//---->add 1 (to selected) when place is clicked
-			//---->increase font size of selected spot
-			//---->when 2 are selected check if they can attack each other
-			//---->call dice program with both troop amounts
-			//---->set both location with new troop values
-			//----------------------------------END ATTACK PHASE----------------------------------------------------------------                
+                	//----------------------------------END ATTACK PHASE----------------------------------------------------------------                
 			//----------------------------------FORTIFICATION PHASE---------------------------------------------------------------                        
 		} else if((int)neo[3][7] == 3){                                                  
 			if(player(neo[row][column]) == neo[3][6]){  //if its actually the players spot
