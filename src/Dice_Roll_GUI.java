@@ -1,7 +1,12 @@
+/**
+ * @author Fernando X Chavez
+ * @version 1.0
+ * @created 25-Feb-2015 1:03:58 PM
+ */
+
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.HPos;
@@ -16,11 +21,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.WindowEvent;
-/**
- * @author Fernando
- * @version 1.0
- * @created 25-Feb-2015 1:03:58 PM
- */
+
 public class Dice_Roll_GUI {
 
 	public double [] roll(double [] cor){

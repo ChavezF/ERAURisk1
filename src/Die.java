@@ -1,14 +1,22 @@
+/**
+ * @author Fernando X Chavez
+ * @version 1.0
+ * @created 25-Feb-2015 1:03:58 PM
+ */
+
 import java.util.*;
 
 // class representing a 6 sided die
 // only has one method to roll the die and
 // report what face is up
+
 public class Die 
 {
 	int value;
 	static Random gen = new Random();
 
 	// no constructor needed - no initialization required
+
 	public int roll() 
 	{
 		int result = 0;

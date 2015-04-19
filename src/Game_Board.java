@@ -23,7 +23,7 @@ import javafx.scene.control.Label;
 import javafx.stage.WindowEvent;
 
 /**
- * @author Philip
+ * @author Philip, Leydi, Andrew, Bruno, Fernando
  * @version 1.0
  * @created 25-Feb-2015 03:23:09 PM
  */
@@ -110,9 +110,6 @@ public class Game_Board {
 
     }//Game_Board
 
-    /**
-     * @param neo
-     */
     public void eventButton(double [][] neo){
 
         if((int)neo[3][7] == 2){       //attack phase
@@ -1336,6 +1333,10 @@ public class Game_Board {
 
 	}//update
 
+	/**
+	 * @author Fernando
+	 * @param neo
+	 */
 	public void save(double [][]neo){
 
 		java.io.File Riskfile = new java.io.File("gamedata.txt");
