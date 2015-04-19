@@ -853,10 +853,11 @@ public class Dice_Roll_GUI {
 		primaryStage.setResizable(false);
 
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			public void handle(WindowEvent we) {
+                        public void handle(WindowEvent we) {
 				cor[0] = primaryStage.getX();
 				cor[1] = primaryStage.getY();
-			}
+                                cor[4] = 1;
+                        }
 		});                       
 
 		btLeave.setOnAction(e -> {
@@ -864,12 +865,14 @@ public class Dice_Roll_GUI {
                     cor[1] = primaryStage.getY();
                     cor[2] = Double.parseDouble(text4.getText());
 			cor[3] = Double.parseDouble(text3.getText());
+                        cor[4] = 1;
 			if (cor[2] == 0){
 				cor[2] = 1;
 			}
 			else if (cor[3] == 0){
 				cor[3] = cor[2];
 				cor[2] = 1;
+                                cor[5] = 1;
 			}
 			else{
 				cor[2] = cor[2] + 1;
