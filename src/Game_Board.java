@@ -31,7 +31,7 @@ import javafx.stage.WindowEvent;
 public class Game_Board {
 
 	private int reinforce = 3;//int i = 1, 
-	private double [] cor = {0,0,0,0};
+	private double [] cor = {0,0,0,0,0,0};
 	private double [][] troops = new double[2][2];
 	private double [][] atkCor = new double[1][2];
 	private int selected = 0;
@@ -51,7 +51,7 @@ public class Game_Board {
 		Pane paneForBoard = new Pane();
 		//initialize the properties for the rest of the texts
 		initializeProperties(neo);
-
+                updater(neo);
 		bGround = new Button();
 		bGround.setMinSize(999, 48);
 		bGround.setLayoutY(1);
@@ -199,324 +199,265 @@ public class Game_Board {
 
 	public void setButtonClick(double [][] neo){
 		america.setOnMouseClicked(e2 -> {
-			neo[0][0] = actions(0,0, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					america.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[0][0] = actions(0,0, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        america.setFont(Font.font("Courier", FontWeight.BOLD, 25));        
+                    }//if
 		});
-
 		canadia.setOnMouseClicked(e2 -> {
-			neo[0][1] = actions(0,1, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					canadia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    updater(neo);
+                    neo[0][1] = actions(0,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                    if(selected == 1){  
+                        canadia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        canadia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		alaska.setOnMouseClicked(e2 -> {
-			neo[0][2] = actions(0,2, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					alaska.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					alaska.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[0][2] = actions(0,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        alaska.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        alaska.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		greenland.setOnMouseClicked(e2 -> {
-			neo[0][3] = actions(0,3, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					greenland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					greenland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[0][3] = actions(0,3, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        greenland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        greenland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		mexico.setOnMouseClicked(e2 -> {
-			neo[0][4] = actions(0,4, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					mexico.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					mexico.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[0][4] = actions(0,4, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        mexico.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        mexico.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		venezuella.setOnMouseClicked(e2 -> {
-			neo[0][5] = actions(0,5, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[0][5] = actions(0,5, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		brazil.setOnMouseClicked(e2 -> {
-			neo[0][6] = actions(0,6, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					brazil.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					brazil.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[0][6] = actions(0,6, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        brazil.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        brazil.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
 		});
 		argentina.setOnMouseClicked(e2 -> {
-			neo[0][7] = actions(0,7, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					argentina.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					argentina.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[0][7] = actions(0,7, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        argentina.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        argentina.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		nafrica.setOnMouseClicked(e2 -> {
-			neo[1][0] = actions(1,0, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[1][0] = actions(1,0, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		safrica.setOnMouseClicked(e2 -> {
-			neo[1][1] = actions(1,1, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					safrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					safrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[1][1] = actions(1,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        safrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        safrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		egypt.setOnMouseClicked(e2 -> {
-			neo[1][2] = actions(1,2, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[1][2] = actions(1,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		eafrica.setOnMouseClicked(e2 -> {
-			neo[1][3] = actions(1,3, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[1][3] = actions(1,3, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		madag.setOnMouseClicked(e2 -> {
 			neo[1][4] = actions(1,4, neo, e2.getButton() == MouseButton.PRIMARY);
 			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					madag.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    if(selected == 1){  
+                        madag.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        madag.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		eaustralia.setOnMouseClicked(e2 -> {
-			neo[1][5] = actions(1,5, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[1][5] = actions(1,5, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		waustralia.setOnMouseClicked(e2 -> {
-			neo[1][6] = actions(1,6, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[1][6] = actions(1,6, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if        
 		});
 		nguninea.setOnMouseClicked(e2 -> {
-			neo[1][7] = actions(1,7, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[1][7] = actions(1,7, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		sasia.setOnMouseClicked(e2 -> {
-			neo[2][0] = actions(2,0, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					sasia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					sasia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[2][0] = actions(2,0, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        sasia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        sasia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		indonesia.setOnMouseClicked(e2 -> {
-			neo[2][1] = actions(2,1, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[2][1] = actions(2,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+		    }else if (selected == 0) {	
+                        indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		india.setOnMouseClicked(e2 -> {
-			neo[2][2] = actions(2,2, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					india.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					india.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[2][2] = actions(2,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        india.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        india.setFont(Font.font("Courier", FontWeight.BOLD, 25));        
+                    }//if
 		});
 		china.setOnMouseClicked(e2 -> {
-			neo[2][3] = actions(2,3, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					china.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					china.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[2][3] = actions(2,3, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        china.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        china.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		russia.setOnMouseClicked(e2 -> {
-			neo[2][4] = actions(2,4, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					russia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[2][4] = actions(2,4, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+		    }else if (selected == 0) {	
+                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		}); 
 		japan.setOnMouseClicked(e2 -> {
-			neo[2][5] = actions(2,5, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					japan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					japan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[2][5] = actions(2,5, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        japan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+		    }else if (selected == 0) {	
+                        japan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		meast.setOnMouseClicked(e2 -> {
-			neo[2][6] = actions(2,6, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					meast.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					meast.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[2][6] = actions(2,6, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+		    }else if (selected == 0) {	
+                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		afghan.setOnMouseClicked(e2 -> {
-			neo[2][7] = actions(2,7, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					afghan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					afghan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[2][7] = actions(2,7, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        afghan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+		    }else if (selected == 0) {	
+                        afghan.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		ireland.setOnMouseClicked(e2 -> {
-			neo[3][0] = actions(3,0, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					ireland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[3][0] = actions(3,0, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        ireland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        ireland.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		scandanavia.setOnMouseClicked(e2 -> {
-			neo[3][1] = actions(3,1, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[3][1] = actions(3,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		eeurope.setOnMouseClicked(e2 -> {
-			neo[3][2] = actions(3,2, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[3][2] = actions(3,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		weurope.setOnMouseClicked(e2 -> {
-			neo[3][3] = actions(3,3, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					weurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					weurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[3][3] = actions(3,3, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 		britain.setOnMouseClicked(e2 -> {
-			neo[3][4] = actions(3,4, neo, e2.getButton() == MouseButton.PRIMARY);
-			updater(neo);
-			if((int)neo[3][7] == 2){                                                  //attack phase
-				if (e2.getButton() == MouseButton.PRIMARY){  //-------------------------PROBLEM CAN'T DO ALLL COUNTRIES HERE
-					britain.setFont(Font.font("Courier", FontWeight.BOLD, 40));
-				}else if (e2.getButton() == MouseButton.SECONDARY) {	
-					britain.setFont(Font.font("Courier", FontWeight.BOLD, 25));
-				}//if        
-			}//if
+                    neo[3][4] = actions(3,4, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
+                    if(selected == 1){  
+                        britain.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                    }else if (selected == 0) {	
+                        britain.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+                    }//if
 		});
 	}//setMouseClick
 
@@ -646,9 +587,11 @@ public class Game_Board {
 					// Attack From America
 					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 0)) {
 						if ((row == 0) && (column == 1)) {
+                                                        canadia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
 							attack(row, column, attacker = "America", defender = "Canada");
 						}
 						else if ((row == 0) && (column == 4)) {
+                                                        mexico.setFont(Font.font("Courier", FontWeight.BOLD, 40));
 							attack(row, column, attacker = "America", defender = "Mexico");
 						}
 						else {
@@ -660,13 +603,16 @@ public class Game_Board {
 					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 1)) {
 						if ((row == 0) && (column == 0)) {
 							attack(row, column, attacker = "Canada", defender = "America");
-						}
+                                                        america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 0) && (column == 2)) {
 							attack(row, column, attacker = "Canada", defender = "Alaska");
-						}
+                                                        alaska.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 0) && (column == 3)) {
 							attack(row, column, attacker = "Canada", defender = "Greenland");
-						}
+                                                        greenland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -676,10 +622,12 @@ public class Game_Board {
 					if ((atkCor[0][0] == 0.0) && (atkCor[0][1] == 2.0)) {
 						if ((row == 0) && (column == 1)) {
 							attack(row, column, attacker = "Alaska", defender = "Canada");
+                                                        canadia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
 						}
 						else if ((row == 2) && (column == 4)) {
 							attack(row, column, attacker = "Alaska", defender = "Russia");
-						}
+                                                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -689,10 +637,12 @@ public class Game_Board {
 					if ((atkCor[0][0] == 0.0) && (atkCor[0][1] == 3.0)) {
 						if ((row == 0) && (column == 1)) {
 							attack(row, column, attacker = "Greenland", defender = "Canada");
+                                                        canadia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
 						}
 						else if ((row == 3) && (column == 0)) {
 							attack(row, column, attacker = "Greenland", defender = "Iceland");
-						}
+                                                        ireland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -702,10 +652,12 @@ public class Game_Board {
 					if ((atkCor[0][0] == 0.0) && (atkCor[0][1] == 4.0)) {
 						if ((row == 0) && (column == 0)) {
 							attack(row, column, attacker = "Mexico", defender = "America");
-						}
+                                                        america.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 0) && (column == 5)) {
 							attack(row, column, attacker = "Mexico", defender = "Venezuela");
-						}
+                                                        venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -715,13 +667,16 @@ public class Game_Board {
 					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 5)) {
 						if ((row == 0) && (column == 4)) {
 							attack(row, column, attacker = "Venezuela", defender = "Mexico");
-						}
+                                                        mexico.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 0) && (column == 6)) {
 							attack(row, column, attacker = "Venezuela", defender = "Brazil");
-						}
+                                                        brazil.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 0) && (column == 7)) {
 							attack(row, column, attacker = "Venezuela", defender = "Argentina");
-						}
+                                                        argentina.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -731,13 +686,16 @@ public class Game_Board {
 					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 6)) {
 						if ((row == 0) && (column == 5)) {
 							attack(row, column, attacker = "Brazil", defender = "Venezuela");
-						}
+                                                        venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 0) && (column == 7)) {
 							attack(row, column, attacker = "Brazil", defender = "Argentina");
-						}
+                                                        argentina.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 0)) {
 							attack(row, column, attacker = "Brazil", defender = "North Africa");
-						}
+                                                        nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -747,10 +705,12 @@ public class Game_Board {
 					if ((atkCor[0][0] == 0) && (atkCor[0][1] == 7)) {
 						if ((row == 0) && (column == 5)) {
 							attack(row, column, attacker = "Argentina", defender = "Venezuela");
-						}
+                                                        venezuella.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 0) && (column == 6)) {
 							attack(row, column, attacker = "Argentina", defender = "Brazil");
-						}
+                                                        brazil.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -760,16 +720,20 @@ public class Game_Board {
 					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 0)) {
 						if ((row == 0) && (column == 6)) {
 							attack(row, column, attacker = "North Africa", defender = "Brazil");
-						}
+                                                        brazil.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 1)) {
 							attack(row, column, attacker = "North Africa", defender = "South Africa");
-						}
+                                                        safrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 2)) {
 							attack(row, column, attacker = "North Africa", defender = "Egypt");
-						}
+                                                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 3)) {
 							attack(row, column, attacker = "North Africa", defender = "West Europe");
-						}
+                                                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -779,16 +743,20 @@ public class Game_Board {
 					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 1)) {
 						if ((row == 1) && (column == 0)) {
 							attack(row, column, attacker = "South Africa", defender = "North Africa");
-						}
+                                                        nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 2)) {
 							attack(row, column, attacker = "South Africa", defender = "Egypt");
-						}
+                                                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 3)) {
 							attack(row, column, attacker = "South Africa", defender = "East Africa");
-						}
+                                                        eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 4)) {
 							attack(row, column, attacker = "South Africa", defender = "Madagascar");
-						}
+                                                        madag.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -798,22 +766,28 @@ public class Game_Board {
 					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 2)) {
 						if ((row == 1) && (column == 0)) {
 							attack(row, column, attacker = "Egypt", defender = "North Africa");
-						}
+                                                        nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 1)) {
 							attack(row, column, attacker = "Egypt", defender = "South Africa");
-						}
+                                                        safrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 3)) {
 							attack(row, column, attacker = "Egypt", defender = "East Africa");
-						}
+                                                        eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 6)) {
 							attack(row, column, attacker = "Egypt", defender = "Middle East");
-						}
+                                                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 2)) {
 							attack(row, column, attacker = "Egypt", defender = "East Europe");
-						}
+                                                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 3)) {
 							attack(row, column, attacker = "Egypt", defender = "West Europe");
-						}
+                                                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -823,16 +797,20 @@ public class Game_Board {
 					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 3)) {
 						if ((row == 1) && (column == 1)) {
 							attack(row, column, attacker = "East Africa", defender = "South Africa");
-						}
+                                                        safrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 2)) {
 							attack(row, column, attacker = "East Africa", defender = "Egypt");
-						}
+                                                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 4)) {
 							attack(row, column, attacker = "East Africa", defender = "Madagascar");
-						}
+                                                        madag.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 6)) {
 							attack(row, column, attacker = "East Africa", defender = "Middle East");
-						}
+                                                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -842,10 +820,12 @@ public class Game_Board {
 					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 4)) {
 						if ((row == 1) && (column == 1)) {
 							attack(row, column, attacker = "Madagascar", defender = "South Africa");
-						}
+                                                        safrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 3)) {
 							attack(row, column, attacker = "Madagascar", defender = "East Africa");
-						}
+                                                        eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -855,7 +835,8 @@ public class Game_Board {
 					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 5)) {
 						if ((row == 1) && (column == 6)) {
 							attack(row, column, attacker = "East Australia", defender = "West Australia");
-						}
+                                                        waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -865,13 +846,16 @@ public class Game_Board {
 					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 6)) {
 						if ((row == 1) && (column == 5)) {
 							attack(row, column, attacker = "West Australia", defender = "East Australia");
-						}
+                                                        eaustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 7)) {
 							attack(row, column, attacker = "West Australia", defender = "New Guninea");
-						}
+                                                        nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 1)) {
 							attack(row, column, attacker = "West Australia", defender = "Indonesia");
-						}
+                                                        indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -881,10 +865,12 @@ public class Game_Board {
 					if ((atkCor[0][0] == 1) && (atkCor[0][1] == 7)) {
 						if ((row == 1) && (column == 6)) {
 							attack(row, column, attacker = "New Guninea", defender = "West Australia");
-						}
+                                                        waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 1)) {
 							attack(row, column, attacker = "New Guninea", defender = "Indonesia");
-						}
+                                                        indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -894,13 +880,16 @@ public class Game_Board {
 					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 0)) {
 						if ((row == 2) && (column == 1)) {
 							attack(row, column, attacker = "South Asia", defender = "Indonesia");
-						}
+                                                        indonesia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 2)) {
 							attack(row, column, attacker = "South Asia", defender = "India");
-						}
+                                                        india.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 3)) {
 							attack(row, column, attacker = "South Asia", defender = "China");
-						}
+                                                        china.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -910,13 +899,16 @@ public class Game_Board {
 					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 1)) {
 						if ((row == 1) && (column == 6)) {
 							attack(row, column, attacker = "Indonesia", defender = "West Australia");
-						}
+                                                        waustralia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 7)) {
 							attack(row, column, attacker = "Indonesia", defender = "New Guninea");
-						}
+                                                        nguninea.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 0)) {
 							attack(row, column, attacker = "Indonesia", defender = "South Asia");
-						}
+                                                        sasia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -926,13 +918,16 @@ public class Game_Board {
 					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 2)) {
 						if ((row == 2) && (column == 0)) {
 							attack(row, column, attacker = "India", defender = "South Asia");
-						}
+                                                        sasia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 3)) {
 							attack(row, column, attacker = "India", defender = "China");
-						}
+                                                        china.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 7)) {
 							attack(row, column, attacker = "India", defender = "Afghanistan");
-						}
+                                                        afghan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -942,19 +937,24 @@ public class Game_Board {
 					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 3)) {
 						if ((row == 2) && (column == 0)) {
 							attack(row, column, attacker = "China", defender = "South Asia");
-						}
+                                                        sasia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 2)) {
 							attack(row, column, attacker = "China", defender = "India");
-						}
+                                                        india.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 4)) {
 							attack(row, column, attacker = "China", defender = "Russia");
-						}
+                                                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 5)) {
 							attack(row, column, attacker = "China", defender = "Japan");
-						}
+                                                        japan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 7)) {
 							attack(row, column, attacker = "China", defender = "Afghanistan");
-						}
+                                                        afghan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -964,25 +964,32 @@ public class Game_Board {
 					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 4)) {
 						if ((row == 0) && (column == 2)) {
 							attack(row, column, attacker = "Russia", defender = "Alaska");
-						}
+                                                        alaska.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 3)) {
 							attack(row, column, attacker = "Russia", defender = "China");
-						}
+                                                        china.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 5)) {
 							attack(row, column, attacker = "Russia", defender = "Japan");
-						}
+                                                        japan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 6)) {
 							attack(row, column, attacker = "Russia", defender = "Middle East");
-						}
+                                                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 7)) {
 							attack(row, column, attacker = "Russia", defender = "Afghanistan");
-						}
+                                                        afghan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 1)) {
 							attack(row, column, attacker = "Russia", defender = "Scandanavia");
-						}
+                                                        scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 2)) {
 							attack(row, column, attacker = "Russia", defender = "East Europe");
-						}
+                                                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -992,10 +999,12 @@ public class Game_Board {
 					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 5)) {
 						if ((row == 2) && (column == 3)) {
 							attack(row, column, attacker = "Japan", defender = "China");
-						}
+                                                        japan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 4)) {
 							attack(row, column, attacker = "Japan", defender = "Russia");
-						}
+                                                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -1005,19 +1014,24 @@ public class Game_Board {
 					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 6)) {
 						if ((row == 1) && (column == 2)) {
 							attack(row, column, attacker = "Middle East", defender = "Egypt");
-						}
+                                                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 3)) {
 							attack(row, column, attacker = "Middle East", defender = "East Africa");
-						}
+                                                        eafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 4)) {
 							attack(row, column, attacker = "Middle East", defender = "Russia");
-						}
+                                                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 7)) {
 							attack(row, column, attacker = "Middle East", defender = "Afghanistan");
-						}
+                                                        afghan.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 2)) {
 							attack(row, column, attacker = "Middle East", defender = "East Europe");
-						}
+                                                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -1027,16 +1041,20 @@ public class Game_Board {
 					if ((atkCor[0][0] == 2) && (atkCor[0][1] == 7)) {
 						if ((row == 2) && (column == 2)) {
 							attack(row, column, attacker = "Afghanistan", defender = "India");
-						}
+                                                        india.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 3)) {
 							attack(row, column, attacker = "Afghanistan", defender = "China");
-						}
+                                                        china.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 4)) {
 							attack(row, column, attacker = "Afghanistan", defender = "Russia");
-						}
+                                                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 6)) {
 							attack(row, column, attacker = "Afghanistan", defender = "Middle East");
-						}
+                                                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -1046,13 +1064,16 @@ public class Game_Board {
 					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 0)) {
 						if ((row == 0) && (column == 3)) {
 							attack(row, column, attacker = "Iceland", defender = "Greenland");
-						}
+                                                        greenland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 1)) {
 							attack(row, column, attacker = "Iceland", defender = "Scandanavia");
-						}
+                                                        scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 4)) {
 							attack(row, column, attacker = "Iceland", defender = "Britain");
-						}
+                                                        britain.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -1062,16 +1083,20 @@ public class Game_Board {
 					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 1)) {
 						if ((row == 2) && (column == 4)) {
 							attack(row, column, attacker = "Scandanavia", defender = "Russia");
-						}
+                                                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 0)) {
 							attack(row, column, attacker = "Scandanavia", defender = "Iceland");
-						}
+                                                        ireland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 2)) {
 							attack(row, column, attacker = "Scandanavia", defender = "East Europe");
-						}
+                                                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 3)) {
 							attack(row, column, attacker = "Scandanavia", defender = "West Europe");
-						}
+                                                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -1081,19 +1106,24 @@ public class Game_Board {
 					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 2)) {
 						if ((row == 1) && (column == 2)) {
 							attack(row, column, attacker = "East Europe", defender = "Egypt");
-						}
+                                                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 4)) {
 							attack(row, column, attacker = "East Europe", defender = "Russia");
-						}
+                                                        russia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 2) && (column == 6)) {
 							attack(row, column, attacker = "East Europe", defender = "Middle East");
-						}
+                                                        meast.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 1)) {
 							attack(row, column, attacker = "East Europe", defender = "Scandanavia");
-						}
+                                                        scandanavia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 3)) {
 							attack(row, column, attacker = "East Europe", defender = "West Europe");
-						}
+                                                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -1103,16 +1133,20 @@ public class Game_Board {
 					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 3)) {
 						if ((row == 1) && (column == 0)) {
 							attack(row, column, attacker = "West Europe", defender = "North Africa");
-						}
+                                                        nafrica.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 1) && (column == 2)) {
 							attack(row, column, attacker = "West Europe", defender = "Egypt");
-						}
+                                                        egypt.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 2)) {
 							attack(row, column, attacker = "West Europe", defender = "East Europe");
-						}
+                                                        eeurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 4)) {
 							attack(row, column, attacker = "West Europe", defender = "Britain");
-						}
+                                                        britain.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -1121,11 +1155,13 @@ public class Game_Board {
 					// Attack From Britain
 					if ((atkCor[0][0] == 3) && (atkCor[0][1] == 4)) {
 						if ((row == 3) && (column == 0)) {
-							attack(row, column, attacker = "Britain", defender = "Iceland");
-						}
+                                                    	attack(row, column, attacker = "Britain", defender = "Iceland");
+                                                        ireland.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else if ((row == 3) && (column == 3)) {
 							attack(row, column, attacker = "Britain", defender = "West Europe");
-						}
+                                                        weurope.setFont(Font.font("Courier", FontWeight.BOLD, 40));
+                                                }
 						else {
 							selected = 0;
 						}
@@ -1138,13 +1174,15 @@ public class Game_Board {
 			if (selected == -1) {
 				selected = 0;
 			}else if(selected == 2){
+                                cor[4] = 0;
+                                cor[5] = 0;
 				cor[2] = troop(neo[(int)troops[0][0]][(int)troops[0][1]]);
 				cor[3] = troop(neo[(int)troops[1][0]][(int)troops[1][1]]);
 				Dice_Roll_GUI diceBox = new Dice_Roll_GUI();
 				cor = diceBox.roll(cor);
 				//-------------------------------------------------------------------------------------------------------                    
 				//create a pop-up to get the # of troops to move
-				Label label1 = new Label("Enter number of troops to move: ");
+				Label label1 = new Label("Enter troops to move: ");
 				label1.setLayoutY(5);
 				label1.setLayoutX(3);
 				TextField textField = new TextField ();
@@ -1158,12 +1196,20 @@ public class Game_Board {
 				Scene scenes = new Scene(hb);
 				Stage primaryStage2 = new Stage();
 				//insert pause until primary stage2 closes
+                                
+                                        
 				leave.setOnMouseClicked(e -> {
-					reinforce = Integer.parseInt(textField.getText());
-					if (reinforce > 0){
-						primaryStage2.close();
-					}//IF    
-				});
+                                    String get = textField.getText();
+                                    char let = get.charAt(0);
+                                    System.out.println((int)let);
+                                    if( !(get.isEmpty()) && ((int)let< 58  && (int)let >47)){
+                                        reinforce = Integer.parseInt(get);
+                                    }else{
+                                        reinforce = 0;
+                                    }//if
+                                    System.out.println(cor[2] + " " + cor[3]);
+                                    
+                                });
 
 				primaryStage2.setTitle("Troop Counter");
 				primaryStage2.setScene(scenes);
@@ -1171,15 +1217,20 @@ public class Game_Board {
 				primaryStage2.setMinWidth(290);
 				primaryStage2.setX(0);
 				primaryStage2.setY(450);
-				primaryStage2.showAndWait();
-
+				do{
+                                    primaryStage2.showAndWait();
+                                    System.out.println(cor[4]);
+                                }while(cor[4] == 0);
 				//------------------------------------------------------------------------------------------------------                    
 				System.out.println(cor[2] +" " + cor[3] + " :)");
 				//have while loop where it doesnt break out until diceBox sends break
 				//try pause code
 				neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0],(int)troops[0][1], neo, (int)cor[2]);
 				neo[(int)troops[1][0]][(int)troops[1][1]] = setTroop((int)troops[1][0],(int)troops[1][1], neo, (int)cor[3]);
-				System.out.println(cor[2]+ " " + cor[3]);
+				if(cor[5] == 1){
+                                    neo[(int)troops[1][0]][(int)troops[1][1]] = setPlayer((int)troops[1][0],(int)troops[1][1], neo, (int)neo[3][6]);
+                                }//if
+                                System.out.println(cor[2]+ " " + cor[3]);
 				System.out.println(cor[0] + " " + cor[1]);
 				selected = 0;
 				endTurn(neo);
@@ -1217,8 +1268,16 @@ public class Game_Board {
 					Stage primaryStage2 = new Stage();
 					//insert pause until primary stage2 closes
 					leave.setOnMouseClicked(e -> {
-						reinforce = Integer.parseInt(textField.getText());
-						primaryStage2.close();
+                                            String get = textField.getText();
+                                            char let;
+                                            reinforce = 0;
+                                            if(!(get.isEmpty())){ 
+                                                let = get.charAt(0);
+                                                if ((int)let< 58  && (int)let >47){
+                                                    reinforce = Integer.parseInt(get);
+                                                }//if
+                                            }//if
+                                            primaryStage2.close();
 					});
 
 					primaryStage2.setTitle("GUI_Widgets");
@@ -1231,6 +1290,7 @@ public class Game_Board {
 						neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0], (int)troops[0][1], neo, ((int)neo[(int)troops[0][0]][(int)troops[0][1]] - reinforce));
 					}//if
 					updater(neo);
+                                        endTurn(neo);
 				}else{
 					selected = 1;
 				}//if
