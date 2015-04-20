@@ -10,17 +10,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
-import javafx.stage.WindowEvent;
 
 /**
  * @author Philip, Leydi, Andrew, Bruno, Fernando
@@ -38,6 +29,7 @@ public class Game_Board {
     private int [][] cord = new int[1][1];
     private String attacker;
     private String defender;
+    private int count1 = 1, count2 = 1, count3 = 1, count4 = 1;
     Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
     Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
     Text sasia, indonesia, india, china, russia, japan, meast,afghan;
@@ -140,6 +132,20 @@ public class Game_Board {
             if (neo[3][6]++ == neo[3][5]){
                     neo[3][6] = 1.0;
             }//if
+            System.out.println(count1 + " " + count2 + " " + count3 + " " + count4);
+            System.out.println(neo[3][6]);
+            if(neo[3][6] == 1.0 && count1 == 0){
+                neo[3][6]++;
+            }else if(neo[3][6] == 2.0 && count2 == 0){
+                neo[3][6]++;
+            }else if(neo[3][6] == 3.0 && count3 == 0){
+                neo[3][6]++;
+            }else if(neo[3][6] == 4.0 && count4 == 0){
+                neo[3][6]++;
+            }//if
+            if (neo[3][6] == neo[3][5]+1){
+                    neo[3][6] = 1.0;
+            }//if
             if (neo[3][6] == 3||neo[3][6] ==4){ //yellow
                 rein.setFill(Color.BLACK);
                 turn.setFill(Color.BLACK);
@@ -150,41 +156,6 @@ public class Game_Board {
             bGround.setStyle(col[(int)neo[3][6]]);
             turn.setText(col2[(int)neo[3][6]]);
 
-            //winner call goes here...right Phil????
-            int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
-            for(int i = 0; i < 4; i++){
-                
-                for (int j = 0; j < 8; j++){
-                    if (player(neo[i][j]) == 1){//this line
-                        count1 ++;
-                    }
-                    else if(player(neo[i][j]) == 2){
-                        count2 ++;
-                    }
-                    else if (player(neo[i][j]) == 3){
-                        count3++;
-                    }
-                    else if (player(neo[i][j]) == 4){
-                        count4++;
-                    }//if
-                }//for
-                if (count1 == 29){
-                    Winner winner = new Winner();
-                    winner.display(1);
-                }
-                else if (count2 == 29){
-                    Winner winner = new Winner();
-                    winner.display(2);
-                }
-                else if (count3 == 29){
-                    Winner winner = new Winner();
-                    winner.display(3);
-                }
-                else if (count4 == 29){
-                    Winner winner = new Winner();
-                    winner.display(4);
-                }//if
-            }//for
             neo[3][7] = 1;              //reset to reinforcement phase
         }//if
     }//eventButton
@@ -1215,6 +1186,7 @@ public class Game_Board {
 				do{
                                     primaryStage2.showAndWait();
                                 }while(cor[4] == 0);
+
 				//------------------------------------------------------------------------------------------------------                    
 				neo[(int)troops[0][0]][(int)troops[0][1]] = setTroop((int)troops[0][0],(int)troops[0][1], neo, (int)cor[2]);
 				neo[(int)troops[1][0]][(int)troops[1][1]] = setTroop((int)troops[1][0],(int)troops[1][1], neo, (int)cor[3]);
@@ -1228,7 +1200,46 @@ public class Game_Board {
                                 }//if
                 		selected = 0;
 				endTurn(neo);
-			}//if
+                                count1 = 0;
+                                count2 = 0;
+                                count3 = 0;
+                                count4 = 0;
+                                for(int i = 0; i < 4; i++){    
+                                    for (int j = 0; j < 8; j++){
+                                        if (!((i == 3) &&(j ==7 || j == 6 || j ==5))){
+                                            if (player(neo[i][j]) == 1){//this line
+                                                count1 ++;
+                                            }
+                                            else if(player(neo[i][j]) == 2){
+                                                count2 ++;
+                                            }
+                                            else if (player(neo[i][j]) == 3){
+                                                count3++;
+                                            }
+                                            else if (player(neo[i][j]) == 4){
+                                                count4++;
+                                            }//if
+                                        }//if
+                                    }//for
+                                    if (count1 == 29){
+                                        Winner winner = new Winner();
+                                        winner.display(1);
+                                    }
+                                    else if (count2 == 29){
+                                        Winner winner = new Winner();
+                                        winner.display(2);
+                                    }
+                                    else if (count3 == 29){
+                                        Winner winner = new Winner();
+                                        winner.display(3);
+                                    }
+                                    else if (count4 == 29){
+                                        Winner winner = new Winner();
+                                        winner.display(4);
+                                    }//if
+                                }//for
+
+                        }//if
                 	//----------------------------------END ATTACK PHASE----------------------------------------------------------------                
 			//----------------------------------FORTIFICATION PHASE---------------------------------------------------------------                        
 		} else if((int)neo[3][7] == 3){                                                  
