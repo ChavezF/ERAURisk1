@@ -179,8 +179,8 @@ public class Game_Board {
                     }//if
 		});
 		canadia.setOnMouseClicked(e2 -> {
-                    updater(neo);
                     neo[0][1] = actions(0,1, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
                     if(selected == 1){  
                         canadia.setFont(Font.font("Courier", FontWeight.BOLD, 40));
                     }else if (selected == 0) {	
@@ -188,8 +188,8 @@ public class Game_Board {
                     }//if
 		});
 		alaska.setOnMouseClicked(e2 -> {
-                    updater(neo);
                     neo[0][2] = actions(0,2, neo, e2.getButton() == MouseButton.PRIMARY);
+                    updater(neo);
                     if(selected == 1){  
                         alaska.setFont(Font.font("Courier", FontWeight.BOLD, 40));
                     }else if (selected == 0) {	
