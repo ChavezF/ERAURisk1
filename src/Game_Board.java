@@ -151,9 +151,9 @@ public class Game_Board {
             turn.setText(col2[(int)neo[3][6]]);
 
             //winner call goes here...right Phil????
-
+            int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
             for(int i = 0; i < 4; i++){
-                int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
+                
                 for (int j = 0; j < 8; j++){
                     if (player(neo[i][j]) == 1){//this line
                         count1 ++;
