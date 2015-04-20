@@ -29,6 +29,9 @@ public class Game_Board {
     private int [][] cord = new int[1][1];
     private String attacker;
     private String defender;
+    private String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
+    private String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
+    private String[] col3 = {"End Populate", "Reinforce", "End Attack", "End Turn"};      
     private int count1 = 1, count2 = 1, count3 = 1, count4 = 1;
     Text america, canadia,alaska,greenland,mexico,venezuella,brazil,argentina;
     Text nafrica, safrica, egypt, eafrica, madag, eaustralia, waustralia,nguninea;
@@ -47,7 +50,7 @@ public class Game_Board {
         bGround = new Button();
         bGround.setMinSize(999, 48);
         bGround.setLayoutY(1);
-        bGround.setStyle("-fx-background-color: #0033CC;");
+        bGround.setStyle(col[(int)neo[3][6]]);
 
         Button b1 = new Button("Quit");
         b1.setMinSize(120, 48);
@@ -63,7 +66,7 @@ public class Game_Board {
         s1.setTextFill(Color.web("#0076a3"));
         s1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
-        e1 = new Button("End Populate");
+        e1 = new Button(col3[(int)neo[3][7]]);
         e1.setMinSize(120, 48);
         e1.setLayoutY(1);
         e1.setLayoutX(580);//700
@@ -465,9 +468,6 @@ public class Game_Board {
 			neo[3][6]++;
 		}//if
 
-		//Change the color and text of the bar
-		String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
-		String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
 		turn.setText(col2[(int)neo[3][6]]);
 		bGround.setStyle(col[(int)neo[3][6]]);
 
@@ -1474,7 +1474,7 @@ public class Game_Board {
 		weurope = new Text(423,180,"0");//weurope
 		britain = new Text(370,169,"0");//britain
 
-		turn = new Text(10,39,"Turn: Blue");
+		turn = new Text(10,39,col2[(int)neo[3][6]]);
 		rein = new Text(200,39, "Reinforcements: "+ Integer.toString(reinforce));
 
 		endTurn(neo);
