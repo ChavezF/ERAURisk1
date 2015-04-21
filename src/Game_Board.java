@@ -69,7 +69,7 @@ public class Game_Board {
 		e1 = new Button(col3[(int)neo[3][7]]);
 		e1.setMinSize(120, 48);
 		e1.setLayoutY(1);
-		e1.setLayoutX(580);//700
+		e1.setLayoutX(580);
 		e1.setTextFill(Color.web("#0076a3"));
 		e1.setStyle("-fx-font: 15 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
 
@@ -125,7 +125,7 @@ public class Game_Board {
 			turn.setText(col2[(int)neo[3][6]]);
 			selected = 0;
 		}else if((int)neo[3][7] == 3){       //fortification phase
-			reinforce = 3;
+			reinforce=3;
 			rein.setText("Reinforcements: " + Integer.toString(reinforce));
 			updater(neo);
 			endTurn(neo);
@@ -160,7 +160,15 @@ public class Game_Board {
 			turn.setText(col2[(int)neo[3][6]]);
 
 			neo[3][7] = 1;              //reset to reinforcement phase
+			
 		}//if
+
+		
+		reinforce = setReinforcement(neo);
+
+		//check number of territories
+		//reinforce variable
+
 	}//eventButton
 
 	public int troop(double territory){
@@ -449,6 +457,45 @@ public class Game_Board {
 		return selected = 2;
 	}//attack
 
+	public int setReinforcement(double [] [] neo) {
+		int reinforcements = 3;
+		if (neo[3][6] == 1.0) {
+			if (count2 > 9) {
+				reinforcements = 3 + (int)Math.floor((count2-9)/3);	
+			}else
+				reinforcements = 3;
+
+		}else if (neo[3][6] == 2.0 && neo[3][5] == 2.0) {
+			if (count1 > 9) {
+				reinforcements = 3 + (int)Math.floor((count1-9)/3);	
+			}else
+				reinforcements = 3;
+
+		}else if (neo[3][6] == 2.0 && neo[3][5] > 2.0) {
+			if (count3 > 9) {
+				reinforcements = 3 + (int)Math.floor((count3-9)/3);	
+			}else
+				reinforcements = 3;
+
+		}else if (neo[3][6] == 3.0 && neo[3][5] == 3.0) {
+			if (count1 > 9) {
+				reinforcements = 3 + (int)Math.floor((count1-9)/3);	
+			}else
+				reinforcements = 3;
+		}else if (neo[3][6] == 3.0 && neo [3][5] > 3.0) {
+			if (count4 > 9) {
+				reinforcements = 3 + (int)Math.floor((count4-9)/3);
+			}else
+				reinforcements = 3;
+		}else if (neo[3][6] == 4.0) {
+			if (count1 > 9) {
+				reinforcements = 3 + (int)Math.floor((count1-9)/3);
+			}else
+				reinforcements = 3;
+		}
+		return reinforcements;
+	}
+
 	/**
 	 * @author Bruno
 	 * @param row
@@ -480,7 +527,6 @@ public class Game_Board {
 		}//if
 	}
 
-
 	public double actions(int row, int column, double [][] neo, Boolean button){
 		//-------------------INITIAL DEPLOYMENT--------------------------------------------------------------
 		if ((int)neo[3][7] == 0){     
@@ -505,20 +551,20 @@ public class Game_Board {
 					//Change the color and text of the bar
 					//Paint territory and set characteristics	*/
 					endTurn(neo);
-					
+
 					//Check if current player is the owner and add 1
 				} else if (neo[3][6] == player(neo[row][column]) && neo[row][column] > 1.0 && n > 29.0) {
 					neo[row][column]++;
-					
+
 					addTroops(row, column, neo);	
 					/*			//Cycle structure
 					//Change the color and text of the bar
 					//Paint territory and set characteristics	*/
 					endTurn(neo);
-					
+
 					//If the current player is not the owner
 				} else /*if (neo[row][column] > 1.0 && neo[3][6] != player(neo[row][column])) */{
-				
+
 					//neo[row][column]++;
 				}
 				//if
@@ -538,8 +584,10 @@ public class Game_Board {
 
 		} else if((int)neo[3][7] == 1){                                                  
 			//*****************set this  so that the first turn you have 3 + the number of extra reinforcements from initial phase
+			
 			if(neo[3][6] == player(neo[row][column])){
 				neo[row][column] = setTroop(row,column,neo, (troop(neo[row][column])+1));
+
 				reinforce --;
 				rein.setText("Reinforcements: " + Integer.toString(reinforce));
 				if(reinforce == 0){
@@ -1311,7 +1359,7 @@ public class Game_Board {
 
 		}//if
 		//----------------------------------FORTIFICATION PHASE----------------------------------------------
-
+		
 		return neo[row][column];
 	}//actions
 
@@ -1354,8 +1402,6 @@ public class Game_Board {
 		eeurope.setText(Integer.toString(troop(neo[3][2])));//eeurope
 		weurope.setText(Integer.toString(troop(neo[3][3])));//weurope
 		britain.setText(Integer.toString(troop(neo[3][4])));//britain
-
-
 
 	}//update
 
