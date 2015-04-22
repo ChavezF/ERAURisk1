@@ -6,12 +6,18 @@
  */ 
 
 import javafx.scene.paint.Color; 
-import javafx.scene.text.Font; 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets; 
 import javafx.geometry.Pos; 
 import javafx.scene.Scene; 
 import javafx.scene.control.Button; 
 import javafx.scene.control.Label; 
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane; 
 import javafx.stage.Stage; 
 
@@ -21,9 +27,6 @@ public class Winner{
 
 		//String		winnerPyr = "s";
 
-
-		final int TWO_COLUMN_SPAN = 2; 
-
 		GridPane RPane = new GridPane(); 
 		RPane.setVgap(10); 
 		RPane.setPadding(new Insets(10)); 
@@ -31,26 +34,43 @@ public class Winner{
 		RPane.setAlignment(Pos.CENTER);
 		Label winnerMessage = new Label("  Congratulations!\nPlayer " +s+" won the game!");  
 
-		Button mainMenuButton = new Button ("Main Menu"); 
+		Button mainMenuButton = new Button ("Menu"); 
 		Button quitButton = new Button ("Quit"); 
 
+		mainMenuButton.setTextFill(Color.web("#0076a3"));
+		mainMenuButton.setStyle("-fx-font: 20 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
+		//mainMenuButton.setPrefWidth(750);
+		quitButton.setTextFill(Color.web("#0076a3"));
+		quitButton.setStyle("-fx-font: 20 courier; -fx-font-weight: BOLD; -fx-base: GOLD");
+		//quitButton.setPrefWidth(750);
+		
+		
 		//Set characteristics to the message and buttons
-		winnerMessage.setPrefWidth(Double.MAX_VALUE); 
-		winnerMessage.setFont(Font.font ("Courier", 20)); 
-		winnerMessage.setTextFill(Color.RED); 
-		mainMenuButton.setPrefWidth(Double.MAX_VALUE); 
-		quitButton.setPrefWidth(Double.MAX_VALUE); 
+		//winnerMessage.setPrefWidth(Double.MAX_VALUE); 
+		winnerMessage.setStyle("-fx-font: 30 courier; -fx-font-weight: BOLD");
+		winnerMessage.setTextFill(Color.GOLD);
 
 		//Make it look nice
-		RPane.add(winnerMessage,0,1,TWO_COLUMN_SPAN,1); 
-		RPane.add(mainMenuButton,0,2,TWO_COLUMN_SPAN,1); 
-		RPane.add(quitButton,0,3,TWO_COLUMN_SPAN,1); 
+		RPane.add(winnerMessage, 0, 1);
+		RPane.add(mainMenuButton, 0, 2);
+		RPane.add(quitButton, 0, 3);
+		
+		GridPane.setHalignment(winnerMessage, HPos.CENTER);
+		GridPane.setHalignment(mainMenuButton, HPos.CENTER);
+		GridPane.setHalignment(quitButton, HPos.CENTER);
+
 
 		Stage Pstage = new Stage(); 
-		Scene scene = new Scene(RPane,550,356); 
+		Scene scene = new Scene(RPane,600,400); 
 		Pstage.setScene(scene); 
 		Pstage.show(); 
 
+		BackgroundImage myBI= new BackgroundImage(new Image("RiskCannons.jpg",600,400,false,true),
+		        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+		          BackgroundSize.DEFAULT);
+		//Set image to the grid
+		RPane.setBackground(new Background(myBI));
+		
 		mainMenuButton.setOnAction(e -> { 
 			Menu menu = new Menu();
 			menu.start(Pstage);

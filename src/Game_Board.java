@@ -164,7 +164,7 @@ public class Game_Board {
 		}//if
 
 		
-		reinforce = setReinforcement(neo);
+		//reinforce = setReinforcement(neo);
 
 		//check number of territories
 		//reinforce variable
