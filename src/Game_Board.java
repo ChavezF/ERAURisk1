@@ -26,9 +26,9 @@ public class Game_Board {
 	private double [][] troops = new double[2][2];
 	private double [][] atkCor = new double[1][2];
 	private int selected = 0;
-	private int [][] cord = new int[1][1];
-	private String attacker;
-	private String defender;
+	int [][] cord = new int[1][1];
+	String attacker;
+	String defender;
 	private String[] col = {"-fx-background-color: #DDE6E8;","-fx-background-color: #0033CC;", "-fx-background-color: #339933;", "-fx-background-color: #E62E00;","-fx-background-color: #FFFF00;"};
 	private String[] col2 = {"Turn: White","Turn: Blue", "Turn: Green", "Turn: Red", "Turn: Yellow"};
 	private String[] col3 = {"End Populate", "Reinforce", "End Attack", "End Turn"};      

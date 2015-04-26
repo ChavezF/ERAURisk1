@@ -28,6 +28,7 @@ public class Game_Selection {
 	 * @author Leydi (Structure), Bruno (Layout) 
 	 * Give the options to play a new game or load a previous game; otherwise go to the main menu
 	 */
+	@SuppressWarnings("resource")
 	public void play() {
 
 		//create buttons needed

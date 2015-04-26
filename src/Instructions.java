@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.util.Callback;
 
+@SuppressWarnings("serial")
 public class Instructions extends Menu {
 
 	private Pagination pagination;
